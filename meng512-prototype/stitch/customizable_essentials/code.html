@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "surface-bright": "#f8f9fb",
+                        "secondary-container": "#82f9be",
+                        "on-secondary": "#ffffff",
+                        "tertiary": "#5e3c00",
+                        "tertiary-container": "#7d5200",
+                        "on-surface-variant": "#434654",
+                        "surface-tint": "#0c56d0",
+                        "primary-container": "#0052cc",
+                        "secondary-fixed-dim": "#65dca4",
+                        "on-secondary-container": "#00734c",
+                        "outline": "#737685",
+                        "outline-variant": "#c3c6d6",
+                        "primary": "#003d9b",
+                        "surface-variant": "#e1e2e4",
+                        "surface-container": "#edeef0",
+                        "tertiary-fixed-dim": "#ffb950",
+                        "background": "#f8f9fb",
+                        "surface-container-low": "#f3f4f6",
+                        "on-primary": "#ffffff",
+                        "surface": "#f8f9fb",
+                        "on-tertiary": "#ffffff",
+                        "secondary-fixed": "#82f9be",
+                        "inverse-primary": "#b2c5ff",
+                        "primary-fixed": "#dae2ff",
+                        "on-secondary-fixed-variant": "#005235",
+                        "tertiary-fixed": "#ffddb3",
+                        "on-primary-fixed": "#001848",
+                        "surface-container-lowest": "#ffffff",
+                        "on-tertiary-container": "#ffca81",
+                        "on-background": "#191c1e",
+                        "primary-fixed-dim": "#b2c5ff",
+                        "error-container": "#ffdad6",
+                        "surface-container-high": "#e7e8ea",
+                        "error": "#ba1a1a",
+                        "surface-dim": "#d9dadc",
+                        "inverse-surface": "#2e3132",
+                        "secondary": "#006c47",
+                        "on-error": "#ffffff",
+                        "on-tertiary-fixed-variant": "#624000",
+                        "surface-container-highest": "#e1e2e4",
+                        "on-tertiary-fixed": "#291800",
+                        "on-primary-container": "#c4d2ff",
+                        "inverse-on-surface": "#f0f1f3",
+                        "on-surface": "#191c1e",
+                        "on-primary-fixed-variant": "#0040a2",
+                        "on-error-container": "#93000a",
+                        "on-secondary-fixed": "#002113"
+                    },
+                    fontFamily: {
+                        "headline": ["Inter"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    },
+                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "2xl": "1.5rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Inter', sans-serif; }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+    </style>
+</head>
+<body class="bg-surface-bright text-on-surface antialiased selection:bg-primary/10">
+<!-- TopNavBar (Shared Component JSON Mapping) -->
+<nav class="bg-white/70 backdrop-blur-md border-b border-surface-variant/30 sticky top-0 z-50">
+<div class="flex justify-between items-center w-full px-8 py-4 max-w-7xl mx-auto">
+<div class="flex items-center gap-10">
+<span class="text-2xl font-black tracking-tighter text-primary">Replenish<span class="text-on-surface">AI</span></span>
+<div class="hidden md:flex gap-8 items-center">
+<span class="text-primary font-bold border-b-2 border-primary py-1 text-sm tracking-tight cursor-default">Onboarding</span>
+<span class="text-slate-400 hover:text-primary transition-all duration-300 text-sm font-medium tracking-tight cursor-not-allowed">Dashboard</span>
+<span class="text-slate-400 hover:text-primary transition-all duration-300 text-sm font-medium tracking-tight cursor-not-allowed">Inventory</span>
+</div>
+</div>
+<div class="flex items-center gap-5">
+<div class="hidden sm:flex items-center gap-3 px-4 py-2 bg-surface-container-low rounded-full border border-outline-variant/20">
+<span class="material-symbols-outlined text-outline text-xl" data-icon="search">search</span>
+<span class="text-outline text-xs font-medium">Search the vault...</span>
+</div>
+<div class="flex gap-2">
+<span class="material-symbols-outlined text-on-surface-variant hover:text-primary p-2 transition-colors cursor-pointer" data-icon="settings">settings</span>
+<span class="material-symbols-outlined text-on-surface-variant hover:text-primary p-2 transition-colors cursor-pointer" data-icon="account_circle">account_circle</span>
+</div>
+</div>
+</div>
+</nav>
+<main class="max-w-7xl mx-auto px-8 py-16 lg:py-24">
+<!-- Header Section (Premium Concierge Style) -->
+<header class="mb-20 flex flex-col md:flex-row md:items-end justify-between gap-8">
+<div class="max-w-3xl">
+<span class="text-primary font-bold tracking-[0.2em] uppercase text-xs mb-4 block">Personalized Curation</span>
+<h1 class="text-6xl lg:text-8xl font-black tracking-tight mb-6 text-on-surface leading-none">Add Your <br/>Essentials.</h1>
+<p class="text-on-surface-variant text-xl lg:text-2xl font-light leading-relaxed">Select the staples that define your lifestyle. Our intelligence engine will discreetly ensure your home never feels a moment of lack.</p>
+</div>
+<div class="hidden lg:block pb-2">
+<div class="text-right">
+<span class="block text-4xl font-bold text-primary">03<span class="text-surface-variant text-2xl">/10</span></span>
+<span class="text-xs font-bold tracking-widest text-on-surface-variant uppercase">Essentials Active</span>
+</div>
+</div>
+</header>
+<!-- Main Content Area -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-16">
+<!-- Section 1: Selection Grid -->
+<div class="lg:col-span-8">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<!-- Selected Item: Dish Soap -->
+<div class="group relative aspect-[4/5] overflow-hidden rounded-2xl border-2 border-primary/40 shadow-xl transition-all duration-500 hover:shadow-2xl">
+<img alt="Dish Soap" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDcjTT9VHbG8i6WsXr2Ah_2C3OblnAMVdh64u3GU5ipMh3xtGl8DifCAq1LWeZhdvESZ4T45SdyKRAg_Q7GZeCTmjASVsrWaYDm_Qge7mNEPXP1zO4NqfUoNaXdXFeWHxCXrhQZJ0190o9_sQyC78dtLZfihCWJ1PlKqAfTlg2Yqtr2gWQGletTcPTlFwT_6ltzpEmNm-UKgKAovb6vyoIHut8uLieaQfT7Xju3kEcXJ9sw-NQTqquBSEyep6iwk2AoF9198L_782E"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+<div class="absolute top-4 right-4 h-8 w-8 bg-primary rounded-full flex items-center justify-center shadow-lg border border-white/20">
+<span class="material-symbols-outlined text-white text-lg" data-icon="check" style="font-variation-settings: 'FILL' 1;">check</span>
+</div>
+<div class="absolute bottom-20 left-6 right-6 glass-card rounded-xl p-3 flex items-center justify-between border-white/40 shadow-lg">
+<div class="flex flex-col">
+<span class="text-[9px] font-bold text-on-surface-variant uppercase tracking-wider">How many do you need?</span>
+<div class="flex items-center gap-3 mt-1">
+<button class="w-6 h-6 flex items-center justify-center rounded-full bg-white border border-outline-variant hover:bg-primary/5 transition-colors">
+<span class="material-symbols-outlined text-xs text-on-surface" data-icon="remove">remove</span>
+</button>
+<span class="text-sm font-black text-on-surface w-4 text-center">1</span>
+<button class="w-6 h-6 flex items-center justify-center rounded-full bg-primary text-white hover:shadow-lg transition-all">
+<span class="material-symbols-outlined text-xs" data-icon="add">add</span>
+</button>
+</div>
+</div>
+<div class="h-8 w-[1px] bg-outline-variant/30"></div>
+<div class="text-right">
+<span class="text-[9px] font-bold text-primary uppercase block">Stock</span>
+<span class="text-xs font-bold text-on-surface">Optimal</span>
+</div>
+</div><div class="absolute bottom-6 left-6 text-white">
+<span class="text-[10px] font-bold tracking-[0.15em] uppercase text-primary-fixed block mb-1">Kitchen Sanctuary</span>
+<h3 class="text-2xl font-extrabold tracking-tight">Dish Soap</h3>
+</div>
+</div>
+<!-- Selected Item: Detergent -->
+<div class="group relative aspect-[4/5] overflow-hidden rounded-2xl border-2 border-primary/40 shadow-xl transition-all duration-500 hover:shadow-2xl">
+<img alt="Laundry Detergent" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBHcdRmwqNCl5PtCo2je_55aoMpcyUHg6cu1NN3Y3YTtLzvD4i5LfooqFime945X1PMRIrhdwuMwfHJSrOL5jfPfN2mTcBcV6fYhZWdkoXHXiWHGDcKe1MKzBhWMQn9aTB86P-ROBnRoZCupPVrn4Vlf9_y8l3c6ACKzd0w_Rz72-tg8cHjsNUQyTTlfuYf8be1XydD7JPuVHuLCLCkdkw9uxMuCrS0woY-GjvMy_RG4398Hm-1cJawuzJC-rADwPX4JgUw8XYEHpg"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+<div class="absolute top-4 right-4 h-8 w-8 bg-primary rounded-full flex items-center justify-center shadow-lg border border-white/20">
+<span class="material-symbols-outlined text-white text-lg" data-icon="check" style="font-variation-settings: 'FILL' 1;">check</span>
+</div>
+<div class="absolute bottom-20 left-6 right-6 glass-card rounded-xl p-3 flex items-center justify-between border-white/40 shadow-lg">
+<div class="flex flex-col">
+<span class="text-[9px] font-bold text-on-surface-variant uppercase tracking-wider">How many do you need?</span>
+<div class="flex items-center gap-3 mt-1">
+<button class="w-6 h-6 flex items-center justify-center rounded-full bg-white border border-outline-variant hover:bg-primary/5 transition-colors">
+<span class="material-symbols-outlined text-xs text-on-surface" data-icon="remove">remove</span>
+</button>
+<span class="text-sm font-black text-on-surface w-4 text-center">1</span>
+<button class="w-6 h-6 flex items-center justify-center rounded-full bg-primary text-white hover:shadow-lg transition-all">
+<span class="material-symbols-outlined text-xs" data-icon="add">add</span>
+</button>
+</div>
+</div>
+<div class="h-8 w-[1px] bg-outline-variant/30"></div>
+<div class="text-right">
+<span class="text-[9px] font-bold text-primary uppercase block">Stock</span>
+<span class="text-xs font-bold text-on-surface">Optimal</span>
+</div>
+</div><div class="absolute bottom-6 left-6 text-white">
+<span class="text-[10px] font-bold tracking-[0.15em] uppercase text-primary-fixed block mb-1">Garment Care</span>
+<h3 class="text-2xl font-extrabold tracking-tight">Detergent</h3>
+</div>
+</div>
+<!-- Selected Item: Paper Towels -->
+<div class="group relative aspect-[4/5] overflow-hidden rounded-2xl border-2 border-primary/40 shadow-xl transition-all duration-500 hover:shadow-2xl">
+<img alt="Paper Towels" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCqGM7ZNloSlFaRPPC0g17rUiJ7nSTq8Ec4HhLjVWBa9jQcC5RM-nkflLDQT_9A4LZblE6G860bZpLLlsiQ9rxd2-M9uH1lJgIa7uq2zPaOPEgTqcW-Aj9cMY9duA8wqeWGa3_2FIJtmBRnHxAhnKqUcCkwFIyCwvXxhWg4qRvvdWUEWivHdV-vueirmbXaolKGRvCZEK7u_dycFwRMZaG9Ubbtg0VqrJxAU04SDMubKQBukUqzndnhSp_CkON-lRCvxtfGuwymtc4"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+<div class="absolute top-4 right-4 h-8 w-8 bg-primary rounded-full flex items-center justify-center shadow-lg border border-white/20">
+<span class="material-symbols-outlined text-white text-lg" data-icon="check" style="font-variation-settings: 'FILL' 1;">check</span>
+</div>
+<div class="absolute bottom-20 left-6 right-6 glass-card rounded-xl p-3 flex items-center justify-between border-white/40 shadow-lg">
+<div class="flex flex-col">
+<span class="text-[9px] font-bold text-on-surface-variant uppercase tracking-wider">How many do you need?</span>
+<div class="flex items-center gap-3 mt-1">
+<button class="w-6 h-6 flex items-center justify-center rounded-full bg-white border border-outline-variant hover:bg-primary/5 transition-colors">
+<span class="material-symbols-outlined text-xs text-on-surface" data-icon="remove">remove</span>
+</button>
+<span class="text-sm font-black text-on-surface w-4 text-center">1</span>
+<button class="w-6 h-6 flex items-center justify-center rounded-full bg-primary text-white hover:shadow-lg transition-all">
+<span class="material-symbols-outlined text-xs" data-icon="add">add</span>
+</button>
+</div>
+</div>
+<div class="h-8 w-[1px] bg-outline-variant/30"></div>
+<div class="text-right">
+<span class="text-[9px] font-bold text-primary uppercase block">Stock</span>
+<span class="text-xs font-bold text-on-surface">Optimal</span>
+</div>
+</div><div class="absolute bottom-6 left-6 text-white">
+<span class="text-[10px] font-bold tracking-[0.15em] uppercase text-primary-fixed block mb-1">Household Essence</span>
+<h3 class="text-2xl font-extrabold tracking-tight">Paper Towels</h3>
+</div>
+</div>
+<!-- Custom Item Add Card -->
+<div class="group relative aspect-[4/5] overflow-hidden rounded-2xl border-2 border-dashed border-outline-variant/40 bg-surface-container-low transition-all duration-500 hover:border-primary/40 hover:bg-white hover:shadow-2xl flex flex-col items-center justify-center p-8 text-center cursor-pointer">
+<div class="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mb-6 group-hover:bg-primary group-hover:scale-110 transition-all duration-500">
+<span class="material-symbols-outlined text-primary text-3xl group-hover:text-white" data-icon="add">add</span>
+</div>
+<h3 class="text-xl font-bold text-on-surface mb-2">Can't find an item?</h3>
+<p class="text-on-surface-variant text-sm mb-6 max-w-[200px]">Define your own custom essential for autonomous replenishment.</p>
+<div class="w-full flex items-center gap-2 bg-white border border-outline-variant/30 rounded-full px-4 py-2 group-hover:border-primary/30 transition-colors">
+<span class="material-symbols-outlined text-outline text-lg" data-icon="edit">edit</span>
+<input class="bg-transparent border-none focus:ring-0 text-sm font-medium w-full placeholder:text-outline/50" placeholder="Enter item name..." type="text"/>
+</div>
+</div>
+<!-- Unselected Item: Hand Soap -->
+<div class="group relative aspect-[4/5] overflow-hidden rounded-2xl bg-surface-container transition-all duration-500 hover:shadow-2xl cursor-pointer">
+<img alt="Hand Soap" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 grayscale group-hover:grayscale-0 opacity-40 group-hover:opacity-100" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDhSqokxCIXwbcAKQqmpd3XYl3EFGaUQcMyo0UQENKJdcLXIGM8MSfZvCfVt-ptpqiNjGhFl_oTCX6wv7C3AdBI51qpCi1YVUbTlkxV554E-MgCOqjoG-LVesnmCYf0ZY-st5-0QP7suyGaajKhSp2ZdFMRrdpNm-GjwL6Kx6UeKpzBgRJipcnXO-V0eh8iTzHegZK0GqvH40qQC8BFxQt4KrOjzuOiMkpyakLFkrjj0EPwrMlrluGpIZcj16miROGLpCCd55TcdpU"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+<div class="absolute inset-0 flex flex-col items-center justify-center text-center p-6 bg-surface-container-low/40 group-hover:bg-transparent transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant text-4xl mb-3 group-hover:hidden" data-icon="add_circle">add_circle</span>
+<h3 class="text-xl font-bold text-on-surface group-hover:hidden">Hand Soap</h3>
+</div>
+<div class="absolute bottom-6 left-6 text-white opacity-0 group-hover:opacity-100 transition-all transform translate-y-2 group-hover:translate-y-0">
+<span class="text-[10px] font-bold tracking-[0.15em] uppercase text-primary-fixed block mb-1">Personal Care</span>
+<h3 class="text-2xl font-extrabold tracking-tight">Hand Soap</h3>
+</div>
+</div>
+<!-- Unselected Item: Coffee (Pantry Staple) -->
+<div class="group relative aspect-[4/5] overflow-hidden rounded-2xl bg-surface-container transition-all duration-500 hover:shadow-2xl cursor-pointer">
+<img alt="Artisan Coffee Beans" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 grayscale group-hover:grayscale-0 opacity-40 group-hover:opacity-100" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDZe83OVXECz9FDLR0bHLzDODJI0QTSqlHLx_pkH3K38Qk1OZvdoGwNljwJsTYnwe1ZaghFlTda2bNyUZqS9uULB5YH31wc7X-pP_3sbKoe9Rp2roJz_RplcP0trsrMHKf19P9_OgMgv7NsjpvvrZ2fgJSEiXFoaUA1rH4YFmuexScpYrjakEJv6wG96htgIqKTZ308HmQd1hcY3fjdZ2U2z5rfCjjO3s7k_j-6D6QBpqBTZa7FZn9KlJ1cw079_t1tDmPc4uVRrhs"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+<div class="absolute inset-0 flex flex-col items-center justify-center text-center p-6 bg-surface-container-low/40 group-hover:bg-transparent transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant text-4xl mb-3 group-hover:hidden" data-icon="add_circle">add_circle</span>
+<h3 class="text-xl font-bold text-on-surface group-hover:hidden">Roasted Coffee</h3>
+</div>
+<div class="absolute bottom-6 left-6 text-white opacity-0 group-hover:opacity-100 transition-all transform translate-y-2 group-hover:translate-y-0">
+<span class="text-[10px] font-bold tracking-[0.15em] uppercase text-primary-fixed block mb-1">Pantry Staples</span>
+<h3 class="text-2xl font-extrabold tracking-tight">Roasted Coffee</h3>
+</div>
+</div>
+<!-- Unselected Item: Dog Food (Pet Care) -->
+<div class="group relative aspect-[4/5] overflow-hidden rounded-2xl bg-surface-container transition-all duration-500 hover:shadow-2xl cursor-pointer">
+<img alt="Premium Dog Food" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 grayscale group-hover:grayscale-0 opacity-40 group-hover:opacity-100" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBo7LBo_s40OiVdZyBs68Sv1RlgDCKZUDrDt85zr7-b75X3ubsUvYL5PiDIf03DFOXJCOHulkq8nG37BTQaWlqAkIOBZ-UYBzX9KfbQrMsigS1hm6jG9se66TANizK8YjdA0ecw43IdVs8y4tr8P9uH75aHJD_DBj6NMXY9rFNjMx6HU_vv1MGL2lTRrsxMDgzJFFQdB_eXyFtSSDI2gmMxpjv6r2Sabk7ZNo3ovNiVj3XIpAHb8oPG2AZtblZsrjAZPnHDPnkr_3k"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+<div class="absolute inset-0 flex flex-col items-center justify-center text-center p-6 bg-surface-container-low/40 group-hover:bg-transparent transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant text-4xl mb-3 group-hover:hidden" data-icon="add_circle">add_circle</span>
+<h3 class="text-xl font-bold text-on-surface group-hover:hidden">Kibble Reserve</h3>
+</div>
+<div class="absolute bottom-6 left-6 text-white opacity-0 group-hover:opacity-100 transition-all transform translate-y-2 group-hover:translate-y-0">
+<span class="text-[10px] font-bold tracking-[0.15em] uppercase text-primary-fixed block mb-1">Pet Care</span>
+<h3 class="text-2xl font-extrabold tracking-tight">Kibble Reserve</h3>
+</div>
+</div>
+<!-- Unselected Item: Shampoo (Personal Care) -->
+<div class="group relative aspect-[4/5] overflow-hidden rounded-2xl bg-surface-container transition-all duration-500 hover:shadow-2xl cursor-pointer">
+<img alt="Luxury Shampoo" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 grayscale group-hover:grayscale-0 opacity-40 group-hover:opacity-100" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBKNocCNZfT04yQHTyYG6brGDxGFEkygXHFw_Q_PfkdPgL3Yvq7Ni5sHtvLhM02y6UPVq3tdou4PXdXhOcNh2VxvLyYDJzzKAixGoGKXcp3Bcbu6GQlR-Xi52fJVcbTo6Yls6lnjggokNh7UI0be0LTnNH53HDGmdLPFs17X8ueIYt0-WxlLU0iiHsxIXtfdi-CZ7NrEnsvPvTpFslDxaZTH6VlzIpJPKjXmVj6ge2NDoHNzNWwXjh4q-gfmecPtfTnpSkOwiHnLoY"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+<div class="absolute inset-0 flex flex-col items-center justify-center text-center p-6 bg-surface-container-low/40 group-hover:bg-transparent transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant text-4xl mb-3 group-hover:hidden" data-icon="add_circle">add_circle</span>
+<h3 class="text-xl font-bold text-on-surface group-hover:hidden">Silk Shampoo</h3>
+</div>
+<div class="absolute bottom-6 left-6 text-white opacity-0 group-hover:opacity-100 transition-all transform translate-y-2 group-hover:translate-y-0">
+<span class="text-[10px] font-bold tracking-[0.15em] uppercase text-primary-fixed block mb-1">Personal Care</span>
+<h3 class="text-2xl font-extrabold tracking-tight">Silk Shampoo</h3>
+</div>
+</div>
+</div>
+<!-- Insight Section (Power User Tip) -->
+<div class="mt-20 group relative overflow-hidden rounded-3xl bg-primary p-12 lg:p-16 text-white shadow-2xl">
+<div class="relative z-10 flex flex-col md:flex-row items-center gap-12">
+<div class="flex-1">
+<div class="inline-flex items-center gap-2 bg-white/10 px-4 py-1.5 rounded-full mb-8 backdrop-blur-sm">
+<span class="material-symbols-outlined text-sm" data-icon="auto_awesome">auto_awesome</span>
+<span class="text-xs font-bold tracking-widest uppercase">Intelligence Insight</span>
+</div>
+<h3 class="text-4xl font-extrabold tracking-tight mb-6">Elevate your anticipation.</h3>
+<p class="text-primary-fixed text-lg leading-relaxed mb-10 max-w-lg">Grant ReplenishAI access to your social calendar. Our engine will cross-reference upcoming soirées and guests with your current stock levels, initiating a restock before the first guest even arrives.</p>
+<button class="bg-white text-primary px-8 py-4 rounded-full font-bold text-sm transition-all hover:shadow-2xl hover:scale-105 active:scale-95 flex items-center gap-3">
+<span class="material-symbols-outlined text-xl" data-icon="calendar_month">calendar_month</span>
+                                Integrate Calendar
+                            </button>
+</div>
+<div class="w-full md:w-2/5 aspect-square rounded-2xl overflow-hidden shadow-2xl border border-white/20">
+<img alt="Elegant minimalist desk" class="w-full h-full object-cover transition-transform duration-[2000ms] group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuATEvgcWxlrXsDDJKPRBaJOZ6nqHen8bmMTnWaqRn1TYryC-yHLX25lEgmBEMSbTz5-lQfPbfZCNR7J-nEPnqRYqI666EsAaiQoG2Kl8qcl2rDMCwK0niOE97DSF878Sko-_4EC0MHVcW2ZnqWsEyWAqS0wliSamNfgZ_0DhC3o8pCTVKTWOTLNo6RMZ5xhkd8BSC4tbOJqXnEWPBwn_rlWwo9-XD_BlaMW2as6w7q-SK4RIv3a3ZJP-3b0uVWRy_wia0esm-W0D1E"/>
+</div>
+</div>
+<!-- Abstract background shapes -->
+<div class="absolute -bottom-24 -right-24 w-96 h-96 bg-primary-container/20 rounded-full blur-3xl"></div>
+<div class="absolute -top-12 -left-12 w-64 h-64 bg-secondary-container/10 rounded-full blur-3xl"></div>
+</div>
+</div>
+<!-- Section 2: Preferences Sidebar -->
+<div class="lg:col-span-4">
+<div class="sticky top-32 space-y-8">
+<div class="bg-white p-10 rounded-3xl shadow-xl border border-surface-variant/20">
+<h2 class="text-xs font-black tracking-[0.25em] text-on-surface-variant uppercase mb-10 flex items-center gap-3">
+<span class="h-1.5 w-1.5 bg-primary rounded-full"></span>
+                            Executive Preferences
+                        </h2>
+<div class="space-y-10">
+<div>
+<label class="text-[10px] font-bold text-on-surface-variant uppercase tracking-widest block mb-5">Brand Alignment Strategy</label>
+<div class="space-y-4">
+<label class="flex items-center gap-4 p-4 rounded-2xl border-2 border-primary bg-primary/5 cursor-pointer group transition-all">
+<input checked="" class="w-5 h-5 text-primary focus:ring-primary border-outline-variant" name="brand_logic" type="radio"/>
+<div>
+<span class="text-sm font-bold text-on-surface block">Absolute Brand Loyalty</span>
+<span class="text-[10px] text-on-surface-variant leading-tight block mt-1">Consistency above all. Only your selected luxury marks.</span>
+</div>
+</label>
+<label class="flex items-center gap-4 p-4 rounded-2xl border-2 border-transparent bg-surface-container-low hover:border-outline-variant transition-all cursor-pointer group">
+<input class="w-5 h-5 text-primary focus:ring-primary border-outline-variant" name="brand_logic" type="radio"/>
+<div>
+<span class="text-sm font-bold text-on-surface block">Smart Value Curator</span>
+<span class="text-[10px] text-on-surface-variant leading-tight block mt-1">Performance focused. Premium quality, optimized cost.</span>
+</div>
+</label>
+</div>
+</div>
+<div>
+<div class="flex justify-between items-center mb-5">
+<label class="text-[10px] font-bold text-on-surface-variant uppercase tracking-widest">Quality Sensitivity</label>
+<span class="text-[10px] font-black text-primary px-2 py-1 bg-primary/10 rounded tracking-widest">PREMIUM</span>
+</div>
+<input class="w-full h-1.5 bg-surface-container rounded-full appearance-none cursor-pointer accent-primary" type="range" value="80"/>
+<div class="flex justify-between mt-3">
+<span class="text-[9px] font-bold text-on-surface-variant uppercase">Standard</span>
+<span class="text-[9px] font-bold text-on-surface-variant uppercase">Artisan</span>
+</div>
+</div>
+<div class="pt-10 border-t border-surface-container">
+<div class="flex items-center justify-between group">
+<div class="flex items-center gap-3">
+<div class="p-2 bg-primary/10 rounded-lg">
+<span class="material-symbols-outlined text-primary text-xl" data-icon="auto_mode">auto_mode</span>
+</div>
+<div>
+<span class="text-sm font-bold text-on-surface block">Autonomous Replenishment</span>
+<span class="text-[10px] text-on-surface-variant">AI-driven invisible restocking</span>
+</div>
+</div>
+<div class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-12 h-7 bg-surface-container-highest peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[4px] after:left-[4px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-[20px] after:w-[20px] after:transition-all peer-checked:bg-primary"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="p-8 rounded-3xl bg-surface-container-highest/30 border border-outline-variant/10 text-center">
+<p class="text-xs text-on-surface-variant italic leading-relaxed">
+                            “The highest luxury is never having to ask. Our neural network learns your consumption rhythm with every interaction.”
+                        </p>
+</div>
+</div>
+</div>
+</div>
+<!-- Final Call to Action -->
+<div class="mt-32 text-center">
+<button class="group relative inline-flex items-center justify-center gap-6 bg-on-surface text-white px-14 py-6 rounded-full font-black text-xl transition-all hover:bg-primary hover:shadow-[0_20px_50px_rgba(0,61,155,0.3)] hover:-translate-y-1 active:scale-95">
+                Initialize Experience
+                <span class="material-symbols-outlined transition-transform group-hover:translate-x-2" data-icon="east">east</span>
+</button>
+<p class="mt-8 text-on-surface-variant text-xs font-bold tracking-[0.2em] uppercase opacity-50">
+                Secure Setup • Encrypted Profile • Concierge Ready
+            </p>
+</div>
+</main>
+<!-- Footer (Shared Component JSON Mapping) -->
+<footer class="bg-white border-t border-surface-variant/20 py-20 mt-20">
+<div class="max-w-7xl mx-auto px-8 flex flex-col md:flex-row justify-between items-start md:items-center gap-12">
+<div class="flex flex-col gap-4">
+<span class="text-xl font-black tracking-tighter text-primary">ReplenishAI</span>
+<span class="font-headline text-[10px] font-bold tracking-[0.2em] uppercase text-on-surface-variant">
+                    © 2024. The New Standard in Domestic Intelligence.
+                </span>
+</div>
+<div class="flex flex-wrap gap-x-12 gap-y-4">
+<a class="font-headline text-[10px] font-bold tracking-[0.2em] uppercase text-on-surface-variant hover:text-primary transition-colors" href="#">Privacy Protocol</a>
+<a class="font-headline text-[10px] font-bold tracking-[0.2em] uppercase text-on-surface-variant hover:text-primary transition-colors" href="#">Usage Terms</a>
+<a class="font-headline text-[10px] font-bold tracking-[0.2em] uppercase text-on-surface-variant hover:text-primary transition-colors" href="#">White-Glove Support</a>
+</div>
+</div>
+</footer>
+</body></html>

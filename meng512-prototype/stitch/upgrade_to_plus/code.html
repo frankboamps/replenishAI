@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Upgrade to ReplenishAI Plus</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "surface-bright": "#f8f9fb",
+              "secondary-container": "#82f9be",
+              "on-secondary": "#ffffff",
+              "tertiary": "#5e3c00",
+              "tertiary-container": "#7d5200",
+              "on-surface-variant": "#434654",
+              "surface-tint": "#0c56d0",
+              "primary-container": "#0052cc",
+              "secondary-fixed-dim": "#65dca4",
+              "on-secondary-container": "#00734c",
+              "outline": "#737685",
+              "outline-variant": "#c3c6d6",
+              "primary": "#003d9b",
+              "surface-variant": "#e1e2e4",
+              "surface-container": "#edeef0",
+              "tertiary-fixed-dim": "#ffb950",
+              "background": "#f8f9fb",
+              "surface-container-low": "#f3f4f6",
+              "on-primary": "#ffffff",
+              "surface": "#f8f9fb",
+              "on-tertiary": "#ffffff",
+              "secondary-fixed": "#82f9be",
+              "inverse-primary": "#b2c5ff",
+              "primary-fixed": "#dae2ff",
+              "on-secondary-fixed-variant": "#005235",
+              "tertiary-fixed": "#ffddb3",
+              "on-primary-fixed": "#001848",
+              "surface-container-lowest": "#ffffff",
+              "on-tertiary-container": "#ffca81",
+              "on-background": "#191c1e",
+              "primary-fixed-dim": "#b2c5ff",
+              "error-container": "#ffdad6",
+              "surface-container-high": "#e7e8ea",
+              "error": "#ba1a1a",
+              "surface-dim": "#d9dadc",
+              "inverse-surface": "#2e3132",
+              "secondary": "#006c47",
+              "on-error": "#ffffff",
+              "on-tertiary-fixed-variant": "#624000",
+              "surface-container-highest": "#e1e2e4",
+              "on-tertiary-fixed": "#291800",
+              "on-primary-container": "#c4d2ff",
+              "inverse-on-surface": "#f0f1f3",
+              "on-surface": "#191c1e",
+              "on-primary-fixed-variant": "#0040a2",
+              "on-error-container": "#93000a",
+              "on-secondary-fixed": "#002113"
+            },
+            fontFamily: {
+              "headline": ["Inter"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+      body { font-family: 'Inter', sans-serif; }
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      .no-line-rule { border: none !important; }
+    </style>
+</head>
+<body class="bg-background text-on-background antialiased overflow-x-hidden">
+<!-- TopNavBar -->
+<header class="bg-slate-50/80 dark:bg-slate-900/80 backdrop-blur-xl shadow-sm dark:shadow-none docked full-width top-0 sticky z-50 font-sans antialiased text-sm tracking-tight">
+<div class="flex justify-between items-center w-full px-6 py-3 max-w-full mx-auto">
+<div class="flex items-center gap-8">
+<span class="text-xl font-black tracking-tighter text-slate-900 dark:text-slate-50">ReplenishAI</span>
+<nav class="hidden md:flex gap-6">
+<a class="text-slate-500 dark:text-slate-400 hover:text-slate-900 hover:bg-slate-100/50 dark:hover:bg-slate-800/50 transition-all duration-300 active:scale-95 duration-200" href="#">Dashboard</a>
+<a class="text-slate-500 dark:text-slate-400 hover:text-slate-900 hover:bg-slate-100/50 dark:hover:bg-slate-800/50 transition-all duration-300 active:scale-95 duration-200" href="#">Inventory</a>
+<a class="text-slate-500 dark:text-slate-400 hover:text-slate-900 hover:bg-slate-100/50 dark:hover:bg-slate-800/50 transition-all duration-300 active:scale-95 duration-200" href="#">Orders</a>
+<a class="text-blue-700 dark:text-blue-400 font-semibold border-b-2 border-blue-700 hover:bg-slate-100/50 dark:hover:bg-slate-800/50 transition-all duration-300 active:scale-95 duration-200" href="#">Upgrade to Plus</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 text-slate-500 hover:bg-slate-100/50 rounded-full transition-all duration-300">
+<span class="material-symbols-outlined" data-icon="account_circle">account_circle</span>
+</button>
+<button class="p-2 text-slate-500 hover:bg-slate-100/50 rounded-full transition-all duration-300">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+</button>
+</div>
+</div>
+<div class="bg-slate-200/50 dark:bg-slate-800/50 h-[1px]"></div>
+</header>
+<main class="min-h-screen py-24">
+<!-- Hero Section -->
+<section class="max-w-6xl mx-auto px-6 mb-20">
+<div class="flex flex-col md:flex-row items-center gap-16">
+<div class="w-full md:w-3/5">
+<span class="text-label-md font-bold tracking-[0.1em] text-primary uppercase mb-4 block">Elevate your home intelligence</span>
+<h1 class="text-[3.5rem] leading-[1.1] font-black tracking-tight text-on-surface mb-6">Never run out of anything, ever again.</h1>
+<p class="text-lg text-on-surface-variant leading-relaxed mb-8 max-w-xl">
+                        ReplenishAI Plus transforms your pantry from a list of items into a self-healing ecosystem. Proactive curation, intelligent sourcing, and total peace of mind.
+                    </p>
+<div class="flex items-center gap-4 p-6 bg-surface-container rounded-xl">
+<div class="h-12 w-12 rounded-full overflow-hidden flex-shrink-0">
+<img alt="User testimonial" class="w-full h-full object-cover" data-alt="Close-up portrait of a satisfied middle-aged woman with a gentle smile in a softly lit modern kitchen environment" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAtBmMw10CP_gKyfjJCT_SZr-8G9Qh7ZKPcYcqgDxk4Ds833V5zMuXbmxFjYGHXMM8lvfeHU8JMdbpqTLbcQjTJ0CAp2LxhzlKKHlWBLUIH3usN5dVj4ctV64w-93dwKXEHjtdovuPTw9Ko6NPQNXLh0-8AK_OzROj1hPBewx2x68g9eHe6H2Kz9oJCEJaamZ6KYxhEpGM2p9IvPFvizDOOPEWKW0g8uU_MKu90jAehOXIQpIRMaJDXm3u9yvjeIKEMvPHH7k1xSvg"/>
+</div>
+<p class="italic text-on-surface font-medium italic">
+                            "I haven't thought about toilet paper in 6 months."
+                            <span class="block text-sm font-normal text-on-surface-variant not-italic">— Sarah J., Busy Parent &amp; Architect</span>
+</p>
+</div>
+</div>
+<div class="w-full md:w-2/5 aspect-[4/5] relative rounded-xl overflow-hidden shadow-2xl">
+<img alt="Organized modern pantry" class="w-full h-full object-cover" data-alt="Hyper-organized modern kitchen pantry with glass jars, minimalist labels, and soft warm ambient lighting reflecting off clean surfaces" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCzykMjA52fxKdhmoG_QYsrj3HjMNUO159TP_O9rEAK9n1BoOqmNSLfEXjfURWOMREUUuj3710yMXTRP-XZhjh0TS3e2uTObdU8gs_Coxj-yJ4X-dE69Tas0m4POzhUNXb39fr9mxmHiXhcIbDN-OH_d19WF7T8vbjfogEwbwLgMQwxRqOfEbLc6YIE0f5vZszRER5sVdcW0mivGhQa0IWZnwP15faSaSo3MyvnwbV8OwNO1xMnhYsxkpwS53Kjw7vc1JlHQMyLctI"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/40 to-transparent"></div>
+</div>
+</div>
+</section>
+<!-- Tier Comparison -->
+<section class="max-w-5xl mx-auto px-6">
+<div class="grid md:grid-cols-2 gap-8 items-stretch">
+<!-- Free Tier -->
+<div class="bg-surface-container-low rounded-xl p-10 flex flex-col transition-all duration-300 hover:bg-surface-container">
+<div class="mb-8">
+<h3 class="text-2xl font-bold text-on-surface mb-2">Free</h3>
+<div class="text-4xl font-black text-on-surface mb-4">$0 <span class="text-lg font-normal text-on-surface-variant">/mo</span></div>
+<p class="text-on-surface-variant text-sm">Essential tracking for your most critical household items.</p>
+</div>
+<ul class="space-y-6 mb-12 flex-grow">
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-outline text-sm" data-icon="check_circle">check_circle</span>
+<span class="text-sm font-medium">10 items capacity</span>
+</li>
+<li class="flex items-start gap-3 text-on-surface-variant">
+<span class="material-symbols-outlined text-outline text-sm" data-icon="check_circle">check_circle</span>
+<span class="text-sm">Standard AI predictions</span>
+</li>
+<li class="flex items-start gap-3 text-on-surface-variant">
+<span class="material-symbols-outlined text-outline text-sm" data-icon="check_circle">check_circle</span>
+<span class="text-sm">1 primary supplier sync</span>
+</li>
+</ul>
+<button class="w-full py-4 rounded-lg bg-surface-container-highest text-on-surface font-bold hover:bg-surface-dim transition-all duration-300">
+                        Current Plan
+                    </button>
+</div>
+<!-- Plus Tier -->
+<div class="relative bg-surface-container-lowest rounded-xl p-10 flex flex-col shadow-[0px_20px_40px_rgba(25,28,30,0.06)] border border-primary/5">
+<div class="absolute -top-4 right-8 bg-gradient-to-br from-primary to-primary-container text-on-primary px-4 py-1 rounded-full text-xs font-bold tracking-widest uppercase">
+                        Recommended
+                    </div>
+<div class="mb-8">
+<h3 class="text-2xl font-bold text-primary mb-2">ReplenishAI Plus</h3>
+<div class="text-4xl font-black text-on-surface mb-4">$7.99 <span class="text-lg font-normal text-on-surface-variant">/mo</span></div>
+<p class="text-on-surface-variant text-sm">The ultimate proactive curator for a seamless lifestyle.</p>
+</div>
+<ul class="space-y-6 mb-12 flex-grow">
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-primary text-sm" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="text-sm font-bold">Unlimited items capacity</span>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-primary text-sm" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="text-sm font-bold">Advanced ML consumption patterns</span>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-primary text-sm" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="text-sm font-bold">Calendar &amp; Event sync</span>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-primary text-sm" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="text-sm font-bold">Price deals &amp; Coupon tracking</span>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-primary text-sm" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="text-sm font-bold">Multi-supplier routing optimization</span>
+</li>
+</ul>
+<button class="w-full py-4 rounded-lg bg-gradient-to-br from-primary to-primary-container text-on-primary font-bold shadow-lg hover:brightness-110 active:scale-95 transition-all duration-300">
+                        Upgrade Now
+                    </button>
+</div>
+</div>
+</section>
+<!-- Feature Bento Grid (Deep Dive) -->
+<section class="max-w-6xl mx-auto px-6 mt-32">
+<h2 class="text-2xl font-black mb-12">The Plus Advantage</h2>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- Feature 1 -->
+<div class="md:col-span-2 bg-secondary-container/20 rounded-xl p-8 flex flex-col justify-between overflow-hidden relative group">
+<div class="max-w-md relative z-10">
+<span class="material-symbols-outlined text-on-secondary-container mb-4 text-3xl" data-icon="auto_awesome">auto_awesome</span>
+<h4 class="text-xl font-bold mb-2">Multi-Supplier Optimization</h4>
+<p class="text-sm text-on-surface-variant">Our AI compares Amazon, Walmart, and local grocers in real-time to find the best price and fastest delivery window automatically.</p>
+</div>
+<div class="absolute -right-20 -bottom-20 opacity-10 group-hover:opacity-20 transition-opacity">
+<span class="material-symbols-outlined text-[15rem]" data-icon="shopping_cart">shopping_cart</span>
+</div>
+</div>
+<!-- Feature 2 -->
+<div class="bg-tertiary-fixed rounded-xl p-8 flex flex-col justify-between">
+<div>
+<span class="material-symbols-outlined text-on-tertiary-fixed-variant mb-4 text-3xl" data-icon="calendar_month">calendar_month</span>
+<h4 class="text-xl font-bold mb-2">Calendar Sync</h4>
+<p class="text-sm text-on-tertiary-fixed-variant">Planning a dinner party? ReplenishAI sees your guest list and orders extra ingredients 48 hours in advance.</p>
+</div>
+</div>
+<!-- Feature 3 -->
+<div class="bg-surface-container-high rounded-xl p-8">
+<span class="material-symbols-outlined text-primary mb-4 text-3xl" data-icon="analytics">analytics</span>
+<h4 class="text-xl font-bold mb-2">Advanced ML Predictions</h4>
+<p class="text-sm text-on-surface-variant">We learn your seasonal habits. Milk usage spikes in winter? We adjust your replenishment cycle before you even notice.</p>
+</div>
+<!-- Feature 4 -->
+<div class="md:col-span-2 bg-primary-container text-on-primary-container rounded-xl p-8 flex items-center gap-8">
+<div class="flex-grow">
+<h4 class="text-xl font-bold mb-2">Unlimited Items</h4>
+<p class="text-sm opacity-80">From lightbulbs to laundry detergent, track your entire household inventory without restrictions.</p>
+</div>
+<div class="h-24 w-24 bg-white/10 rounded-full flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-4xl" data-icon="all_inclusive">all_inclusive</span>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-slate-50 dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 full-width py-12">
+<div class="max-w-7xl mx-auto px-8 flex flex-col md:flex-row justify-between items-center gap-4 font-sans text-xs tracking-wide uppercase">
+<div class="text-slate-500 dark:text-slate-500">
+                © 2024 ReplenishAI. Intelligent Household Management.
+            </div>
+<div class="flex gap-8">
+<a class="text-slate-500 dark:text-slate-500 hover:text-blue-600 dark:hover:text-blue-300 transition-colors" href="#">Privacy</a>
+<a class="text-slate-500 dark:text-slate-500 hover:text-blue-600 dark:hover:text-blue-300 transition-colors" href="#">Terms</a>
+<a class="text-slate-500 dark:text-slate-500 hover:text-blue-600 dark:hover:text-blue-300 transition-colors" href="#">Support</a>
+</div>
+</div>
+</footer>
+</body></html>

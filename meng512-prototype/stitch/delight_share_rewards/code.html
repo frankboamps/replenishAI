@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "surface-bright": "#f8f9fb",
+              "secondary-container": "#82f9be",
+              "on-secondary": "#ffffff",
+              "tertiary": "#5e3c00",
+              "tertiary-container": "#7d5200",
+              "on-surface-variant": "#434654",
+              "surface-tint": "#0c56d0",
+              "primary-container": "#0052cc",
+              "secondary-fixed-dim": "#65dca4",
+              "on-secondary-container": "#00734c",
+              "outline": "#737685",
+              "outline-variant": "#c3c6d6",
+              "primary": "#003d9b",
+              "surface-variant": "#e1e2e4",
+              "surface-container": "#edeef0",
+              "tertiary-fixed-dim": "#ffb950",
+              "background": "#f8f9fb",
+              "surface-container-low": "#f3f4f6",
+              "on-primary": "#ffffff",
+              "surface": "#f8f9fb",
+              "on-tertiary": "#ffffff",
+              "secondary-fixed": "#82f9be",
+              "inverse-primary": "#b2c5ff",
+              "primary-fixed": "#dae2ff",
+              "on-secondary-fixed-variant": "#005235",
+              "tertiary-fixed": "#ffddb3",
+              "on-primary-fixed": "#001848",
+              "surface-container-lowest": "#ffffff",
+              "on-tertiary-container": "#ffca81",
+              "on-background": "#191c1e",
+              "primary-fixed-dim": "#b2c5ff",
+              "error-container": "#ffdad6",
+              "surface-container-high": "#e7e8ea",
+              "error": "#ba1a1a",
+              "surface-dim": "#d9dadc",
+              "inverse-surface": "#2e3132",
+              "secondary": "#006c47",
+              "on-error": "#ffffff",
+              "on-tertiary-fixed-variant": "#624000",
+              "surface-container-highest": "#e1e2e4",
+              "on-tertiary-fixed": "#291800",
+              "on-primary-container": "#c4d2ff",
+              "inverse-on-surface": "#f0f1f3",
+              "on-surface": "#191c1e",
+              "on-primary-fixed-variant": "#0040a2",
+              "on-error-container": "#93000a",
+              "on-secondary-fixed": "#002113"
+            },
+            fontFamily: {
+              "headline": ["Inter"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      body {
+        font-family: 'Inter', sans-serif;
+      }
+    </style>
+</head>
+<body class="bg-background text-on-surface antialiased min-h-screen">
+<!-- TopNavBar -->
+<nav class="bg-slate-50/80 backdrop-blur-xl shadow-sm sticky top-0 z-50 flex justify-between items-center w-full px-6 py-3 max-w-full mx-auto font-sans antialiased text-sm tracking-tight">
+<div class="flex items-center gap-8">
+<span class="text-xl font-black tracking-tighter text-slate-900">ReplenishAI</span>
+<div class="relative hidden md:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400">search</span>
+<input class="bg-surface-container-highest border-none rounded-lg pl-10 pr-4 py-2 w-64 text-xs focus:ring-2 focus:ring-primary-container transition-all" placeholder="Search inventory..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 hover:bg-slate-100/50 rounded-lg transition-all duration-300 active:scale-95">
+<span class="material-symbols-outlined text-slate-500" data-icon="account_circle">account_circle</span>
+</button>
+<button class="p-2 hover:bg-slate-100/50 rounded-lg transition-all duration-300 active:scale-95">
+<span class="material-symbols-outlined text-slate-500" data-icon="settings">settings</span>
+</button>
+</div>
+</nav>
+<div class="flex min-h-[calc(100vh-64px)]">
+<!-- SideNavBar -->
+<aside class="bg-slate-100 hidden md:flex flex-col h-[calc(100vh-64px)] w-64 fixed left-0 top-[56px] py-8 space-y-2 font-sans text-sm font-medium">
+<div class="px-6 mb-6">
+<h2 class="text-lg font-bold text-slate-900">ReplenishAI</h2>
+<p class="text-xs text-slate-500">Proactive Curator</p>
+</div>
+<a class="bg-white text-blue-700 shadow-sm rounded-lg mx-4 my-1 px-4 py-3 flex items-center gap-3 transition-colors duration-300 ease-in-out" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard" style="font-variation-settings: 'FILL' 1;">dashboard</span>
+<span>Dashboard</span>
+</a>
+<a class="text-slate-600 hover:bg-slate-200/50 rounded-lg mx-4 my-1 px-4 py-3 flex items-center gap-3 transition-colors duration-300 ease-in-out" href="#">
+<span class="material-symbols-outlined" data-icon="inventory_2">inventory_2</span>
+<span>Inventory</span>
+</a>
+<a class="text-slate-600 hover:bg-slate-200/50 rounded-lg mx-4 my-1 px-4 py-3 flex items-center gap-3 transition-colors duration-300 ease-in-out" href="#">
+<span class="material-symbols-outlined" data-icon="shopping_cart">shopping_cart</span>
+<span>Orders</span>
+</a>
+<a class="text-slate-600 hover:bg-slate-200/50 rounded-lg mx-4 my-1 px-4 py-3 flex items-center gap-3 transition-colors duration-300 ease-in-out" href="#">
+<span class="material-symbols-outlined" data-icon="auto_awesome">auto_awesome</span>
+<span>Upgrade to Plus</span>
+</a>
+<div class="mt-auto px-4 pb-8">
+<button class="w-full bg-gradient-to-br from-primary to-primary-container text-on-primary py-3 rounded-xl font-semibold flex items-center justify-center gap-2 shadow-lg shadow-primary/10">
+<span class="material-symbols-outlined text-lg">qr_code_scanner</span>
+<span>Quick Scan</span>
+</button>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 md:ml-64 p-8 lg:p-12">
+<!-- Delight Banner (Editorial Layout) -->
+<section class="mb-12 relative overflow-hidden bg-secondary-container/20 rounded-2xl p-8 md:p-10 border border-secondary-container/30 flex flex-col md:flex-row justify-between items-center gap-8">
+<div class="max-w-xl relative z-10">
+<div class="flex items-center gap-2 mb-4">
+<span class="bg-secondary text-on-secondary px-3 py-1 rounded-full text-[10px] font-bold tracking-widest uppercase">Success</span>
+<span class="text-secondary font-semibold text-sm">System Optimization Complete</span>
+</div>
+<h1 class="text-4xl md:text-5xl font-black text-slate-900 tracking-tighter leading-tight mb-4">
+                        Stockout Prevented!
+                    </h1>
+<p class="text-slate-600 text-lg leading-relaxed">
+                        Your <span class="font-bold text-slate-900">Bounty Paper Towels</span> have been delivered. We identified a low-stock trend 4 days ago and secured the best price for you automatically.
+                    </p>
+</div>
+<div class="relative w-48 h-48 md:w-64 md:h-64 rounded-2xl overflow-hidden shadow-2xl rotate-3 shrink-0">
+<img alt="Package delivery" class="w-full h-full object-cover" data-alt="Modern cardboard delivery box on a clean light wood porch with soft afternoon sunlight and organic shadow patterns" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA95UuUB7QIpcfAVLWy0rwP6rjcOyChyg2f632FDe9_N7JyKRzOtj_dhrs9DSBW0ZvIBJ63Xe4BWf9uiDjjEg6I1Oe4HPrf5Z1O1-Qzn5fME1F0qp1xOo6AnaMQz-TVQVOHo8ZvjQRZxm24vMv8AlrPq3U3uNsSrlzysLGbQEud_62IXt9yDYWqjb1xQhyjCmhW8mxU09nfF6vSp9Aahyru-Sul4KSfDTz_qSJsQvN3L1VxUaytHXV1fftbpYsNXGosNlsrAsH-YJw"/>
+</div>
+<!-- Abstract visual element -->
+<div class="absolute -top-12 -right-12 w-64 h-64 bg-secondary-container/40 blur-3xl rounded-full"></div>
+</section>
+<!-- Inventory Grid (Bento Grid Inspired) -->
+<section class="mb-16">
+<div class="flex justify-between items-end mb-8">
+<div>
+<h2 class="text-2xl font-bold tracking-tight text-slate-900">Inventory Health</h2>
+<p class="text-slate-500 text-sm">Live status of your household essentials</p>
+</div>
+<div class="flex items-center gap-2 text-xs font-bold text-slate-400 tracking-widest uppercase">
+<span>10 of 10 items tracked</span>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+<!-- High Stock Item -->
+<div class="bg-surface-container-lowest p-6 rounded-2xl border-none shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow">
+<div class="flex justify-between items-start mb-4">
+<span class="material-symbols-outlined text-slate-400 bg-slate-100 p-2 rounded-lg" data-icon="coffee">coffee</span>
+<span class="bg-secondary-container text-on-secondary-container px-2 py-1 rounded-full text-[10px] font-bold">OPTIMAL</span>
+</div>
+<div>
+<h3 class="font-bold text-slate-900 mb-1">Espresso Pods</h3>
+<div class="flex items-center gap-2 mb-3">
+<div class="h-1.5 flex-1 bg-slate-100 rounded-full overflow-hidden">
+<div class="h-full bg-secondary w-4/5"></div>
+</div>
+<span class="text-xs font-medium text-slate-500">22 Days</span>
+</div>
+</div>
+</div>
+<!-- Low Stock Item -->
+<div class="bg-surface-container-lowest p-6 rounded-2xl border-none shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow">
+<div class="flex justify-between items-start mb-4">
+<span class="material-symbols-outlined text-tertiary-container bg-tertiary-fixed p-2 rounded-lg" data-icon="cleaning_services">cleaning_services</span>
+<span class="bg-tertiary-container text-on-tertiary-container px-2 py-1 rounded-full text-[10px] font-bold">REORDERING</span>
+</div>
+<div>
+<h3 class="font-bold text-slate-900 mb-1">Laundry Detergent</h3>
+<div class="flex items-center gap-2 mb-3">
+<div class="h-1.5 flex-1 bg-slate-100 rounded-full overflow-hidden">
+<div class="h-full bg-tertiary-fixed-dim w-1/5"></div>
+</div>
+<span class="text-xs font-medium text-tertiary">3 Days</span>
+</div>
+</div>
+</div>
+<!-- Just Delivered -->
+<div class="bg-secondary/5 p-6 rounded-2xl border border-secondary/10 flex flex-col justify-between hover:shadow-md transition-shadow">
+<div class="flex justify-between items-start mb-4">
+<span class="material-symbols-outlined text-secondary bg-secondary-container p-2 rounded-lg" data-icon="layers">layers</span>
+<span class="bg-secondary text-white px-2 py-1 rounded-full text-[10px] font-bold">RESTOCKED</span>
+</div>
+<div>
+<h3 class="font-bold text-slate-900 mb-1">Bounty Towels</h3>
+<div class="flex items-center gap-2 mb-3">
+<div class="h-1.5 flex-1 bg-slate-100 rounded-full overflow-hidden">
+<div class="h-full bg-secondary w-full"></div>
+</div>
+<span class="text-xs font-medium text-slate-500">45 Days</span>
+</div>
+</div>
+</div>
+<!-- Plus Upgrade Nudge Card -->
+<div class="bg-slate-900 p-6 rounded-2xl flex flex-col justify-center text-center relative overflow-hidden group">
+<div class="relative z-10">
+<span class="material-symbols-outlined text-primary-fixed mb-2" data-icon="auto_awesome">auto_awesome</span>
+<h3 class="text-white font-bold mb-2">Limit Reached</h3>
+<p class="text-slate-400 text-xs mb-4">You've hit the 10-item cap. Tracking more requires Plus.</p>
+<button class="bg-white text-slate-900 px-4 py-2 rounded-lg text-xs font-bold hover:bg-slate-100 transition-colors">Upgrade Now</button>
+</div>
+<div class="absolute inset-0 bg-gradient-to-br from-blue-600/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+</div>
+<!-- Repeated Patterns for Grid (simulating 10 items total) -->
+<div class="bg-surface-container-lowest p-6 rounded-2xl border-none shadow-sm flex flex-col justify-between">
+<div class="flex justify-between items-start mb-4">
+<span class="material-symbols-outlined text-slate-400 bg-slate-100 p-2 rounded-lg" data-icon="water_drop">water_drop</span>
+</div>
+<div>
+<h3 class="font-bold text-slate-900 mb-1">Sparkling Water</h3>
+<div class="flex items-center gap-2 mb-3">
+<div class="h-1.5 flex-1 bg-slate-100 rounded-full overflow-hidden"><div class="h-full bg-secondary w-3/4"></div></div>
+<span class="text-xs font-medium text-slate-500">14d</span>
+</div>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-6 rounded-2xl border-none shadow-sm flex flex-col justify-between">
+<div class="flex justify-between items-start mb-4">
+<span class="material-symbols-outlined text-slate-400 bg-slate-100 p-2 rounded-lg" data-icon="soap">soap</span>
+</div>
+<div>
+<h3 class="font-bold text-slate-900 mb-1">Hand Soap</h3>
+<div class="flex items-center gap-2 mb-3">
+<div class="h-1.5 flex-1 bg-slate-100 rounded-full overflow-hidden"><div class="h-full bg-secondary w-2/3"></div></div>
+<span class="text-xs font-medium text-slate-500">18d</span>
+</div>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-6 rounded-2xl border-none shadow-sm flex flex-col justify-between">
+<div class="flex justify-between items-start mb-4">
+<span class="material-symbols-outlined text-slate-400 bg-slate-100 p-2 rounded-lg" data-icon="pet_supplies">pet_supplies</span>
+</div>
+<div>
+<h3 class="font-bold text-slate-900 mb-1">Dog Kibble</h3>
+<div class="flex items-center gap-2 mb-3">
+<div class="h-1.5 flex-1 bg-slate-100 rounded-full overflow-hidden"><div class="h-full bg-secondary w-1/2"></div></div>
+<span class="text-xs font-medium text-slate-500">9d</span>
+</div>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-6 rounded-2xl border-none shadow-sm flex flex-col justify-between">
+<div class="flex justify-between items-start mb-4">
+<span class="material-symbols-outlined text-slate-400 bg-slate-100 p-2 rounded-lg" data-icon="kitchen">kitchen</span>
+</div>
+<div>
+<h3 class="font-bold text-slate-900 mb-1">Milk (Whole)</h3>
+<div class="flex items-center gap-2 mb-3">
+<div class="h-1.5 flex-1 bg-slate-100 rounded-full overflow-hidden"><div class="h-full bg-tertiary-fixed-dim w-1/4"></div></div>
+<span class="text-xs font-medium text-tertiary">4d</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Bottom Sections (Two Column Asymmetric) -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
+<!-- Referral Card (Editorial Style) -->
+<section class="lg:col-span-2 bg-white rounded-2xl p-10 shadow-sm flex flex-col md:flex-row gap-10 items-center border-none">
+<div class="flex-1">
+<h2 class="text-3xl font-black text-slate-900 tracking-tighter mb-4 leading-none">Share the Love, Get Rewards.</h2>
+<p class="text-slate-500 mb-6 leading-relaxed">Refer a neighbor to ReplenishAI. When they join Plus, you both receive $5 credit toward your next curation.</p>
+<div class="flex items-center gap-3 bg-slate-50 p-2 rounded-xl border border-slate-100">
+<code class="flex-1 px-4 text-sm font-medium text-slate-700">replenish.ai/ref/j-curator-92</code>
+<button class="bg-slate-900 text-white px-4 py-2 rounded-lg text-xs font-bold active:scale-95 transition-all">Copy</button>
+</div>
+<div class="flex gap-4 mt-6">
+<button class="w-10 h-10 rounded-full bg-blue-50 flex items-center justify-center text-blue-600 hover:bg-blue-100 transition-colors">
+<span class="material-symbols-outlined text-lg">share</span>
+</button>
+<button class="w-10 h-10 rounded-full bg-green-50 flex items-center justify-center text-green-600 hover:bg-green-100 transition-colors">
+<span class="material-symbols-outlined text-lg">sms</span>
+</button>
+<button class="w-10 h-10 rounded-full bg-indigo-50 flex items-center justify-center text-indigo-600 hover:bg-indigo-100 transition-colors">
+<span class="material-symbols-outlined text-lg">alternate_email</span>
+</button>
+</div><div class="mt-8 p-4 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-2xl border border-blue-100 flex flex-col sm:flex-row items-center justify-between gap-4">
+<div class="flex items-center gap-3">
+<div class="bg-white p-2 rounded-full shadow-sm">
+<span class="material-symbols-outlined text-blue-600 font-bold">celebration</span>
+</div>
+<div>
+<p class="text-sm font-bold text-slate-900">Share the Win!</p>
+<p class="text-xs text-slate-600">Post your pantry on social &amp; get an instant <span class="text-blue-600 font-bold">$2 discount</span> on next month.</p>
+</div>
+</div>
+<button class="whitespace-nowrap bg-blue-600 hover:bg-blue-700 text-white px-6 py-2.5 rounded-xl text-sm font-bold shadow-md shadow-blue-200 transition-all active:scale-95 flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">share</span>
+    Post to Social
+  </button>
+</div>
+</div>
+<div class="w-full md:w-56 h-56 shrink-0 bg-slate-50 rounded-2xl flex items-center justify-center relative overflow-hidden">
+<img alt="Organized Pantry" class="w-full h-full object-cover" data-alt="A beautifully organized kitchen pantry with uniform glass jars, neatly labeled bins, and perfectly arranged household essentials on white wooden shelves." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDY_YVv1Mv7p7X7q4q8q8q8q8q8q8q8q8q8q8q8q8q8q8q8q8q8q8q8q8q8q8q8q8q8q8q8q8q8"/>
+<div class="absolute inset-0 bg-primary/10 mix-blend-overlay"></div>
+</div>
+</section>
+<!-- Achievement Nudge -->
+<section class="bg-primary text-on-primary rounded-2xl p-8 shadow-xl shadow-primary/20 flex flex-col justify-between min-h-[350px]">
+<div>
+<div class="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-2xl text-white" style="font-variation-settings: 'FILL' 1;">shield</span>
+</div>
+<h3 class="text-2xl font-bold leading-tight mb-4">3 Stockouts Prevented This Month</h3>
+<p class="text-primary-fixed text-sm leading-relaxed mb-8">Your household is running at 98% efficiency. Upgrading to Plus would unlock deep-pantry automation for all 50 items in your catalog.</p>
+</div>
+<button class="w-full bg-white text-primary py-4 rounded-xl font-bold hover:shadow-lg transition-all active:scale-[0.98]">
+                        Upgrade to Plus
+                    </button>
+</section>
+</div>
+</main>
+</div>
+<!-- Footer -->
+<footer class="bg-slate-50 border-t border-slate-200 py-12 md:ml-64">
+<div class="max-w-7xl mx-auto px-8 flex flex-col md:flex-row justify-between items-center gap-4">
+<div class="text-slate-500 font-sans text-xs tracking-wide uppercase">
+                © 2024 ReplenishAI. Intelligent Household Management.
+            </div>
+<div class="flex gap-8">
+<a class="text-slate-500 text-xs tracking-wide uppercase hover:text-blue-600 transition-colors" href="#">Privacy</a>
+<a class="text-slate-500 text-xs tracking-wide uppercase hover:text-blue-600 transition-colors" href="#">Terms</a>
+<a class="text-slate-500 text-xs tracking-wide uppercase hover:text-blue-600 transition-colors" href="#">Support</a>
+</div>
+</div>
+</footer>
+</body></html>
