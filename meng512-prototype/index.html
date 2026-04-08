@@ -104,10 +104,6 @@
     /* Ambient card shadow (design system) */
     .card { background: #fff; box-shadow: 0px 20px 40px rgba(25,28,30,0.06); border-radius: 1rem; }
 
-    /* AI image loading shimmer */
-    .item-card img { background: linear-gradient(110deg, #e8eaf0 30%, #f3f4f6 50%, #e8eaf0 70%); background-size: 200% 100%; animation: shimmer 1.4s infinite; }
-    @keyframes shimmer { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
-
     /* Item card */
     .item-card {
       transition: all 300ms cubic-bezier(0.4,0,0.2,1);
@@ -821,26 +817,26 @@ const state = {
   alertSupplier: 'Amazon',
 
   items: [
-    { id:1,  name:'Dish Soap',         image:'https://image.pollinations.ai/prompt/dish%20soap%20bottle%20product%20photography%20soft%20teal%20background%20minimalist%20studio%20lighting%20clean%20aesthetic?width=400&height=500&nologo=true&seed=101', selected:true,  qty:1 },
-    { id:2,  name:'Paper Towels',      image:'https://image.pollinations.ai/prompt/paper%20towel%20roll%20product%20photography%20soft%20teal%20background%20minimalist%20studio%20lighting%20clean%20aesthetic?width=400&height=500&nologo=true&seed=102',  selected:true,  qty:1 },
-    { id:3,  name:'Laundry Detergent', image:'https://image.pollinations.ai/prompt/laundry%20detergent%20bottle%20product%20photography%20soft%20teal%20background%20minimalist%20studio%20lighting%20clean%20aesthetic?width=400&height=500&nologo=true&seed=103', selected:true,  qty:1 },
-    { id:4,  name:'Shampoo',           image:'https://image.pollinations.ai/prompt/shampoo%20bottle%20product%20photography%20soft%20teal%20background%20minimalist%20studio%20lighting%20clean%20aesthetic?width=400&height=500&nologo=true&seed=104',      selected:false, qty:1 },
-    { id:5,  name:'Toilet Paper',      image:'https://image.pollinations.ai/prompt/toilet%20paper%20rolls%20product%20photography%20soft%20teal%20background%20minimalist%20studio%20lighting%20clean%20aesthetic?width=400&height=500&nologo=true&seed=105', selected:false, qty:1 },
-    { id:6,  name:'Espresso Pods',     image:'https://image.pollinations.ai/prompt/nespresso%20coffee%20pods%20capsules%20product%20photography%20soft%20teal%20background%20minimalist%20studio%20lighting%20clean%20aesthetic?width=400&height=500&nologo=true&seed=106', selected:false, qty:1 },
-    { id:7,  name:'Hand Soap',         image:'https://image.pollinations.ai/prompt/hand%20soap%20pump%20dispenser%20bottle%20product%20photography%20soft%20teal%20background%20minimalist%20studio%20lighting%20clean%20aesthetic?width=400&height=500&nologo=true&seed=107', selected:false, qty:1 },
-    { id:8,  name:'Dishwasher Pods',   image:'https://image.pollinations.ai/prompt/dishwasher%20pods%20tablets%20product%20photography%20soft%20teal%20background%20minimalist%20studio%20lighting%20clean%20aesthetic?width=400&height=500&nologo=true&seed=108', selected:false, qty:1 },
-    { id:9,  name:'Sparkling Water',   image:'https://image.pollinations.ai/prompt/sparkling%20water%20can%20lacroix%20product%20photography%20soft%20teal%20background%20minimalist%20studio%20lighting%20clean%20aesthetic?width=400&height=500&nologo=true&seed=109', selected:false, qty:1 },
-    { id:10, name:'Conditioner',       image:'https://image.pollinations.ai/prompt/hair%20conditioner%20bottle%20product%20photography%20soft%20teal%20background%20minimalist%20studio%20lighting%20clean%20aesthetic?width=400&height=500&nologo=true&seed=110', selected:false, qty:1 },
+    { id:1,  name:'Dish Soap',         emoji:'🫧', grad:'linear-gradient(145deg,#0a9396,#005f73)', selected:true,  qty:1 },
+    { id:2,  name:'Paper Towels',      emoji:'🧻', grad:'linear-gradient(145deg,#0096c7,#023e8a)', selected:true,  qty:1 },
+    { id:3,  name:'Laundry Detergent', emoji:'🧺', grad:'linear-gradient(145deg,#48cae4,#0077b6)', selected:true,  qty:1 },
+    { id:4,  name:'Shampoo',           emoji:'🧴', grad:'linear-gradient(145deg,#52b788,#1b4332)', selected:false, qty:1 },
+    { id:5,  name:'Toilet Paper',      emoji:'🧻', grad:'linear-gradient(145deg,#b7e4c7,#40916c)', selected:false, qty:1 },
+    { id:6,  name:'Espresso Pods',     emoji:'☕', grad:'linear-gradient(145deg,#6d4c41,#3e2723)', selected:false, qty:1 },
+    { id:7,  name:'Hand Soap',         emoji:'🧼', grad:'linear-gradient(145deg,#90e0ef,#0077b6)', selected:false, qty:1 },
+    { id:8,  name:'Dishwasher Pods',   emoji:'✨', grad:'linear-gradient(145deg,#a2d2ff,#4361ee)', selected:false, qty:1 },
+    { id:9,  name:'Sparkling Water',   emoji:'💧', grad:'linear-gradient(145deg,#caf0f8,#00b4d8)', selected:false, qty:1 },
+    { id:10, name:'Conditioner',       emoji:'💆', grad:'linear-gradient(145deg,#f4a261,#e76f51)', selected:false, qty:1 },
   ],
 
   inventory: [
-    { name:'Espresso Pods',     image:'https://image.pollinations.ai/prompt/nespresso%20coffee%20pods%20capsules%20product%20photography%20soft%20teal%20background%20minimalist%20studio%20lighting%20clean%20aesthetic?width=80&height=80&nologo=true&seed=106',   pct:80,  days:22, status:'OPTIMAL',    color:'good' },
-    { name:'Laundry Detergent', image:'https://image.pollinations.ai/prompt/laundry%20detergent%20bottle%20product%20photography%20soft%20teal%20background%20minimalist%20studio%20lighting%20clean%20aesthetic?width=80&height=80&nologo=true&seed=103',           pct:15,  days:3,  status:'REORDERING', color:'warn' },
-    { name:'Bounty Towels',     image:'https://image.pollinations.ai/prompt/paper%20towel%20roll%20product%20photography%20soft%20teal%20background%20minimalist%20studio%20lighting%20clean%20aesthetic?width=80&height=80&nologo=true&seed=102',                   pct:100, days:45, status:'RESTOCKED',  color:'ok'   },
-    { name:'Sparkling Water',   image:'https://image.pollinations.ai/prompt/sparkling%20water%20can%20lacroix%20product%20photography%20soft%20teal%20background%20minimalist%20studio%20lighting%20clean%20aesthetic?width=80&height=80&nologo=true&seed=109',      pct:75,  days:14, status:'GOOD',       color:'good' },
-    { name:'Hand Soap',         image:'https://image.pollinations.ai/prompt/hand%20soap%20pump%20dispenser%20bottle%20product%20photography%20soft%20teal%20background%20minimalist%20studio%20lighting%20clean%20aesthetic?width=80&height=80&nologo=true&seed=107', pct:65,  days:18, status:'GOOD',       color:'good' },
-    { name:'Dog Kibble',        image:'https://image.pollinations.ai/prompt/dog%20food%20kibble%20bowl%20product%20photography%20soft%20teal%20background%20minimalist%20studio%20lighting%20clean%20aesthetic?width=80&height=80&nologo=true&seed=111',              pct:50,  days:9,  status:'GOOD',       color:'good' },
-    { name:'Milk (Whole)',      image:'https://image.pollinations.ai/prompt/whole%20milk%20bottle%20product%20photography%20soft%20teal%20background%20minimalist%20studio%20lighting%20clean%20aesthetic?width=80&height=80&nologo=true&seed=112',                  pct:22,  days:4,  status:'LOW',        color:'warn' },
+    { name:'Espresso Pods',     emoji:'☕', grad:'linear-gradient(135deg,#6d4c41,#3e2723)', pct:80,  days:22, status:'OPTIMAL',    color:'good' },
+    { name:'Laundry Detergent', emoji:'🧺', grad:'linear-gradient(135deg,#48cae4,#0077b6)', pct:15,  days:3,  status:'REORDERING', color:'warn' },
+    { name:'Bounty Towels',     emoji:'🧻', grad:'linear-gradient(135deg,#0096c7,#023e8a)', pct:100, days:45, status:'RESTOCKED',  color:'ok'   },
+    { name:'Sparkling Water',   emoji:'💧', grad:'linear-gradient(135deg,#caf0f8,#00b4d8)', pct:75,  days:14, status:'GOOD',       color:'good' },
+    { name:'Hand Soap',         emoji:'🧼', grad:'linear-gradient(135deg,#90e0ef,#0077b6)', pct:65,  days:18, status:'GOOD',       color:'good' },
+    { name:'Dog Kibble',        emoji:'🐾', grad:'linear-gradient(135deg,#e9c46a,#f4a261)', pct:50,  days:9,  status:'GOOD',       color:'good' },
+    { name:'Milk (Whole)',      emoji:'🥛', grad:'linear-gradient(135deg,#e9ecef,#adb5bd)', pct:22,  days:4,  status:'LOW',        color:'warn' },
   ],
 
   brands: [
@@ -925,12 +921,12 @@ function renderItemGrid() {
 
     return `
       <div class="item-card ${sel?'selected':''} ${locked?'locked':''}"
-           style="background:#1a1a1a;${locked?'opacity:0.55;cursor:not-allowed':''}"
+           style="background:${item.grad};${locked?'opacity:0.6;cursor:not-allowed':''}"
            onclick="${locked ? 'showUpgradeNudge()' : `toggleItem(${item.id})`}">
-        <img src="${item.image}" alt="${item.name}"
-             style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 300ms cubic-bezier(0.4,0,0.2,1)${sel?';filter:brightness(0.88)':''}"
-             onerror="this.style.display='none'"/>
-        <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,${sel?'0.55':'0.4'}),transparent 55%)"></div>
+        <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center">
+          <span style="font-size:4.5rem;filter:drop-shadow(0 4px 16px rgba(0,0,0,0.25));transition:transform 300ms cubic-bezier(0.4,0,0.2,1);${sel?'transform:scale(1.08)':''}">${item.emoji}</span>
+        </div>
+        <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,${sel?'0.5':'0.35'}),transparent 60%)"></div>
         ${checkmark}
         ${footer}
       </div>`;
@@ -1032,8 +1028,8 @@ function renderInventory() {
     return `
       <div style="background:#fff;padding:20px;border-radius:16px;display:flex;flex-direction:column;justify-content:space-between;box-shadow:0 4px 12px rgba(25,28,30,0.05);transition:box-shadow 200ms" onmouseenter="this.style.boxShadow='0 8px 24px rgba(25,28,30,0.1)'" onmouseleave="this.style.boxShadow='0 4px 12px rgba(25,28,30,0.05)'">
         <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:16px">
-          <div style="width:40px;height:40px;border-radius:10px;overflow:hidden;background:${item.color==='warn'?'#ffddb3':'#f3f4f6'};flex-shrink:0">
-            <img src="${item.image}" alt="${item.name}" style="width:100%;height:100%;object-fit:cover" onerror="this.style.display='none'"/>
+          <div style="width:40px;height:40px;border-radius:10px;background:${item.grad};display:flex;align-items:center;justify-content:center;flex-shrink:0">
+            <span style="font-size:1.4rem">${item.emoji}</span>
           </div>
           <span style="border-radius:9999px;font-size:9px;font-weight:700;letter-spacing:0.07em;text-transform:uppercase;padding:3px 9px;background:${chipBg};color:${chipColor}">${item.status}</span>
         </div>
