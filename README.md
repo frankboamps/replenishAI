@@ -36,21 +36,34 @@ That's it — no server, no dependencies, no setup required.
 
 The prototype simulates the full user journey across 4 screens. Use the top navigation bar (**Setup / Smart Alert / Dashboard / Upgrade**) to move between them.
 
+---
+
 ### Step 1 — Setup: Add Your Household Items
 
+![Setup screen](docs/images/01_setup.png)
+
 1. You'll see a grid of common household products
-2. **Click any card** to add it — a detail sheet will pop up asking for:
+2. **Click any card** to add it — a detail sheet will pop up:
+
+![Add item modal](docs/images/02_add_item_modal.png)
+
+Fill in:
    - **Brand** (e.g. Dawn, Bounty, Tide)
    - **Pack size** (e.g. 32 oz, 6-pack)
    - **Preferred supplier** — Amazon, Walmart, or Instacart
    - **Monthly budget** — Low / Mid / High
+
 3. Click **"Add to Tracking List"** to confirm
 4. Use the **− / +** buttons on selected cards to set quantity
 5. Click a selected card again to remove it
 6. Free tier supports up to **10 items** — selecting more triggers the upgrade prompt
 7. When ready, click **"Initialize ReplenishAI"** at the bottom to continue
 
+---
+
 ### Step 2 — Smart Alert: Review a Reorder Suggestion
+
+![Smart Alert screen](docs/images/03_smart_alert.png)
 
 ReplenishAI has detected that your **Paper Towels** will run out in 5 days.
 
@@ -58,14 +71,22 @@ ReplenishAI has detected that your **Paper Towels** will run out in 5 days.
 - **Swap Brand** — opens a brand picker to choose an alternative (Viva, Scott, Kirkland)
 - **Dismiss** — skips this alert; ReplenishAI will remind you in 2 days
 
+---
+
 ### Step 3 — Dashboard: Check Your Inventory Health
+
+![Dashboard screen](docs/images/04_dashboard.png)
 
 See all tracked items at a glance:
 - **Color-coded status chips** — OPTIMAL / GOOD / LOW / REORDERING / RESTOCKED
 - **Progress bars** — show percentage of stock remaining
 - **Days remaining** — estimated days until stockout
 
+---
+
 ### Step 4 — Upgrade: Unlock Plus
+
+![Upgrade screen](docs/images/05_upgrade.png)
 
 - Compare Free vs Plus tier features
 - Click **"Upgrade Now"** to see the confirmation screen
