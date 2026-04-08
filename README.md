@@ -14,6 +14,65 @@ No login required. Open in any browser and start clicking.
 
 ---
 
+## How to Access
+
+### Option 1 — Live Website (Recommended)
+Click the link below — no download, no install, no login:
+
+**[frankboamps.github.io/replenishAI/meng512-prototype/](https://frankboamps.github.io/replenishAI/meng512-prototype/)**
+
+Works on any modern browser (Chrome, Safari, Firefox, Edge).
+
+### Option 2 — Run Locally
+1. Click the green **Code** button on this page → **Download ZIP**
+2. Unzip the file
+3. Open `meng512-prototype/index.html` in your browser
+
+That's it — no server, no dependencies, no setup required.
+
+---
+
+## How to Use the Prototype
+
+The prototype simulates the full user journey across 4 screens. Use the top navigation bar (**Setup / Smart Alert / Dashboard / Upgrade**) to move between them.
+
+### Step 1 — Setup: Add Your Household Items
+
+1. You'll see a grid of common household products
+2. **Click any card** to add it — a detail sheet will pop up asking for:
+   - **Brand** (e.g. Dawn, Bounty, Tide)
+   - **Pack size** (e.g. 32 oz, 6-pack)
+   - **Preferred supplier** — Amazon, Walmart, or Instacart
+   - **Monthly budget** — Low / Mid / High
+3. Click **"Add to Tracking List"** to confirm
+4. Use the **− / +** buttons on selected cards to set quantity
+5. Click a selected card again to remove it
+6. Free tier supports up to **10 items** — selecting more triggers the upgrade prompt
+7. When ready, click **"Initialize ReplenishAI"** at the bottom to continue
+
+### Step 2 — Smart Alert: Review a Reorder Suggestion
+
+ReplenishAI has detected that your **Paper Towels** will run out in 5 days.
+
+- **Approve Order** — confirms the reorder and routes it to Amazon
+- **Swap Brand** — opens a brand picker to choose an alternative (Viva, Scott, Kirkland)
+- **Dismiss** — skips this alert; ReplenishAI will remind you in 2 days
+
+### Step 3 — Dashboard: Check Your Inventory Health
+
+See all tracked items at a glance:
+- **Color-coded status chips** — OPTIMAL / GOOD / LOW / REORDERING / RESTOCKED
+- **Progress bars** — show percentage of stock remaining
+- **Days remaining** — estimated days until stockout
+
+### Step 4 — Upgrade: Unlock Plus
+
+- Compare Free vs Plus tier features
+- Click **"Upgrade Now"** to see the confirmation screen
+- After upgrading, the item cap is removed and the dashboard unlocks advanced features
+
+---
+
 ## The Problem
 
 Busy students and young professionals constantly run out of household essentials at the worst possible moments — mid-shower, at 11 PM before laundry, 30 minutes before guests arrive. Managing a mental inventory of 25+ items alongside work, classes, and deadlines creates chronic cognitive overload.
