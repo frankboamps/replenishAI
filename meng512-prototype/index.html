@@ -104,6 +104,15 @@
     /* Ambient card shadow (design system) */
     .card { background: #fff; box-shadow: 0px 20px 40px rgba(25,28,30,0.06); border-radius: 1rem; }
 
+    /* Supplier / budget chips */
+    .supplier-chip {
+      padding: 8px 4px; border-radius: 8px; font-size: 12px; font-weight: 600;
+      border: 1.5px solid #c3c6d6; background: #f3f4f6; color: #434654;
+      cursor: pointer; transition: all 200ms; font-family: Inter, sans-serif;
+    }
+    .supplier-chip.active { border-color: #003d9b; background: rgba(0,61,155,0.07); color: #003d9b; }
+    .supplier-chip:hover:not(.active) { border-color: #737685; background: #edeef0; }
+
     /* Item card */
     .item-card {
       transition: all 300ms cubic-bezier(0.4,0,0.2,1);
@@ -712,6 +721,75 @@
      MODALS
 ═══════════════════════════════════════════════════════════════ -->
 
+<!-- Add Item Detail Modal -->
+<div class="modal-overlay" id="addItemModal">
+  <div class="card w-full max-w-sm p-6 anim-up">
+    <div class="flex justify-between items-center mb-1">
+      <div class="flex items-center gap-3">
+        <div id="addItemEmojiBadge" style="width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.6rem"></div>
+        <div>
+          <h3 class="text-base font-bold text-on-surface" id="addItemTitle"></h3>
+          <p class="text-xs text-on-surface-variant">Tell us your preferences</p>
+        </div>
+      </div>
+      <button onclick="closeModal('addItemModal')" class="text-on-surface-variant hover:text-on-surface transition-colors">
+        <span class="material-symbols-outlined">close</span>
+      </button>
+    </div>
+
+    <div class="space-y-4 mt-5">
+      <!-- Brand -->
+      <div>
+        <label class="block text-xs font-bold text-on-surface-variant uppercase tracking-widest mb-1.5">Brand / Product Name</label>
+        <input id="addItemBrand" type="text" placeholder="e.g. Dawn, Bounty, Tide…"
+               style="width:100%;padding:10px 14px;border-radius:10px;border:1.5px solid #c3c6d6;font-size:14px;font-family:Inter,sans-serif;outline:none;transition:border-color 200ms;background:#f8f9fb;color:#191c1e"
+               onfocus="this.style.borderColor='#003d9b'" onblur="this.style.borderColor='#c3c6d6'"/>
+      </div>
+
+      <!-- Size / Quantity -->
+      <div>
+        <label class="block text-xs font-bold text-on-surface-variant uppercase tracking-widest mb-1.5">Size / Pack Size</label>
+        <input id="addItemSize" type="text" placeholder="e.g. 32 oz, 6-pack, 100 sheets…"
+               style="width:100%;padding:10px 14px;border-radius:10px;border:1.5px solid #c3c6d6;font-size:14px;font-family:Inter,sans-serif;outline:none;transition:border-color 200ms;background:#f8f9fb;color:#191c1e"
+               onfocus="this.style.borderColor='#003d9b'" onblur="this.style.borderColor='#c3c6d6'"/>
+      </div>
+
+      <!-- Preferred Supplier -->
+      <div>
+        <label class="block text-xs font-bold text-on-surface-variant uppercase tracking-widest mb-1.5">Preferred Supplier</label>
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px" id="supplierChips">
+          <button onclick="selectSupplier('Amazon')"    class="supplier-chip active"   data-s="Amazon">Amazon</button>
+          <button onclick="selectSupplier('Walmart')"   class="supplier-chip"          data-s="Walmart">Walmart</button>
+          <button onclick="selectSupplier('Instacart')" class="supplier-chip"          data-s="Instacart">Instacart</button>
+        </div>
+      </div>
+
+      <!-- Monthly budget -->
+      <div>
+        <label class="block text-xs font-bold text-on-surface-variant uppercase tracking-widest mb-1.5">Monthly Budget</label>
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px" id="budgetChips">
+          <button onclick="selectBudget('Low')"    class="supplier-chip"          data-b="Low">&lt; $10</button>
+          <button onclick="selectBudget('Mid')"    class="supplier-chip active"   data-b="Mid">$10–$30</button>
+          <button onclick="selectBudget('High')"   class="supplier-chip"          data-b="High">&gt; $30</button>
+        </div>
+      </div>
+
+      <!-- Notes -->
+      <div>
+        <label class="block text-xs font-bold text-on-surface-variant uppercase tracking-widest mb-1.5">Notes <span style="font-weight:400;text-transform:none;letter-spacing:0">(optional)</span></label>
+        <input id="addItemNotes" type="text" placeholder="e.g. fragrance-free, bulk only…"
+               style="width:100%;padding:10px 14px;border-radius:10px;border:1.5px solid #c3c6d6;font-size:14px;font-family:Inter,sans-serif;outline:none;transition:border-color 200ms;background:#f8f9fb;color:#191c1e"
+               onfocus="this.style.borderColor='#003d9b'" onblur="this.style.borderColor='#c3c6d6'"/>
+      </div>
+    </div>
+
+    <button class="btn-primary w-full py-3.5 rounded-xl font-bold text-sm mt-6" onclick="confirmAddItem()">
+      Add to Tracking List
+    </button>
+    <button class="btn-ghost w-full py-3 rounded-xl font-semibold text-sm mt-2" onclick="closeModal('addItemModal')">Cancel</button>
+  </div>
+</div>
+
 <!-- Brand Swap Modal -->
 <div class="modal-overlay" id="swapModal">
   <div class="card w-full max-w-sm p-6 anim-up">
@@ -904,7 +982,8 @@ function renderItemGrid() {
 
     const footer = sel ? `
       <div style="position:absolute;bottom:0;left:0;right:0;padding:8px 10px;border-radius:0 0 14px 14px;background:rgba(255,255,255,0.92);backdrop-filter:blur(8px)">
-        <div style="font-size:8px;font-weight:700;letter-spacing:0.07em;text-transform:uppercase;color:#434654;margin-bottom:4px">${item.name}</div>
+        <div style="font-size:8px;font-weight:700;letter-spacing:0.07em;text-transform:uppercase;color:#434654;margin-bottom:2px">${item.name}</div>
+        ${item.brand ? `<div style="font-size:9px;color:#737685;margin-bottom:4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${item.brand}${item.size?' · '+item.size:''}</div>` : '<div style="margin-bottom:4px"></div>'}
         <div style="display:flex;align-items:center;gap:8px">
           <button onclick="event.stopPropagation();changeQty(${item.id},-1)" style="width:22px;height:22px;border-radius:50%;background:#fff;border:1px solid #c3c6d6;display:flex;align-items:center;justify-content:center;cursor:pointer">
             <span class="material-symbols-outlined" style="font-size:12px">remove</span>
@@ -938,12 +1017,77 @@ function renderItemGrid() {
 function toggleItem(id) {
   const item = state.items.find(i => i.id === id);
   if (!item) return;
-  if (!item.selected && selectedCount() >= FREE_LIMIT && !state.isPlusUser) {
+  if (item.selected) {
+    // Deselect directly
+    item.selected = false;
+    item.qty = 1;
+    item.brand = ''; item.size = ''; item.notes = '';
+    renderItemGrid();
+    return;
+  }
+  if (selectedCount() >= FREE_LIMIT && !state.isPlusUser) {
     showUpgradeNudge(); return;
   }
-  item.selected = !item.selected;
-  if (!item.selected) item.qty = 1;
+  // Open detail modal before adding
+  openAddItemModal(id);
+}
+
+let pendingItemId = null;
+let pendingSupplier = 'Amazon';
+let pendingBudget = 'Mid';
+
+function openAddItemModal(id) {
+  const item = state.items.find(i => i.id === id);
+  pendingItemId = id;
+  pendingSupplier = 'Amazon';
+  pendingBudget = 'Mid';
+
+  document.getElementById('addItemTitle').textContent = item.name;
+  const badge = document.getElementById('addItemEmojiBadge');
+  badge.textContent = item.emoji;
+  badge.style.background = item.grad;
+
+  document.getElementById('addItemBrand').value = item.brand || '';
+  document.getElementById('addItemSize').value = item.size || '';
+  document.getElementById('addItemNotes').value = item.notes || '';
+
+  // Reset chips
+  document.querySelectorAll('#supplierChips .supplier-chip').forEach(c => {
+    c.classList.toggle('active', c.dataset.s === 'Amazon');
+  });
+  document.querySelectorAll('#budgetChips .supplier-chip').forEach(c => {
+    c.classList.toggle('active', c.dataset.b === 'Mid');
+  });
+
+  openModal('addItemModal');
+}
+
+function selectSupplier(name) {
+  pendingSupplier = name;
+  document.querySelectorAll('#supplierChips .supplier-chip').forEach(c => {
+    c.classList.toggle('active', c.dataset.s === name);
+  });
+}
+
+function selectBudget(level) {
+  pendingBudget = level;
+  document.querySelectorAll('#budgetChips .supplier-chip').forEach(c => {
+    c.classList.toggle('active', c.dataset.b === level);
+  });
+}
+
+function confirmAddItem() {
+  const item = state.items.find(i => i.id === pendingItemId);
+  if (!item) return;
+  item.selected = true;
+  item.brand    = document.getElementById('addItemBrand').value.trim();
+  item.size     = document.getElementById('addItemSize').value.trim();
+  item.notes    = document.getElementById('addItemNotes').value.trim();
+  item.supplier = pendingSupplier;
+  item.budget   = pendingBudget;
+  closeModal('addItemModal');
   renderItemGrid();
+  showToast(`${item.name} added${item.brand ? ' · ' + item.brand : ''}`);
 }
 
 function changeQty(id, delta) {
