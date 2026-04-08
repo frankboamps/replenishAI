@@ -1,1050 +1,534 @@
 <!DOCTYPE html>
-<html class="light" lang="en">
+<html lang="en" class="light">
 <head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>ReplenishAI — Proactive Curator</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<script id="tailwind-config">
-  tailwind.config = {
-    darkMode: "class",
-    theme: {
-      extend: {
-        colors: {
-          "surface-bright": "#f8f9fb",
-          "secondary-container": "#82f9be",
-          "on-secondary": "#ffffff",
-          "tertiary": "#5e3c00",
-          "tertiary-container": "#7d5200",
-          "on-surface-variant": "#434654",
-          "surface-tint": "#0c56d0",
-          "primary-container": "#0052cc",
-          "secondary-fixed-dim": "#65dca4",
-          "on-secondary-container": "#00734c",
-          "outline": "#737685",
-          "outline-variant": "#c3c6d6",
-          "primary": "#003d9b",
-          "surface-variant": "#e1e2e4",
-          "surface-container": "#edeef0",
-          "tertiary-fixed-dim": "#ffb950",
-          "background": "#f8f9fb",
-          "surface-container-low": "#f3f4f6",
-          "on-primary": "#ffffff",
-          "surface": "#f8f9fb",
-          "on-tertiary": "#ffffff",
-          "secondary-fixed": "#82f9be",
-          "inverse-primary": "#b2c5ff",
-          "primary-fixed": "#dae2ff",
-          "on-secondary-fixed-variant": "#005235",
-          "tertiary-fixed": "#ffddb3",
-          "on-primary-fixed": "#001848",
-          "surface-container-lowest": "#ffffff",
-          "on-tertiary-container": "#ffca81",
-          "on-background": "#191c1e",
-          "primary-fixed-dim": "#b2c5ff",
-          "error-container": "#ffdad6",
-          "surface-container-high": "#e7e8ea",
-          "error": "#ba1a1a",
-          "surface-dim": "#d9dadc",
-          "inverse-surface": "#2e3132",
-          "secondary": "#006c47",
-          "on-error": "#ffffff",
-          "on-tertiary-fixed-variant": "#624000",
-          "surface-container-highest": "#e1e2e4",
-          "on-tertiary-fixed": "#291800",
-          "on-primary-container": "#c4d2ff",
-          "inverse-on-surface": "#f0f1f3",
-          "on-surface": "#191c1e",
-          "on-primary-fixed-variant": "#0040a2",
-          "on-error-container": "#93000a",
-          "on-secondary-fixed": "#002113"
-        },
-        fontFamily: {
-          "headline": ["Inter"],
-          "body": ["Inter"],
-          "label": ["Inter"]
-        },
-        borderRadius: {
-          "DEFAULT": "0.25rem",
-          "lg": "0.5rem",
-          "xl": "0.75rem",
-          "2xl": "1.5rem",
-          "full": "9999px"
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ReplenishAI — Proactive Curator</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "surface-bright": "#f8f9fb",
+            "secondary-container": "#82f9be",
+            "on-secondary": "#ffffff",
+            "tertiary": "#5e3c00",
+            "tertiary-container": "#7d5200",
+            "on-surface-variant": "#434654",
+            "surface-tint": "#0c56d0",
+            "primary-container": "#0052cc",
+            "secondary-fixed-dim": "#65dca4",
+            "on-secondary-container": "#00734c",
+            "outline": "#737685",
+            "outline-variant": "#c3c6d6",
+            "primary": "#003d9b",
+            "surface-variant": "#e1e2e4",
+            "surface-container": "#edeef0",
+            "tertiary-fixed-dim": "#ffb950",
+            "background": "#f8f9fb",
+            "surface-container-low": "#f3f4f6",
+            "on-primary": "#ffffff",
+            "surface": "#f8f9fb",
+            "on-tertiary": "#ffffff",
+            "secondary-fixed": "#82f9be",
+            "inverse-primary": "#b2c5ff",
+            "primary-fixed": "#dae2ff",
+            "on-secondary-fixed-variant": "#005235",
+            "tertiary-fixed": "#ffddb3",
+            "on-primary-fixed": "#001848",
+            "surface-container-lowest": "#ffffff",
+            "on-tertiary-container": "#ffca81",
+            "on-background": "#191c1e",
+            "primary-fixed-dim": "#b2c5ff",
+            "error-container": "#ffdad6",
+            "surface-container-high": "#e7e8ea",
+            "error": "#ba1a1a",
+            "surface-dim": "#d9dadc",
+            "inverse-surface": "#2e3132",
+            "secondary": "#006c47",
+            "on-error": "#ffffff",
+            "on-tertiary-fixed-variant": "#624000",
+            "surface-container-highest": "#e1e2e4",
+            "on-tertiary-fixed": "#291800",
+            "on-primary-container": "#c4d2ff",
+            "inverse-on-surface": "#f0f1f3",
+            "on-surface": "#191c1e",
+            "on-primary-fixed-variant": "#0040a2",
+            "on-error-container": "#93000a",
+            "on-secondary-fixed": "#002113"
+          },
+          fontFamily: { "headline": ["Inter"], "body": ["Inter"], "label": ["Inter"] },
+          borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "2xl": "1.5rem", "full": "9999px" },
         },
       },
-    },
-  }
-</script>
-<style>
-  body { font-family: 'Inter', sans-serif; }
-  .material-symbols-outlined {
-    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-  }
-  .glass-card {
-    background: rgba(255,255,255,0.7);
-    backdrop-filter: blur(12px);
-    border: 1px solid rgba(255,255,255,0.3);
-  }
-  /* Smooth screen transitions */
-  .screen { animation: fadeIn 0.3s ease; }
-  @keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+    }
+  </script>
+  <style>
+    * { box-sizing: border-box; }
+    body { font-family: 'Inter', sans-serif; background: #f8f9fb; color: #191c1e; }
+    .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+    .fill-icon { font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
 
-  /* Toggle state for item cards */
-  .item-card.selected { border: 2px solid #003d9b; box-shadow: 0 20px 40px rgba(0,61,155,0.15); }
-  .item-card.selected .item-overlay { display: flex; }
-  .item-card.selected .item-add-icon { display: none; }
-  .item-card.selected .item-name-unselected { display: none; }
-  .item-card:not(.selected) .item-overlay { display: none; }
-  .item-card:not(.selected) .item-name-hover { display: none; }
-  .item-card:not(.selected) img { filter: grayscale(100%); opacity: 0.4; }
-  .item-card:not(.selected):hover img { filter: grayscale(0%); opacity: 1; }
-  .item-card:not(.selected):hover .item-name-unselected { display: none; }
-  .item-card:not(.selected):hover .item-name-hover { display: block; }
-  .item-card:not(.selected):hover .item-add-icon { display: none; }
-</style>
+    /* Screen routing */
+    .screen { display: none; }
+    .screen.active { display: block; }
+
+    /* Glassmorphism nav */
+    .glass-nav {
+      background: rgba(248,249,251,0.88);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+    }
+
+    /* Button styles */
+    .btn-primary {
+      background: linear-gradient(135deg, #003d9b 0%, #0052cc 100%);
+      color: #fff;
+      transition: all 300ms cubic-bezier(0.4,0,0.2,1);
+    }
+    .btn-primary:hover { filter: brightness(1.09); box-shadow: 0 8px 24px rgba(0,61,155,0.28); }
+    .btn-primary:active { transform: scale(0.98); }
+    .btn-ghost {
+      background: transparent;
+      border: 1px solid rgba(195,198,214,0.35);
+      color: #434654;
+      transition: all 300ms cubic-bezier(0.4,0,0.2,1);
+    }
+    .btn-ghost:hover { background: rgba(195,198,214,0.12); }
+    .btn-ghost:active { transform: scale(0.98); }
+
+    /* Ambient card shadow (design system) */
+    .card { background: #fff; box-shadow: 0px 20px 40px rgba(25,28,30,0.06); border-radius: 1rem; }
+
+    /* Item card */
+    .item-card {
+      transition: all 300ms cubic-bezier(0.4,0,0.2,1);
+      cursor: pointer;
+      border: 2px solid transparent;
+      border-radius: 1rem;
+      overflow: hidden;
+      position: relative;
+      aspect-ratio: 3/4;
+    }
+    .item-card.selected { border-color: #003d9b; box-shadow: 0 0 0 1px rgba(0,61,155,0.18), 0px 16px 32px rgba(25,28,30,0.12); }
+    .item-card:hover:not(.locked) { transform: translateY(-2px); box-shadow: 0px 12px 28px rgba(25,28,30,0.10); }
+
+    /* Desktop nav items */
+    .nav-item {
+      transition: all 300ms cubic-bezier(0.4,0,0.2,1);
+      cursor: pointer;
+      padding: 6px 14px;
+      border-radius: 8px;
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: #737685;
+    }
+    .nav-item.active { color: #003d9b; font-weight: 700; background: rgba(0,61,155,0.06); }
+    .nav-item:hover:not(.active) { color: #003d9b; background: rgba(0,61,155,0.04); }
+
+    /* Mobile bottom nav */
+    .bnav-item {
+      display: flex; flex-direction: column; align-items: center; gap: 2px;
+      padding: 8px 14px; color: #737685; cursor: pointer;
+      transition: color 200ms cubic-bezier(0.4,0,0.2,1);
+      border-radius: 12px;
+    }
+    .bnav-item.active { color: #003d9b; }
+    .bnav-item .blabel { font-size: 9px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
+
+    /* Modals */
+    .modal-overlay {
+      position: fixed; inset: 0;
+      background: rgba(25,28,30,0.5);
+      backdrop-filter: blur(4px);
+      z-index: 100; display: none;
+      align-items: center; justify-content: center; padding: 16px;
+    }
+    .modal-overlay.open { display: flex; }
+
+    /* Chip badge */
+    .chip { border-radius: 9999px; font-size: 0.625rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 3px 10px; display: inline-block; }
+
+    /* Stock bar */
+    .bar-track { height: 6px; background: #edeef0; border-radius: 9999px; overflow: hidden; }
+    .bar-fill { height: 100%; border-radius: 9999px; transition: width 600ms cubic-bezier(0.4,0,0.2,1); }
+
+    /* Toast */
+    .toast {
+      position: fixed; bottom: 84px; left: 50%;
+      transform: translateX(-50%) translateY(16px);
+      background: #191c1e; color: #f0f1f3;
+      padding: 12px 20px; border-radius: 12px;
+      font-size: 0.8125rem; font-weight: 600;
+      z-index: 300; opacity: 0; pointer-events: none;
+      transition: all 300ms cubic-bezier(0.4,0,0.2,1);
+      white-space: nowrap; max-width: calc(100vw - 32px);
+    }
+    .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+    /* Animations */
+    @keyframes slideUp { from { opacity:0; transform:translateY(18px); } to { opacity:1; transform:none; } }
+    .anim-up { animation: slideUp 360ms cubic-bezier(0.4,0,0.2,1) both; }
+    .anim-up-2 { animation: slideUp 360ms 80ms cubic-bezier(0.4,0,0.2,1) both; }
+    .anim-up-3 { animation: slideUp 360ms 160ms cubic-bezier(0.4,0,0.2,1) both; }
+
+    @keyframes pulseGlow {
+      0%,100% { box-shadow: 0 0 0 0 rgba(0,61,155,0.2); }
+      50% { box-shadow: 0 0 0 10px rgba(0,61,155,0); }
+    }
+    .pulse-glow { animation: pulseGlow 2.4s ease-in-out infinite; }
+
+    /* Sidebar for dashboard */
+    .sidebar { width: 220px; }
+    .sidebar-link {
+      display: flex; align-items: center; gap: 10px;
+      padding: 10px 12px; border-radius: 10px;
+      font-size: 0.875rem; font-weight: 500; color: #434654;
+      cursor: pointer; transition: all 200ms;
+    }
+    .sidebar-link:hover { background: #edeef0; color: #191c1e; }
+    .sidebar-link.active { background: #fff; color: #003d9b; font-weight: 700; box-shadow: 0px 4px 12px rgba(25,28,30,0.06); }
+  </style>
 </head>
+<body class="min-h-screen antialiased">
 
-<body class="bg-surface-bright text-on-surface antialiased selection:bg-primary/10">
-
-<!-- ========== SCREEN 1: ONBOARDING ========== -->
-<div id="screen-onboarding" class="screen">
-
-  <!-- TopNavBar -->
-  <nav class="bg-white/70 backdrop-blur-md border-b border-surface-variant/30 sticky top-0 z-50">
-    <div class="flex justify-between items-center w-full px-8 py-4 max-w-7xl mx-auto">
-      <div class="flex items-center gap-10">
-        <span class="text-2xl font-black tracking-tighter text-primary">Replenish<span class="text-on-surface">AI</span></span>
-        <div class="hidden md:flex gap-8 items-center">
-          <span class="text-primary font-bold border-b-2 border-primary py-1 text-sm tracking-tight cursor-default">Onboarding</span>
-          <span class="text-slate-400 text-sm font-medium tracking-tight cursor-not-allowed">Dashboard</span>
-          <span class="text-slate-400 text-sm font-medium tracking-tight cursor-not-allowed">Inventory</span>
-        </div>
-      </div>
-      <div class="flex items-center gap-5">
-        <div class="hidden sm:flex items-center gap-3 px-4 py-2 bg-surface-container-low rounded-full border border-outline-variant/20">
-          <span class="material-symbols-outlined text-outline text-xl">search</span>
-          <span class="text-outline text-xs font-medium">Search the vault...</span>
-        </div>
-        <span class="material-symbols-outlined text-on-surface-variant hover:text-primary p-2 transition-colors cursor-pointer">settings</span>
-        <span class="material-symbols-outlined text-on-surface-variant hover:text-primary p-2 transition-colors cursor-pointer">account_circle</span>
-      </div>
+<!-- ═══════════════════════════════════════════════════════════════
+     TOP NAVIGATION
+═══════════════════════════════════════════════════════════════ -->
+<header class="glass-nav sticky top-0 z-50" style="border-bottom: 1px solid rgba(195,198,214,0.2)">
+  <div class="flex justify-between items-center w-full px-5 py-3.5 max-w-7xl mx-auto">
+    <!-- Logo + Desktop Nav -->
+    <div class="flex items-center gap-8">
+      <span class="text-xl font-black tracking-tighter" style="color:#003d9b">Replenish<span style="color:#191c1e">AI</span></span>
+      <nav class="hidden md:flex gap-1" id="desktopNav">
+        <span class="nav-item active" data-screen="onboarding">Setup</span>
+        <span class="nav-item" data-screen="alert">Smart Alert</span>
+        <span class="nav-item" data-screen="dashboard">Dashboard</span>
+        <span class="nav-item" data-screen="upgrade">Upgrade</span>
+      </nav>
     </div>
-  </nav>
-
-  <main class="max-w-7xl mx-auto px-8 py-16 lg:py-24">
-
-    <!-- Header Section -->
-    <header class="mb-20 flex flex-col md:flex-row md:items-end justify-between gap-8">
-      <div class="max-w-3xl">
-        <span class="text-primary font-bold tracking-[0.2em] uppercase text-xs mb-4 block">Personalized Curation</span>
-        <h1 class="text-6xl lg:text-8xl font-black tracking-tight mb-6 text-on-surface leading-none">Add Your <br/>Essentials.</h1>
-        <p class="text-on-surface-variant text-xl lg:text-2xl font-light leading-relaxed">Select the staples that define your lifestyle. Our intelligence engine will discreetly ensure your home never feels a moment of lack.</p>
+    <!-- Right Controls -->
+    <div class="flex items-center gap-3">
+      <!-- Item counter pill -->
+      <div class="hidden sm:flex items-center gap-2 px-3 py-1.5 bg-surface-container rounded-full text-xs font-semibold text-on-surface-variant">
+        <span class="material-symbols-outlined text-base text-outline">inventory_2</span>
+        <span id="counterLabel">3 / 10 items</span>
       </div>
-      <div class="hidden lg:block pb-2">
-        <div class="text-right">
-          <span id="item-counter" class="block text-4xl font-bold text-primary">03<span class="text-surface-variant text-2xl">/10</span></span>
-          <span class="text-xs font-bold tracking-widest text-on-surface-variant uppercase">Essentials Active</span>
-        </div>
+      <button class="p-2 rounded-xl hover:bg-surface-container transition-all text-on-surface-variant" onclick="openModal('settingsModal')">
+        <span class="material-symbols-outlined">settings</span>
+      </button>
+      <!-- Avatar -->
+      <div class="w-9 h-9 rounded-full flex items-center justify-center text-white text-xs font-bold btn-primary cursor-pointer">ZM</div>
+    </div>
+  </div>
+</header>
+
+
+<!-- ═══════════════════════════════════════════════════════════════
+     SCREEN 1 — ONBOARDING / ITEM SETUP
+═══════════════════════════════════════════════════════════════ -->
+<section class="screen active" id="screen-onboarding">
+  <div class="max-w-7xl mx-auto px-5 py-14 pb-32 md:pb-16">
+
+    <!-- Editorial Header -->
+    <header class="mb-14 flex flex-col md:flex-row md:items-end justify-between gap-8 anim-up">
+      <div class="max-w-2xl">
+        <span class="text-primary font-bold tracking-[0.2em] uppercase text-xs mb-4 block">Step 1 of 3 · Personalized Curation</span>
+        <h1 class="text-5xl lg:text-7xl font-black tracking-tight text-on-surface leading-none mb-5">Add Your<br/>Essentials.</h1>
+        <p class="text-on-surface-variant text-lg font-light leading-relaxed max-w-xl">Select the household staples you rely on. ReplenishAI will learn your consumption and alert you before you run out — automatically.</p>
+      </div>
+      <!-- Counter (desktop) -->
+      <div class="hidden lg:flex flex-col items-end gap-2 pb-1">
+        <span class="font-black text-primary" id="bigCounter" style="font-size:3rem;line-height:1">03<span style="color:#d9dadc;font-size:1.75rem">/10</span></span>
+        <span class="text-xs font-bold tracking-widest text-on-surface-variant uppercase">Essentials Active</span>
       </div>
     </header>
 
-    <!-- Main Content -->
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-16">
+    <!-- Item Selection Grid -->
+    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 mb-10" id="itemGrid"></div>
 
-      <!-- Item Grid -->
-      <div class="lg:col-span-8">
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8" id="items-grid">
-
-          <!-- Selected: Dish Soap -->
-          <div class="item-card selected group relative aspect-[4/5] overflow-hidden rounded-2xl shadow-xl transition-all duration-500 hover:shadow-2xl cursor-pointer" data-item="Dish Soap" onclick="toggleItem(this)">
-            <img alt="Dish Soap" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDcjTT9VHbG8i6WsXr2Ah_2C3OblnAMVdh64u3GU5ipMh3xtGl8DifCAq1LWeZhdvESZ4T45SdyKRAg_Q7GZeCTmjASVsrWaYDm_Qge7mNEPXP1zO4NqfUoNaXdXFeWHxCXrhQZJ0190o9_sQyC78dtLZfihCWJ1PlKqAfTlg2Yqtr2gWQGletTcPTlFwT_6ltzpEmNm-UKgKAovb6vyoIHut8uLieaQfT7Xju3kEcXJ9sw-NQTqquBSEyep6iwk2AoF9198L_782E"/>
-            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
-            <div class="absolute top-4 right-4 h-8 w-8 bg-primary rounded-full flex items-center justify-center shadow-lg border border-white/20 item-overlay">
-              <span class="material-symbols-outlined text-white text-lg" style="font-variation-settings:'FILL' 1;">check</span>
-            </div>
-            <div class="item-overlay absolute bottom-20 left-6 right-6 glass-card rounded-xl p-3 flex items-center justify-between border-white/40 shadow-lg" onclick="event.stopPropagation()">
-              <div class="flex flex-col">
-                <span class="text-[9px] font-bold text-on-surface-variant uppercase tracking-wider">How many do you need?</span>
-                <div class="flex items-center gap-3 mt-1">
-                  <button class="qty-minus w-6 h-6 flex items-center justify-center rounded-full bg-white border border-outline-variant hover:bg-primary/5 transition-colors">
-                    <span class="material-symbols-outlined text-xs text-on-surface">remove</span>
-                  </button>
-                  <span class="qty-display text-sm font-black text-on-surface w-4 text-center">1</span>
-                  <button class="qty-plus w-6 h-6 flex items-center justify-center rounded-full bg-primary text-white hover:shadow-lg transition-all">
-                    <span class="material-symbols-outlined text-xs">add</span>
-                  </button>
-                </div>
-              </div>
-              <div class="h-8 w-[1px] bg-outline-variant/30"></div>
-              <div class="text-right">
-                <span class="text-[9px] font-bold text-primary uppercase block">Stock</span>
-                <span class="text-xs font-bold text-on-surface">Optimal</span>
-              </div>
-            </div>
-            <div class="absolute bottom-6 left-6 text-white">
-              <span class="text-[10px] font-bold tracking-[0.15em] uppercase text-primary-fixed block mb-1">Kitchen Sanctuary</span>
-              <h3 class="text-2xl font-extrabold tracking-tight">Dish Soap</h3>
-            </div>
-          </div>
-
-          <!-- Selected: Detergent -->
-          <div class="item-card selected group relative aspect-[4/5] overflow-hidden rounded-2xl shadow-xl transition-all duration-500 hover:shadow-2xl cursor-pointer" data-item="Detergent" onclick="toggleItem(this)">
-            <img alt="Laundry Detergent" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBHcdRmwqNCl5PtCo2je_55aoMpcyUHg6cu1NN3Y3YTtLzvD4i5LfooqFime945X1PMRIrhdwuMwfHJSrOL5jfPfN2mTcBcV6fYhZWdkoXHXiWHGDcKe1MKzBhWMQn9aTB86P-ROBnRoZCupPVrn4Vlf9_y8l3c6ACKzd0w_Rz72-tg8cHjsNUQyTTlfuYf8be1XydD7JPuVHuLCLCkdkw9uxMuCrS0woY-GjvMy_RG4398Hm-1cJawuzJC-rADwPX4JgUw8XYEHpg"/>
-            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
-            <div class="absolute top-4 right-4 h-8 w-8 bg-primary rounded-full flex items-center justify-center shadow-lg border border-white/20 item-overlay">
-              <span class="material-symbols-outlined text-white text-lg" style="font-variation-settings:'FILL' 1;">check</span>
-            </div>
-            <div class="item-overlay absolute bottom-20 left-6 right-6 glass-card rounded-xl p-3 flex items-center justify-between border-white/40 shadow-lg" onclick="event.stopPropagation()">
-              <div class="flex flex-col">
-                <span class="text-[9px] font-bold text-on-surface-variant uppercase tracking-wider">How many do you need?</span>
-                <div class="flex items-center gap-3 mt-1">
-                  <button class="qty-minus w-6 h-6 flex items-center justify-center rounded-full bg-white border border-outline-variant hover:bg-primary/5 transition-colors">
-                    <span class="material-symbols-outlined text-xs text-on-surface">remove</span>
-                  </button>
-                  <span class="qty-display text-sm font-black text-on-surface w-4 text-center">1</span>
-                  <button class="qty-plus w-6 h-6 flex items-center justify-center rounded-full bg-primary text-white hover:shadow-lg transition-all">
-                    <span class="material-symbols-outlined text-xs">add</span>
-                  </button>
-                </div>
-              </div>
-              <div class="h-8 w-[1px] bg-outline-variant/30"></div>
-              <div class="text-right">
-                <span class="text-[9px] font-bold text-primary uppercase block">Stock</span>
-                <span class="text-xs font-bold text-on-surface">Optimal</span>
-              </div>
-            </div>
-            <div class="absolute bottom-6 left-6 text-white">
-              <span class="text-[10px] font-bold tracking-[0.15em] uppercase text-primary-fixed block mb-1">Garment Care</span>
-              <h3 class="text-2xl font-extrabold tracking-tight">Detergent</h3>
-            </div>
-          </div>
-
-          <!-- Selected: Paper Towels -->
-          <div class="item-card selected group relative aspect-[4/5] overflow-hidden rounded-2xl shadow-xl transition-all duration-500 hover:shadow-2xl cursor-pointer" data-item="Paper Towels" onclick="toggleItem(this)">
-            <img alt="Paper Towels" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCqGM7ZNloSlFaRPPC0g17rUiJ7nSTq8Ec4HhLjVWBa9jQcC5RM-nkflLDQT_9A4LZblE6G860bZpLLlsiQ9rxd2-M9uH1lJgIa7uq2zPaOPEgTqcW-Aj9cMY9duA8wqeWGa3_2FIJtmBRnHxAhnKqUcCkwFIyCwvXxhWg4qRvvdWUEWivHdV-vueirmbXaolKGRvCZEK7u_dycFwRMZaG9Ubbtg0VqrJxAU04SDMubKQBukUqzndnhSp_CkON-lRCvxtfGuwymtc4"/>
-            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
-            <div class="absolute top-4 right-4 h-8 w-8 bg-primary rounded-full flex items-center justify-center shadow-lg border border-white/20 item-overlay">
-              <span class="material-symbols-outlined text-white text-lg" style="font-variation-settings:'FILL' 1;">check</span>
-            </div>
-            <div class="item-overlay absolute bottom-20 left-6 right-6 glass-card rounded-xl p-3 flex items-center justify-between border-white/40 shadow-lg" onclick="event.stopPropagation()">
-              <div class="flex flex-col">
-                <span class="text-[9px] font-bold text-on-surface-variant uppercase tracking-wider">How many do you need?</span>
-                <div class="flex items-center gap-3 mt-1">
-                  <button class="qty-minus w-6 h-6 flex items-center justify-center rounded-full bg-white border border-outline-variant hover:bg-primary/5 transition-colors">
-                    <span class="material-symbols-outlined text-xs text-on-surface">remove</span>
-                  </button>
-                  <span class="qty-display text-sm font-black text-on-surface w-4 text-center">1</span>
-                  <button class="qty-plus w-6 h-6 flex items-center justify-center rounded-full bg-primary text-white hover:shadow-lg transition-all">
-                    <span class="material-symbols-outlined text-xs">add</span>
-                  </button>
-                </div>
-              </div>
-              <div class="h-8 w-[1px] bg-outline-variant/30"></div>
-              <div class="text-right">
-                <span class="text-[9px] font-bold text-primary uppercase block">Stock</span>
-                <span class="text-xs font-bold text-on-surface">Optimal</span>
-              </div>
-            </div>
-            <div class="absolute bottom-6 left-6 text-white">
-              <span class="text-[10px] font-bold tracking-[0.15em] uppercase text-primary-fixed block mb-1">Household Essence</span>
-              <h3 class="text-2xl font-extrabold tracking-tight">Paper Towels</h3>
-            </div>
-          </div>
-
-          <!-- Custom Item Add Card -->
-          <div class="group relative aspect-[4/5] overflow-hidden rounded-2xl border-2 border-dashed border-outline-variant/40 bg-surface-container-low transition-all duration-500 hover:border-primary/40 hover:bg-white hover:shadow-2xl flex flex-col items-center justify-center p-8 text-center cursor-pointer" onclick="document.getElementById('custom-item-input').focus()">
-            <div class="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mb-6 group-hover:bg-primary group-hover:scale-110 transition-all duration-500">
-              <span class="material-symbols-outlined text-primary text-3xl group-hover:text-white">add</span>
-            </div>
-            <h3 class="text-xl font-bold text-on-surface mb-2">Can't find an item?</h3>
-            <p class="text-on-surface-variant text-sm mb-6 max-w-[200px]">Define your own custom essential for autonomous replenishment.</p>
-            <div class="w-full flex items-center gap-2 bg-white border border-outline-variant/30 rounded-full px-4 py-2 group-hover:border-primary/30 transition-colors" onclick="event.stopPropagation()">
-              <span class="material-symbols-outlined text-outline text-lg">edit</span>
-              <input id="custom-item-input" class="bg-transparent border-none focus:ring-0 text-sm font-medium w-full placeholder:text-outline/50" placeholder="Enter item name..." type="text" onkeydown="addCustomItem(event)"/>
-            </div>
-          </div>
-
-          <!-- Unselected: Hand Soap -->
-          <div class="item-card group relative aspect-[4/5] overflow-hidden rounded-2xl bg-surface-container transition-all duration-500 hover:shadow-2xl cursor-pointer" data-item="Hand Soap" onclick="toggleItem(this)">
-            <img alt="Hand Soap" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"/>
-            <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
-            <div class="absolute inset-0 flex flex-col items-center justify-center text-center p-6 bg-surface-container-low/40 group-hover:bg-transparent transition-colors item-add-icon">
-              <span class="material-symbols-outlined text-on-surface-variant text-4xl mb-3">add_circle</span>
-              <h3 class="text-xl font-bold text-on-surface item-name-unselected">Hand Soap</h3>
-            </div>
-            <div class="absolute bottom-6 left-6 text-white item-name-hover">
-              <span class="text-[10px] font-bold tracking-[0.15em] uppercase text-primary-fixed block mb-1">Personal Care</span>
-              <h3 class="text-2xl font-extrabold tracking-tight">Hand Soap</h3>
-            </div>
-            <!-- Selected overlay (hidden by default) -->
-            <div class="item-overlay absolute top-4 right-4 h-8 w-8 bg-primary rounded-full flex items-center justify-center shadow-lg border border-white/20">
-              <span class="material-symbols-outlined text-white text-lg" style="font-variation-settings:'FILL' 1;">check</span>
-            </div>
-            <div class="item-overlay absolute bottom-20 left-6 right-6 glass-card rounded-xl p-3 flex items-center justify-between border-white/40 shadow-lg" onclick="event.stopPropagation()">
-              <div class="flex flex-col">
-                <span class="text-[9px] font-bold text-on-surface-variant uppercase tracking-wider">How many do you need?</span>
-                <div class="flex items-center gap-3 mt-1">
-                  <button class="qty-minus w-6 h-6 flex items-center justify-center rounded-full bg-white border border-outline-variant hover:bg-primary/5 transition-colors">
-                    <span class="material-symbols-outlined text-xs text-on-surface">remove</span>
-                  </button>
-                  <span class="qty-display text-sm font-black text-on-surface w-4 text-center">1</span>
-                  <button class="qty-plus w-6 h-6 flex items-center justify-center rounded-full bg-primary text-white hover:shadow-lg transition-all">
-                    <span class="material-symbols-outlined text-xs">add</span>
-                  </button>
-                </div>
-              </div>
-              <div class="h-8 w-[1px] bg-outline-variant/30"></div>
-              <div class="text-right">
-                <span class="text-[9px] font-bold text-primary uppercase block">Stock</span>
-                <span class="text-xs font-bold text-on-surface">Optimal</span>
-              </div>
-            </div>
-            <div class="item-overlay absolute bottom-6 left-6 text-white">
-              <span class="text-[10px] font-bold tracking-[0.15em] uppercase text-primary-fixed block mb-1">Personal Care</span>
-              <h3 class="text-2xl font-extrabold tracking-tight">Hand Soap</h3>
-            </div>
-          </div>
-
-          <!-- Unselected: Roasted Coffee -->
-          <div class="item-card group relative aspect-[4/5] overflow-hidden rounded-2xl bg-surface-container transition-all duration-500 hover:shadow-2xl cursor-pointer" data-item="Roasted Coffee" onclick="toggleItem(this)">
-            <img alt="Roasted Coffee" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDZe83OVXECz9FDLR0bHLzDODJI0QTSqlHLx_pkH3K38Qk1OZvdoGwNljwJsTYnwe1ZaghFlTda2bNyUZqS9uULB5YH31wc7X-pP_3sbKoe9Rp2roJz_RplcP0trsrMHKf19P9_OgMgv7NsjpvvrZ2fgJSEiXFoaUA1rH4YFmuexScpYrjakEJv6wG96htgIqKTZ308HmQd1hcY3fjdZ2U2z5rfCjjO3s7k_j-6D6QBpqBTZa7FZn9KlJ1cw079_t1tDmPc4uVRrhs"/>
-            <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
-            <div class="absolute inset-0 flex flex-col items-center justify-center text-center p-6 bg-surface-container-low/40 group-hover:bg-transparent transition-colors item-add-icon">
-              <span class="material-symbols-outlined text-on-surface-variant text-4xl mb-3">add_circle</span>
-              <h3 class="text-xl font-bold text-on-surface item-name-unselected">Roasted Coffee</h3>
-            </div>
-            <div class="absolute bottom-6 left-6 text-white item-name-hover">
-              <span class="text-[10px] font-bold tracking-[0.15em] uppercase text-primary-fixed block mb-1">Pantry Staples</span>
-              <h3 class="text-2xl font-extrabold tracking-tight">Roasted Coffee</h3>
-            </div>
-            <div class="item-overlay absolute top-4 right-4 h-8 w-8 bg-primary rounded-full flex items-center justify-center shadow-lg border border-white/20">
-              <span class="material-symbols-outlined text-white text-lg" style="font-variation-settings:'FILL' 1;">check</span>
-            </div>
-            <div class="item-overlay absolute bottom-20 left-6 right-6 glass-card rounded-xl p-3 flex items-center justify-between border-white/40 shadow-lg" onclick="event.stopPropagation()">
-              <div class="flex flex-col">
-                <span class="text-[9px] font-bold text-on-surface-variant uppercase tracking-wider">How many do you need?</span>
-                <div class="flex items-center gap-3 mt-1">
-                  <button class="qty-minus w-6 h-6 flex items-center justify-center rounded-full bg-white border border-outline-variant hover:bg-primary/5 transition-colors">
-                    <span class="material-symbols-outlined text-xs text-on-surface">remove</span>
-                  </button>
-                  <span class="qty-display text-sm font-black text-on-surface w-4 text-center">1</span>
-                  <button class="qty-plus w-6 h-6 flex items-center justify-center rounded-full bg-primary text-white hover:shadow-lg transition-all">
-                    <span class="material-symbols-outlined text-xs">add</span>
-                  </button>
-                </div>
-              </div>
-              <div class="h-8 w-[1px] bg-outline-variant/30"></div>
-              <div class="text-right">
-                <span class="text-[9px] font-bold text-primary uppercase block">Stock</span>
-                <span class="text-xs font-bold text-on-surface">Optimal</span>
-              </div>
-            </div>
-            <div class="item-overlay absolute bottom-6 left-6 text-white">
-              <span class="text-[10px] font-bold tracking-[0.15em] uppercase text-primary-fixed block mb-1">Pantry Staples</span>
-              <h3 class="text-2xl font-extrabold tracking-tight">Roasted Coffee</h3>
-            </div>
-          </div>
-
-          <!-- Unselected: Kibble Reserve -->
-          <div class="item-card group relative aspect-[4/5] overflow-hidden rounded-2xl bg-surface-container transition-all duration-500 hover:shadow-2xl cursor-pointer" data-item="Kibble Reserve" onclick="toggleItem(this)">
-            <img alt="Premium Dog Food" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBo7LBo_s40OiVdZyBs68Sv1RlgDCKZUDrDt85zr7-b75X3ubsUvYL5PiDIf03DFOXJCOHulkq8nG37BTQaWlqAkIOBZ-UYBzX9KfbQrMsigS1hm6jG9se66TANizK8YjdA0ecw43IdVs8y4tr8P9uH75aHJD_DBj6NMXY9rFNjMx6HU_vv1MGL2lTRrsxMDgzJFFQdB_eXyFtSSDI2gmMxpjv6r2Sabk7ZNo3ovNiVj3XIpAHb8oPG2AZtblZsrjAZPnHDPnkr_3k"/>
-            <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
-            <div class="absolute inset-0 flex flex-col items-center justify-center text-center p-6 bg-surface-container-low/40 group-hover:bg-transparent transition-colors item-add-icon">
-              <span class="material-symbols-outlined text-on-surface-variant text-4xl mb-3">add_circle</span>
-              <h3 class="text-xl font-bold text-on-surface item-name-unselected">Kibble Reserve</h3>
-            </div>
-            <div class="absolute bottom-6 left-6 text-white item-name-hover">
-              <span class="text-[10px] font-bold tracking-[0.15em] uppercase text-primary-fixed block mb-1">Pet Care</span>
-              <h3 class="text-2xl font-extrabold tracking-tight">Kibble Reserve</h3>
-            </div>
-            <div class="item-overlay absolute top-4 right-4 h-8 w-8 bg-primary rounded-full flex items-center justify-center shadow-lg border border-white/20">
-              <span class="material-symbols-outlined text-white text-lg" style="font-variation-settings:'FILL' 1;">check</span>
-            </div>
-            <div class="item-overlay absolute bottom-20 left-6 right-6 glass-card rounded-xl p-3 flex items-center justify-between border-white/40 shadow-lg" onclick="event.stopPropagation()">
-              <div class="flex flex-col">
-                <span class="text-[9px] font-bold text-on-surface-variant uppercase tracking-wider">How many do you need?</span>
-                <div class="flex items-center gap-3 mt-1">
-                  <button class="qty-minus w-6 h-6 flex items-center justify-center rounded-full bg-white border border-outline-variant hover:bg-primary/5 transition-colors">
-                    <span class="material-symbols-outlined text-xs text-on-surface">remove</span>
-                  </button>
-                  <span class="qty-display text-sm font-black text-on-surface w-4 text-center">1</span>
-                  <button class="qty-plus w-6 h-6 flex items-center justify-center rounded-full bg-primary text-white hover:shadow-lg transition-all">
-                    <span class="material-symbols-outlined text-xs">add</span>
-                  </button>
-                </div>
-              </div>
-              <div class="h-8 w-[1px] bg-outline-variant/30"></div>
-              <div class="text-right">
-                <span class="text-[9px] font-bold text-primary uppercase block">Stock</span>
-                <span class="text-xs font-bold text-on-surface">Optimal</span>
-              </div>
-            </div>
-            <div class="item-overlay absolute bottom-6 left-6 text-white">
-              <span class="text-[10px] font-bold tracking-[0.15em] uppercase text-primary-fixed block mb-1">Pet Care</span>
-              <h3 class="text-2xl font-extrabold tracking-tight">Kibble Reserve</h3>
-            </div>
-          </div>
-
-          <!-- Unselected: Silk Shampoo -->
-          <div class="item-card group relative aspect-[4/5] overflow-hidden rounded-2xl bg-surface-container transition-all duration-500 hover:shadow-2xl cursor-pointer" data-item="Silk Shampoo" onclick="toggleItem(this)">
-            <img alt="Luxury Shampoo" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBKNocCNZfT04yQHTyYG6brGDxGFEkygXHFw_Q_PfkdPgL3Yvq7Ni5sHtvLhM02y6UPVq3tdou4PXdXhOcNh2VxvLyYDJzzKAixGoGKXcp3Bcbu6GQlR-Xi52fJVcbTo6Yls6lnjggokNh7UI0be0LTnNH53HDGmdLPFs17X8ueIYt0-WxlLU0iiHsxIXtfdi-CZ7NrEnsvPvTpFslDxaZTH6VlzIpJPKjXmVj6ge2NDoHNzNWwXjh4q-gfmecPtfTnpSkOwiHnLoY"/>
-            <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
-            <div class="absolute inset-0 flex flex-col items-center justify-center text-center p-6 bg-surface-container-low/40 group-hover:bg-transparent transition-colors item-add-icon">
-              <span class="material-symbols-outlined text-on-surface-variant text-4xl mb-3">add_circle</span>
-              <h3 class="text-xl font-bold text-on-surface item-name-unselected">Silk Shampoo</h3>
-            </div>
-            <div class="absolute bottom-6 left-6 text-white item-name-hover">
-              <span class="text-[10px] font-bold tracking-[0.15em] uppercase text-primary-fixed block mb-1">Personal Care</span>
-              <h3 class="text-2xl font-extrabold tracking-tight">Silk Shampoo</h3>
-            </div>
-            <div class="item-overlay absolute top-4 right-4 h-8 w-8 bg-primary rounded-full flex items-center justify-center shadow-lg border border-white/20">
-              <span class="material-symbols-outlined text-white text-lg" style="font-variation-settings:'FILL' 1;">check</span>
-            </div>
-            <div class="item-overlay absolute bottom-20 left-6 right-6 glass-card rounded-xl p-3 flex items-center justify-between border-white/40 shadow-lg" onclick="event.stopPropagation()">
-              <div class="flex flex-col">
-                <span class="text-[9px] font-bold text-on-surface-variant uppercase tracking-wider">How many do you need?</span>
-                <div class="flex items-center gap-3 mt-1">
-                  <button class="qty-minus w-6 h-6 flex items-center justify-center rounded-full bg-white border border-outline-variant hover:bg-primary/5 transition-colors">
-                    <span class="material-symbols-outlined text-xs text-on-surface">remove</span>
-                  </button>
-                  <span class="qty-display text-sm font-black text-on-surface w-4 text-center">1</span>
-                  <button class="qty-plus w-6 h-6 flex items-center justify-center rounded-full bg-primary text-white hover:shadow-lg transition-all">
-                    <span class="material-symbols-outlined text-xs">add</span>
-                  </button>
-                </div>
-              </div>
-              <div class="h-8 w-[1px] bg-outline-variant/30"></div>
-              <div class="text-right">
-                <span class="text-[9px] font-bold text-primary uppercase block">Stock</span>
-                <span class="text-xs font-bold text-on-surface">Optimal</span>
-              </div>
-            </div>
-            <div class="item-overlay absolute bottom-6 left-6 text-white">
-              <span class="text-[10px] font-bold tracking-[0.15em] uppercase text-primary-fixed block mb-1">Personal Care</span>
-              <h3 class="text-2xl font-extrabold tracking-tight">Silk Shampoo</h3>
-            </div>
-          </div>
-
-        </div><!-- /items-grid -->
-
-        <!-- Intelligence Insight Banner -->
-        <div class="mt-20 group relative overflow-hidden rounded-3xl bg-primary p-12 lg:p-16 text-white shadow-2xl">
-          <div class="relative z-10 flex flex-col md:flex-row items-center gap-12">
-            <div class="flex-1">
-              <div class="inline-flex items-center gap-2 bg-white/10 px-4 py-1.5 rounded-full mb-8 backdrop-blur-sm">
-                <span class="material-symbols-outlined text-sm">auto_awesome</span>
-                <span class="text-xs font-bold tracking-widest uppercase">Intelligence Insight</span>
-              </div>
-              <h3 class="text-4xl font-extrabold tracking-tight mb-6">Elevate your anticipation.</h3>
-              <p class="text-primary-fixed text-lg leading-relaxed mb-10 max-w-lg">Grant ReplenishAI access to your social calendar. Our engine will cross-reference upcoming soirées and guests with your current stock levels, initiating a restock before the first guest even arrives.</p>
-              <button class="bg-white text-primary px-8 py-4 rounded-full font-bold text-sm transition-all hover:shadow-2xl hover:scale-105 active:scale-95 flex items-center gap-3">
-                <span class="material-symbols-outlined text-xl">calendar_month</span>
-                Integrate Calendar
-              </button>
-            </div>
-            <div class="w-full md:w-2/5 aspect-square rounded-2xl overflow-hidden shadow-2xl border border-white/20">
-              <img alt="Elegant minimalist desk" class="w-full h-full object-cover transition-transform duration-[2000ms] group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuATEvgcWxlrXsDDJKPRBaJOZ6nqHen8bmMTnWaqRn1TYryC-yHLX25lEgmBEMSbTz5-lQfPbfZCNR7J-nEPnqRYqI666EsAaiQoG2Kl8qcl2rDMCwK0niOE97DSF878Sko-_4EC0MHVcW2ZnqWsEyWAqS0wliSamNfgZ_0DhC3o8pCTVKTWOTLNo6RMZ5xhkd8BSC4tbOJqXnEWPBwn_rlWwo9-XD_BlaMW2as6w7q-SK4RIv3a3ZJP-3b0uVWRy_wia0esm-W0D1E"/>
-            </div>
-          </div>
-          <div class="absolute -bottom-24 -right-24 w-96 h-96 bg-primary-container/20 rounded-full blur-3xl"></div>
-          <div class="absolute -top-12 -left-12 w-64 h-64 bg-secondary-container/10 rounded-full blur-3xl"></div>
-        </div>
-      </div><!-- /col-span-8 -->
-
-      <!-- Preferences Sidebar -->
-      <div class="lg:col-span-4">
-        <div class="sticky top-32 space-y-8">
-          <div class="bg-white p-10 rounded-3xl shadow-xl border border-surface-variant/20">
-            <h2 class="text-xs font-black tracking-[0.25em] text-on-surface-variant uppercase mb-10 flex items-center gap-3">
-              <span class="h-1.5 w-1.5 bg-primary rounded-full"></span>
-              Executive Preferences
-            </h2>
-            <div class="space-y-10">
-              <div>
-                <label class="text-[10px] font-bold text-on-surface-variant uppercase tracking-widest block mb-5">Brand Alignment Strategy</label>
-                <div class="space-y-4">
-                  <label class="flex items-center gap-4 p-4 rounded-2xl border-2 border-primary bg-primary/5 cursor-pointer transition-all">
-                    <input checked class="w-5 h-5 text-primary focus:ring-primary border-outline-variant" name="brand_logic" type="radio"/>
-                    <div>
-                      <span class="text-sm font-bold text-on-surface block">Absolute Brand Loyalty</span>
-                      <span class="text-[10px] text-on-surface-variant leading-tight block mt-1">Consistency above all. Only your selected luxury marks.</span>
-                    </div>
-                  </label>
-                  <label class="flex items-center gap-4 p-4 rounded-2xl border-2 border-transparent bg-surface-container-low hover:border-outline-variant transition-all cursor-pointer">
-                    <input class="w-5 h-5 text-primary focus:ring-primary border-outline-variant" name="brand_logic" type="radio"/>
-                    <div>
-                      <span class="text-sm font-bold text-on-surface block">Smart Value Curator</span>
-                      <span class="text-[10px] text-on-surface-variant leading-tight block mt-1">Performance focused. Premium quality, optimized cost.</span>
-                    </div>
-                  </label>
-                </div>
-              </div>
-              <div>
-                <div class="flex justify-between items-center mb-5">
-                  <label class="text-[10px] font-bold text-on-surface-variant uppercase tracking-widest">Quality Sensitivity</label>
-                  <span class="text-[10px] font-black text-primary px-2 py-1 bg-primary/10 rounded tracking-widest">PREMIUM</span>
-                </div>
-                <input class="w-full h-1.5 bg-surface-container rounded-full appearance-none cursor-pointer accent-primary" type="range" value="80"/>
-                <div class="flex justify-between mt-3">
-                  <span class="text-[9px] font-bold text-on-surface-variant uppercase">Standard</span>
-                  <span class="text-[9px] font-bold text-on-surface-variant uppercase">Artisan</span>
-                </div>
-              </div>
-              <div class="pt-10 border-t border-surface-container">
-                <div class="flex items-center justify-between">
-                  <div class="flex items-center gap-3">
-                    <div class="p-2 bg-primary/10 rounded-lg">
-                      <span class="material-symbols-outlined text-primary text-xl">auto_mode</span>
-                    </div>
-                    <div>
-                      <span class="text-sm font-bold text-on-surface block">Autonomous Replenishment</span>
-                      <span class="text-[10px] text-on-surface-variant">AI-driven invisible restocking</span>
-                    </div>
-                  </div>
-                  <div class="relative inline-flex items-center cursor-pointer">
-                    <input checked class="sr-only peer" type="checkbox"/>
-                    <div class="w-12 h-7 bg-surface-container-highest peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[4px] after:left-[4px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-[20px] after:w-[20px] after:transition-all peer-checked:bg-primary"></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="p-8 rounded-3xl bg-surface-container-highest/30 border border-outline-variant/10 text-center">
-            <p class="text-xs text-on-surface-variant italic leading-relaxed">
-              "The highest luxury is never having to ask. Our neural network learns your consumption rhythm with every interaction."
-            </p>
-          </div>
-        </div>
-      </div>
-
-    </div><!-- /grid -->
-
-    <!-- Final CTA -->
-    <div class="mt-32 text-center">
-      <button onclick="showScreen('alert')" class="group relative inline-flex items-center justify-center gap-6 bg-on-surface text-white px-14 py-6 rounded-full font-black text-xl transition-all hover:bg-primary hover:shadow-[0_20px_50px_rgba(0,61,155,0.3)] hover:-translate-y-1 active:scale-95">
-        Initialize Experience
-        <span class="material-symbols-outlined transition-transform group-hover:translate-x-2">east</span>
-      </button>
-      <p class="mt-8 text-on-surface-variant text-xs font-bold tracking-[0.2em] uppercase opacity-50">Secure Setup • Encrypted Profile • Concierge Ready</p>
-    </div>
-
-  </main>
-
-  <footer class="bg-white border-t border-surface-variant/20 py-20 mt-20">
-    <div class="max-w-7xl mx-auto px-8 flex flex-col md:flex-row justify-between items-start md:items-center gap-12">
-      <div class="flex flex-col gap-4">
-        <span class="text-xl font-black tracking-tighter text-primary">ReplenishAI</span>
-        <span class="text-[10px] font-bold tracking-[0.2em] uppercase text-on-surface-variant">© 2024. The New Standard in Domestic Intelligence.</span>
-      </div>
-      <div class="flex flex-wrap gap-x-12 gap-y-4">
-        <a class="text-[10px] font-bold tracking-[0.2em] uppercase text-on-surface-variant hover:text-primary transition-colors" href="#">Privacy Protocol</a>
-        <a class="text-[10px] font-bold tracking-[0.2em] uppercase text-on-surface-variant hover:text-primary transition-colors" href="#">Usage Terms</a>
-        <a class="text-[10px] font-bold tracking-[0.2em] uppercase text-on-surface-variant hover:text-primary transition-colors" href="#">White-Glove Support</a>
-      </div>
-    </div>
-  </footer>
-
-</div><!-- /screen-onboarding -->
-
-
-<!-- ========== SCREEN 2: SMART ALERT ========== -->
-<div id="screen-alert" class="screen" hidden>
-
-  <!-- TopNavBar -->
-  <header class="bg-slate-50/80 backdrop-blur-xl shadow-sm sticky top-0 z-50">
-    <div class="flex justify-between items-center w-full px-6 py-3">
-      <div class="flex items-center gap-3">
-        <span class="text-xl font-black tracking-tighter text-on-surface">Replenish<span class="text-primary">AI</span></span>
-      </div>
-      <div class="flex items-center gap-2">
-        <button class="p-2 text-slate-500 hover:bg-slate-100/50 rounded-lg transition-all active:scale-95">
-          <span class="material-symbols-outlined">settings</span>
-        </button>
-        <button class="p-2 text-slate-500 hover:bg-slate-100/50 rounded-lg transition-all active:scale-95">
-          <span class="material-symbols-outlined">account_circle</span>
-        </button>
-      </div>
-    </div>
-    <div class="bg-slate-200/50 h-[1px]"></div>
-  </header>
-
-  <div class="flex min-h-screen">
-    <!-- SideNavBar -->
-    <aside class="bg-slate-100 hidden md:flex flex-col w-64 fixed left-0 top-[57px] bottom-0 py-8 space-y-1 font-sans text-sm font-medium">
-      <div class="px-6 mb-6">
-        <h2 class="text-base font-bold text-slate-900">ReplenishAI</h2>
-        <p class="text-xs text-slate-500">Proactive Curator</p>
-      </div>
-      <nav class="flex-1">
-        <button onclick="showScreen('delight')" class="text-slate-600 w-full text-left px-4 py-3 mx-2 flex items-center gap-3 hover:bg-slate-200/50 rounded-lg cursor-pointer transition-colors" style="width: calc(100% - 16px)">
-          <span class="material-symbols-outlined">dashboard</span><span>Dashboard</span>
-        </button>
-        <button class="text-slate-600 w-full text-left px-4 py-3 mx-2 flex items-center gap-3 hover:bg-slate-200/50 rounded-lg cursor-pointer transition-colors" style="width: calc(100% - 16px)">
-          <span class="material-symbols-outlined">inventory_2</span><span>Inventory</span>
-        </button>
-        <button class="bg-white text-blue-700 shadow-sm w-full text-left rounded-lg mx-2 px-4 py-3 flex items-center gap-3 cursor-pointer" style="width: calc(100% - 16px)">
-          <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1;">notifications</span><span>Smart Alerts</span>
-        </button>
-        <button onclick="showScreen('upgrade')" class="text-slate-600 w-full text-left px-4 py-3 mx-2 flex items-center gap-3 hover:bg-slate-200/50 rounded-lg cursor-pointer transition-colors" style="width: calc(100% - 16px)">
-          <span class="material-symbols-outlined">auto_awesome</span><span>Upgrade to Plus</span>
-        </button>
-      </nav>
-      <div class="px-4 pb-8">
-        <button class="w-full bg-gradient-to-br from-primary to-primary-container text-white py-3 rounded-xl font-semibold flex items-center justify-center gap-2 shadow-lg">
-          <span class="material-symbols-outlined text-sm">qr_code_scanner</span>
-          Quick Scan
-        </button>
-      </div>
-    </aside>
-
-    <!-- Main content -->
-    <main class="flex-1 md:ml-64 px-4 pb-24 pt-6 md:flex md:justify-center">
-      <div class="w-full max-w-lg">
-
-        <!-- Push Notification Banner -->
-        <div class="mb-8">
-          <div class="bg-on-background/95 backdrop-blur-md rounded-2xl p-4 shadow-2xl flex items-start gap-4 ring-1 ring-white/10">
-            <div class="bg-primary p-2 rounded-xl">
-              <span class="material-symbols-outlined text-white text-xl" style="font-variation-settings:'FILL' 1;">auto_awesome</span>
-            </div>
-            <div class="flex-1">
-              <div class="flex justify-between items-center mb-1">
-                <span class="text-[10px] font-bold tracking-widest text-white/50 uppercase">ReplenishAI • NOW</span>
-              </div>
-              <p class="text-sm font-medium text-white leading-snug">You'll likely run out of paper towels in 5 days. Want to reorder?</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- Alert Header -->
-        <section class="mb-10">
-          <span class="inline-block px-3 py-1 bg-tertiary-fixed text-on-tertiary-fixed text-[10px] font-bold tracking-widest rounded-full mb-3 uppercase">Predicted Stockout</span>
-          <h1 class="text-3xl font-extrabold tracking-tight text-on-surface mb-2">Smart Alert</h1>
-          <p class="text-sm text-on-surface-variant font-medium">Our AI curator detected a supply gap in your kitchen inventory.</p>
-        </section>
-
-        <!-- Main Alert Card -->
-        <div class="relative mb-12">
-          <div class="absolute -top-4 -right-4 w-32 h-32 bg-primary-fixed opacity-20 rounded-full blur-3xl -z-10"></div>
-          <div class="bg-surface-container-lowest rounded-xl p-6 shadow-sm ring-1 ring-outline-variant/10">
-            <div class="flex items-center gap-6 mb-8">
-              <div class="w-24 h-24 rounded-lg bg-surface-container-low overflow-hidden flex-shrink-0">
-                <img alt="Paper Towels" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBIigjwSVf4hQ3Z3qfBAdx5qTbuXtHeY5OoPhvkr6FWE6xJuNGIfiz0aLBb_mxsEynMHm1wUIYUUt8SQtAElOaStncQ05I6HW3iGZqhPuXsaSxsCPy6lbQ3nlwvt1S5XOlz6MyZ9os3Ys2z9wpwz5fx20z_b4Y4W7npyZMfYA2dNgGzFtlO5VsDrrbuqS7wHRoK5E5UyfD-CaEaF7k_aK4xoeXYdVudKsOwvSQcjCh4WEjcfeN5nj_sB7hWEGMUkhqGo_ji2yXXKi4"/>
-              </div>
-              <div class="flex-1">
-                <h2 id="alert-item-name" class="text-xl font-bold text-on-surface leading-tight mb-1">Paper Towels</h2>
-                <div class="flex items-center gap-2 mb-2">
-                  <span id="alert-brand-tag" class="text-xs font-semibold text-on-surface-variant bg-surface-container px-2 py-0.5 rounded">Bounty</span>
-                  <span class="text-xs font-semibold text-on-surface-variant bg-surface-container px-2 py-0.5 rounded">8-Roll Pack</span>
-                </div>
-                <div class="text-lg font-black text-primary" id="alert-price">$14.99</div>
-              </div>
-            </div>
-
-            <div class="space-y-4 mb-8">
-              <div class="flex justify-between items-center py-3 border-b border-surface-variant/30">
-                <span class="text-sm font-medium text-on-surface-variant">Predicted Exhaustion</span>
-                <span class="text-sm font-bold text-tertiary">Oct 24 (5 Days)</span>
-              </div>
-              <div class="flex justify-between items-center py-3 border-b border-surface-variant/30">
-                <span class="text-sm font-medium text-on-surface-variant">Recommended Supplier</span>
-                <div class="flex items-center gap-1.5">
-                  <span class="material-symbols-outlined text-sm text-on-surface-variant">shopping_cart</span>
-                  <span id="alert-supplier" class="text-sm font-bold">Amazon</span>
-                </div>
-              </div>
-              <div class="flex justify-between items-center py-3">
-                <span class="text-sm font-medium text-on-surface-variant">Confidence Score</span>
-                <div class="flex items-center gap-1">
-                  <div class="flex gap-0.5">
-                    <div class="w-1.5 h-3 bg-primary rounded-full"></div>
-                    <div class="w-1.5 h-3 bg-primary rounded-full"></div>
-                    <div class="w-1.5 h-3 bg-primary rounded-full"></div>
-                    <div class="w-1.5 h-3 bg-primary rounded-full"></div>
-                    <div class="w-1.5 h-3 bg-outline-variant/30 rounded-full"></div>
-                  </div>
-                  <span class="text-[10px] font-black ml-1 text-primary">94%</span>
-                </div>
-              </div>
-            </div>
-
-            <!-- Alert: swap brand modal (hidden by default) -->
-            <div id="swap-brand-panel" class="hidden mb-6 p-4 bg-surface-container-low rounded-xl border border-outline-variant/20">
-              <p class="text-xs font-bold text-on-surface-variant uppercase tracking-widest mb-3">Choose Brand</p>
-              <div class="space-y-2">
-                <button onclick="selectBrand('Bounty', '$14.99', 'Amazon')" class="w-full text-left flex items-center justify-between p-3 rounded-lg border-2 border-primary bg-primary/5 transition-all">
-                  <span class="text-sm font-bold text-on-surface">Bounty 8-Roll</span><span class="text-sm font-black text-primary">$14.99</span>
-                </button>
-                <button onclick="selectBrand('Kirkland', '$12.49', 'Walmart')" class="w-full text-left flex items-center justify-between p-3 rounded-lg border-2 border-transparent bg-surface-container hover:border-outline-variant transition-all">
-                  <span class="text-sm font-bold text-on-surface">Kirkland 12-Roll</span><span class="text-sm font-black text-on-surface-variant">$12.49</span>
-                </button>
-                <button onclick="selectBrand('Viva', '$11.99', 'Instacart')" class="w-full text-left flex items-center justify-between p-3 rounded-lg border-2 border-transparent bg-surface-container hover:border-outline-variant transition-all">
-                  <span class="text-sm font-bold text-on-surface">Viva 6-Roll</span><span class="text-sm font-black text-on-surface-variant">$11.99</span>
-                </button>
-              </div>
-            </div>
-
-            <!-- Action Buttons -->
-            <div id="alert-actions" class="flex flex-col gap-3">
-              <button onclick="approveOrder()" class="w-full py-4 bg-gradient-to-br from-primary to-primary-container text-white font-bold rounded-xl shadow-lg active:scale-[0.98] transition-all flex items-center justify-center gap-2">
-                <span class="material-symbols-outlined text-xl" style="font-variation-settings:'FILL' 1;">check_circle</span>
-                Approve Order
-              </button>
-              <div class="grid grid-cols-2 gap-3">
-                <button onclick="toggleSwapBrand()" class="py-3 bg-surface-container-high text-on-surface font-semibold rounded-xl active:scale-[0.98] transition-all flex items-center justify-center gap-1">
-                  <span class="material-symbols-outlined text-lg">swap_horiz</span>
-                  Swap Brand
-                </button>
-                <button onclick="dismissAlert()" class="py-3 bg-transparent text-on-surface-variant font-semibold border border-outline-variant/30 rounded-xl active:scale-[0.98] transition-all">
-                  Dismiss
-                </button>
-              </div>
-            </div>
-
-            <!-- Dismissed State (hidden by default) -->
-            <div id="alert-dismissed" class="hidden text-center py-6">
-              <span class="material-symbols-outlined text-4xl text-on-surface-variant mb-2 block">done_all</span>
-              <p class="text-sm font-bold text-on-surface-variant">Alert dismissed. We'll remind you in 2 days.</p>
-              <button onclick="undoDismiss()" class="mt-4 text-xs text-primary font-bold underline">Undo</button>
-            </div>
-
-          </div>
-        </div>
-
-        <!-- Recent Predictions -->
-        <section>
-          <div class="flex justify-between items-end mb-6">
-            <h3 class="text-lg font-bold tracking-tight">Recent Predictions</h3>
-            <span class="text-[10px] font-bold tracking-widest text-primary uppercase cursor-pointer">View All Tracking</span>
-          </div>
-          <div class="space-y-4">
-            <div class="bg-surface-container-low rounded-xl p-4 flex items-center gap-4 hover:bg-surface-container transition-colors">
-              <div class="w-12 h-12 rounded-lg bg-surface-container-highest flex items-center justify-center">
-                <span class="material-symbols-outlined text-on-surface-variant">coffee</span>
-              </div>
-              <div class="flex-1">
-                <p class="text-sm font-bold text-on-surface">Espresso Pods</p>
-                <p class="text-[10px] font-medium text-on-surface-variant">Nespresso Ispirazione</p>
-              </div>
-              <div class="text-right">
-                <p class="text-[10px] font-bold text-on-surface-variant uppercase tracking-tighter">Runs Out In</p>
-                <p class="text-sm font-bold text-secondary">12 Days</p>
-              </div>
-            </div>
-            <div class="bg-surface-container-low rounded-xl p-4 flex items-center gap-4 hover:bg-surface-container transition-colors">
-              <div class="w-12 h-12 rounded-lg bg-surface-container-highest flex items-center justify-center">
-                <span class="material-symbols-outlined text-on-surface-variant">sanitizer</span>
-              </div>
-              <div class="flex-1">
-                <p class="text-sm font-bold text-on-surface">Hand Soap Refill</p>
-                <p class="text-[10px] font-medium text-on-surface-variant">Mrs. Meyer's Lemon</p>
-              </div>
-              <div class="text-right">
-                <p class="text-[10px] font-bold text-on-surface-variant uppercase tracking-tighter">Runs Out In</p>
-                <p class="text-sm font-bold text-secondary">19 Days</p>
-              </div>
-            </div>
-            <div class="bg-surface-container-low rounded-xl p-4 flex items-center gap-4 opacity-70">
-              <div class="w-12 h-12 rounded-lg bg-surface-container-highest flex items-center justify-center">
-                <span class="material-symbols-outlined text-on-surface-variant">dishwasher_gen</span>
-              </div>
-              <div class="flex-1">
-                <p class="text-sm font-bold text-on-surface">Dishwasher Pods</p>
-                <p class="text-[10px] font-medium text-on-surface-variant">Cascade Platinum</p>
-              </div>
-              <div class="text-right">
-                <p class="text-[10px] font-bold text-on-surface-variant uppercase tracking-tighter">Runs Out In</p>
-                <p class="text-sm font-bold text-on-surface-variant">28 Days</p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-      </div>
-    </main>
-  </div><!-- /flex -->
-
-  <!-- Mobile Bottom Nav -->
-  <nav class="md:hidden fixed bottom-0 left-0 right-0 bg-slate-50/80 backdrop-blur-xl flex justify-around items-center px-4 py-3 z-50 border-t border-slate-200/50">
-    <button onclick="showScreen('delight')" class="flex flex-col items-center gap-1 text-slate-500 transition-all active:scale-90">
-      <span class="material-symbols-outlined">dashboard</span>
-      <span class="text-[10px] font-bold uppercase tracking-wider">Home</span>
-    </button>
-    <button class="flex flex-col items-center gap-1 text-slate-500 transition-all active:scale-90">
-      <span class="material-symbols-outlined">inventory_2</span>
-      <span class="text-[10px] font-bold uppercase tracking-wider">Items</span>
-    </button>
-    <button class="flex flex-col items-center gap-1 text-blue-700 transition-all active:scale-90">
-      <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1;">notifications</span>
-      <span class="text-[10px] font-bold uppercase tracking-wider">Alerts</span>
-    </button>
-    <button onclick="showScreen('upgrade')" class="flex flex-col items-center gap-1 text-slate-500 transition-all active:scale-90">
-      <span class="material-symbols-outlined">auto_awesome</span>
-      <span class="text-[10px] font-bold uppercase tracking-wider">Plus</span>
-    </button>
-  </nav>
-
-  <footer class="bg-slate-50 py-12 mb-16 md:mb-0 md:ml-64">
-    <div class="max-w-7xl mx-auto px-8 flex flex-col md:flex-row justify-between items-center gap-4">
-      <p class="text-xs tracking-wide uppercase text-slate-500">© 2024 ReplenishAI. Intelligent Household Management.</p>
-      <div class="flex gap-6">
-        <a class="text-xs tracking-wide uppercase text-slate-500 hover:text-blue-600 transition-colors" href="#">Privacy</a>
-        <a class="text-xs tracking-wide uppercase text-slate-500 hover:text-blue-600 transition-colors" href="#">Terms</a>
-        <a class="text-xs tracking-wide uppercase text-slate-500 hover:text-blue-600 transition-colors" href="#">Support</a>
-      </div>
-    </div>
-  </footer>
-
-</div><!-- /screen-alert -->
-
-
-<!-- ========== SCREEN 3: DELIGHT + DASHBOARD ========== -->
-<div id="screen-delight" class="screen" hidden>
-
-  <!-- TopNavBar -->
-  <nav class="bg-slate-50/80 backdrop-blur-xl shadow-sm sticky top-0 z-50 flex justify-between items-center w-full px-6 py-3">
-    <div class="flex items-center gap-8">
-      <span class="text-xl font-black tracking-tighter text-on-surface">Replenish<span class="text-primary">AI</span></span>
-      <div class="relative hidden md:block">
-        <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400">search</span>
-        <input class="bg-surface-container-highest border-none rounded-lg pl-10 pr-4 py-2 w-64 text-xs focus:ring-2 focus:ring-primary-container transition-all" placeholder="Search inventory..." type="text"/>
-      </div>
-    </div>
-    <div class="flex items-center gap-4">
-      <button class="p-2 hover:bg-slate-100/50 rounded-lg transition-all active:scale-95">
-        <span class="material-symbols-outlined text-slate-500">account_circle</span>
-      </button>
-      <button class="p-2 hover:bg-slate-100/50 rounded-lg transition-all active:scale-95">
-        <span class="material-symbols-outlined text-slate-500">settings</span>
+    <!-- Footer Row: info + CTA -->
+    <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-5 pt-6" style="border-top:1px solid #edeef0">
+      <p class="text-sm text-on-surface-variant">
+        Free plan: up to <strong class="text-on-surface">10 items</strong>.
+        <span class="text-primary font-semibold cursor-pointer hover:underline" onclick="goToScreen('upgrade')">Upgrade for unlimited →</span>
+      </p>
+      <button class="btn-primary px-8 py-4 rounded-xl font-bold text-sm flex items-center gap-2 pulse-glow" onclick="goToScreen('alert')">
+        <span class="material-symbols-outlined fill-icon">auto_awesome</span>
+        Confirm My Essentials
       </button>
     </div>
-  </nav>
+  </div>
+</section>
 
-  <div class="flex min-h-screen">
-    <!-- SideNavBar -->
-    <aside class="bg-slate-100 hidden md:flex flex-col w-64 fixed left-0 top-[57px] bottom-0 py-8 space-y-1 font-sans text-sm font-medium">
-      <div class="px-6 mb-6">
-        <h2 class="text-base font-bold text-slate-900">ReplenishAI</h2>
-        <p class="text-xs text-slate-500">Proactive Curator</p>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     SCREEN 2 — SMART ALERT
+═══════════════════════════════════════════════════════════════ -->
+<section class="screen" id="screen-alert">
+  <div class="max-w-lg mx-auto px-4 py-8 pb-32 md:pb-14">
+
+    <!-- Push Notification simulation -->
+    <div class="mb-8 anim-up">
+      <div class="rounded-2xl p-4 flex items-start gap-4" style="background:rgba(25,28,30,0.96);box-shadow:0 20px 40px rgba(25,28,30,0.18)">
+        <div class="p-2 rounded-xl btn-primary flex-shrink-0">
+          <span class="material-symbols-outlined fill-icon text-white text-xl">auto_awesome</span>
+        </div>
+        <div class="flex-1">
+          <span class="text-[10px] font-bold tracking-widest uppercase block mb-1" style="color:rgba(255,255,255,0.45)">ReplenishAI · NOW</span>
+          <p class="text-sm font-medium text-white leading-snug">You'll likely run out of <strong>Paper Towels</strong> in 5 days. Want to reorder?</p>
+        </div>
       </div>
-      <nav class="flex-1">
-        <button class="bg-white text-blue-700 shadow-sm w-full text-left rounded-lg mx-2 px-4 py-3 flex items-center gap-3 cursor-pointer" style="width: calc(100% - 16px)">
-          <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1;">dashboard</span><span>Dashboard</span>
-        </button>
-        <button class="text-slate-600 w-full text-left px-4 py-3 mx-2 flex items-center gap-3 hover:bg-slate-200/50 rounded-lg cursor-pointer transition-colors" style="width: calc(100% - 16px)">
-          <span class="material-symbols-outlined">inventory_2</span><span>Inventory</span>
-        </button>
-        <button onclick="showScreen('alert')" class="text-slate-600 w-full text-left px-4 py-3 mx-2 flex items-center gap-3 hover:bg-slate-200/50 rounded-lg cursor-pointer transition-colors" style="width: calc(100% - 16px)">
-          <span class="material-symbols-outlined">shopping_cart</span><span>Orders</span>
-        </button>
-        <button onclick="showScreen('upgrade')" class="text-slate-600 w-full text-left px-4 py-3 mx-2 flex items-center gap-3 hover:bg-slate-200/50 rounded-lg cursor-pointer transition-colors" style="width: calc(100% - 16px)">
-          <span class="material-symbols-outlined">auto_awesome</span><span>Upgrade to Plus</span>
-        </button>
-      </nav>
-      <div class="px-4 pb-8">
-        <button class="w-full bg-gradient-to-br from-primary to-primary-container text-white py-3 rounded-xl font-semibold flex items-center justify-center gap-2 shadow-lg">
-          <span class="material-symbols-outlined text-sm">qr_code_scanner</span>
-          Quick Scan
+    </div>
+
+    <!-- Section label + title -->
+    <div class="mb-7 anim-up-2">
+      <span class="chip mb-3" style="background:#ffddb3;color:#291800">Predicted Stockout</span>
+      <h1 class="text-3xl font-extrabold tracking-tight text-on-surface mb-1">Smart Alert</h1>
+      <p class="text-sm text-on-surface-variant">AI detected a supply gap in your kitchen inventory.</p>
+    </div>
+
+    <!-- Main Alert Card -->
+    <div class="relative mb-10 anim-up-3">
+      <!-- Ambient decor blob -->
+      <div class="absolute -top-4 -right-4 w-36 h-36 rounded-full blur-3xl -z-10" style="background:rgba(218,226,255,0.5)"></div>
+
+      <div class="card p-6">
+        <!-- Item row -->
+        <div class="flex items-center gap-5 mb-7">
+          <div class="w-20 h-20 rounded-xl flex items-center justify-center flex-shrink-0" style="background:#edeef0">
+            <span class="material-symbols-outlined text-on-surface-variant" style="font-size:3rem">layers</span>
+          </div>
+          <div class="flex-1">
+            <h2 class="text-xl font-bold text-on-surface leading-tight mb-1" id="alertItemName">Paper Towels</h2>
+            <div class="flex items-center gap-2 mb-2">
+              <span class="text-xs font-semibold text-on-surface-variant px-2 py-0.5 rounded-lg" id="alertBrand" style="background:#edeef0">Bounty</span>
+              <span class="text-xs font-semibold text-on-surface-variant px-2 py-0.5 rounded-lg" style="background:#edeef0">8-Roll Pack</span>
+            </div>
+            <div class="text-xl font-black text-primary" id="alertPrice">$14.99</div>
+          </div>
+        </div>
+
+        <!-- Stats rows -->
+        <div class="mb-7 space-y-0">
+          <div class="flex justify-between items-center py-3" style="border-bottom:1px solid rgba(225,226,228,0.5)">
+            <span class="text-sm font-medium text-on-surface-variant">Predicted Exhaustion</span>
+            <span class="text-sm font-bold" style="color:#5e3c00">Apr 13 · 5 Days</span>
+          </div>
+          <div class="flex justify-between items-center py-3" style="border-bottom:1px solid rgba(225,226,228,0.5)">
+            <span class="text-sm font-medium text-on-surface-variant">Recommended Supplier</span>
+            <div class="flex items-center gap-1.5">
+              <span class="material-symbols-outlined text-sm text-on-surface-variant">shopping_cart</span>
+              <span class="text-sm font-bold text-on-surface" id="alertSupplier">Amazon</span>
+            </div>
+          </div>
+          <div class="flex justify-between items-center py-3">
+            <span class="text-sm font-medium text-on-surface-variant">AI Confidence</span>
+            <div class="flex items-center gap-1.5">
+              <div class="flex gap-0.5">
+                <div class="w-1.5 h-4 rounded-full" style="background:#003d9b"></div>
+                <div class="w-1.5 h-4 rounded-full" style="background:#003d9b"></div>
+                <div class="w-1.5 h-4 rounded-full" style="background:#003d9b"></div>
+                <div class="w-1.5 h-4 rounded-full" style="background:#003d9b"></div>
+                <div class="w-1.5 h-4 rounded-full" style="background:#e7e8ea"></div>
+              </div>
+              <span class="text-[10px] font-black text-primary">94%</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Actions -->
+        <div class="flex flex-col gap-3">
+          <button class="btn-primary w-full py-4 rounded-xl font-bold flex items-center justify-center gap-2" onclick="approveOrder()">
+            <span class="material-symbols-outlined fill-icon text-xl">check_circle</span>
+            Approve Order
+          </button>
+          <div class="grid grid-cols-2 gap-3">
+            <button class="py-3 rounded-xl font-semibold text-sm flex items-center justify-center gap-1.5 transition-all active:scale-95" style="background:#e7e8ea;color:#191c1e" onclick="openModal('swapModal')">
+              <span class="material-symbols-outlined text-lg">swap_horiz</span>
+              Swap Brand
+            </button>
+            <button class="btn-ghost py-3 rounded-xl font-semibold text-sm" onclick="dismissAlert()">
+              Dismiss
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Recent Predictions list -->
+    <section>
+      <div class="flex justify-between items-end mb-5">
+        <h3 class="text-lg font-bold text-on-surface">Recent Predictions</h3>
+        <span class="text-[10px] font-bold tracking-widest text-primary uppercase cursor-pointer hover:underline">View All</span>
+      </div>
+      <div class="space-y-3">
+        <div class="flex items-center gap-4 p-4 rounded-xl hover:bg-surface-container transition-colors" style="background:#f3f4f6">
+          <div class="w-11 h-11 rounded-lg flex items-center justify-center" style="background:#e1e2e4">
+            <span class="material-symbols-outlined text-on-surface-variant">coffee</span>
+          </div>
+          <div class="flex-1">
+            <p class="text-sm font-bold text-on-surface">Espresso Pods</p>
+            <p class="text-[10px] font-medium text-on-surface-variant">Nespresso Ispirazione</p>
+          </div>
+          <div class="text-right">
+            <p class="text-[10px] font-bold uppercase tracking-tight text-on-surface-variant">Runs Out In</p>
+            <p class="text-sm font-bold" style="color:#006c47">12 Days</p>
+          </div>
+        </div>
+        <div class="flex items-center gap-4 p-4 rounded-xl hover:bg-surface-container transition-colors" style="background:#f3f4f6">
+          <div class="w-11 h-11 rounded-lg flex items-center justify-center" style="background:#e1e2e4">
+            <span class="material-symbols-outlined text-on-surface-variant">sanitizer</span>
+          </div>
+          <div class="flex-1">
+            <p class="text-sm font-bold text-on-surface">Hand Soap Refill</p>
+            <p class="text-[10px] font-medium text-on-surface-variant">Mrs. Meyer's Lemon</p>
+          </div>
+          <div class="text-right">
+            <p class="text-[10px] font-bold uppercase tracking-tight text-on-surface-variant">Runs Out In</p>
+            <p class="text-sm font-bold" style="color:#006c47">19 Days</p>
+          </div>
+        </div>
+        <div class="flex items-center gap-4 p-4 rounded-xl opacity-55" style="background:#f3f4f6">
+          <div class="w-11 h-11 rounded-lg flex items-center justify-center" style="background:#e1e2e4">
+            <span class="material-symbols-outlined text-on-surface-variant">dishwasher_gen</span>
+          </div>
+          <div class="flex-1">
+            <p class="text-sm font-bold text-on-surface">Dishwasher Pods</p>
+            <p class="text-[10px] font-medium text-on-surface-variant">Cascade Platinum</p>
+          </div>
+          <div class="text-right">
+            <p class="text-[10px] font-bold uppercase tracking-tight text-on-surface-variant">Runs Out In</p>
+            <p class="text-sm font-bold text-on-surface-variant">28 Days</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════════════
+     SCREEN 3 — DASHBOARD / DELIGHT
+═══════════════════════════════════════════════════════════════ -->
+<section class="screen" id="screen-dashboard">
+  <div class="flex">
+
+    <!-- Desktop Sidebar -->
+    <aside class="hidden md:flex flex-col sidebar flex-shrink-0 h-[calc(100vh-56px)] sticky top-14 py-8 px-3" style="background:#f3f4f6">
+      <p class="text-[10px] font-bold tracking-widest uppercase text-on-surface-variant px-2 mb-4">Navigation</p>
+      <div class="sidebar-link active">
+        <span class="material-symbols-outlined fill-icon text-primary" style="font-size:20px">dashboard</span>
+        <span>Dashboard</span>
+      </div>
+      <div class="sidebar-link" onclick="goToScreen('onboarding')">
+        <span class="material-symbols-outlined" style="font-size:20px">inventory_2</span>
+        <span>Inventory</span>
+      </div>
+      <div class="sidebar-link">
+        <span class="material-symbols-outlined" style="font-size:20px">shopping_cart</span>
+        <span>Orders</span>
+      </div>
+      <div class="sidebar-link" onclick="goToScreen('alert')">
+        <span class="material-symbols-outlined" style="font-size:20px">notifications</span>
+        <span>Alerts</span>
+        <span class="ml-auto chip" style="background:#003d9b;color:#fff;font-size:9px" id="alertBadge">1</span>
+      </div>
+      <div class="mt-auto">
+        <button class="btn-primary w-full py-3 rounded-xl font-bold text-sm flex items-center justify-center gap-2" onclick="goToScreen('upgrade')">
+          <span class="material-symbols-outlined fill-icon text-sm">auto_awesome</span>
+          Upgrade to Plus
         </button>
       </div>
     </aside>
 
     <!-- Main Content -->
-    <main class="flex-1 md:ml-64 p-8 lg:p-12">
+    <main class="flex-1 p-6 lg:p-10 pb-32 md:pb-10 min-w-0">
 
       <!-- Delight Banner -->
-      <section class="mb-12 relative overflow-hidden bg-secondary-container/20 rounded-2xl p-8 md:p-10 border border-secondary-container/30 flex flex-col md:flex-row justify-between items-center gap-8">
+      <section class="mb-10 relative overflow-hidden rounded-2xl p-7 md:p-10 flex flex-col md:flex-row justify-between items-center gap-8 anim-up" style="background:rgba(130,249,190,0.12);border:1px solid rgba(0,108,71,0.15)">
         <div class="max-w-xl relative z-10">
-          <div class="flex items-center gap-2 mb-4">
-            <span class="bg-secondary text-on-secondary px-3 py-1 rounded-full text-[10px] font-bold tracking-widest uppercase">Success</span>
-            <span class="text-secondary font-semibold text-sm">System Optimization Complete</span>
+          <div class="flex items-center gap-2 mb-3">
+            <span class="chip" style="background:#006c47;color:#fff">Success</span>
+            <span class="font-semibold text-sm" style="color:#006c47">Stockout Prevented</span>
           </div>
-          <h1 class="text-4xl md:text-5xl font-black text-slate-900 tracking-tighter leading-tight mb-4">Stockout Prevented!</h1>
-          <p class="text-slate-600 text-lg leading-relaxed">
-            Your <span class="font-bold text-slate-900">Bounty Paper Towels</span> have been delivered. We identified a low-stock trend 4 days ago and secured the best price for you automatically.
-          </p>
+          <h1 class="text-3xl md:text-4xl font-black text-on-surface tracking-tight leading-tight mb-3" id="delightHeading">Bounty Paper Towels delivered!</h1>
+          <p class="text-on-surface-variant leading-relaxed text-sm md:text-base">We identified a low-stock trend <strong class="text-on-surface">5 days ago</strong> and secured the best price automatically.</p>
         </div>
-        <div class="relative w-48 h-48 md:w-64 md:h-64 rounded-2xl overflow-hidden shadow-2xl rotate-3 shrink-0">
-          <img alt="Package delivery" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA95UuUB7QIpcfAVLWy0rwP6rjcOyChyg2f632FDe9_N7JyKRzOtj_dhrs9DSBW0ZvIBJ63Xe4BWf9uiDjjEg6I1Oe4HPrf5Z1O1-Qzn5fME1F0qp1xOo6AnaMQz-TVQVOHo8ZvjQRZxm24vMv8AlrPq3U3uNsSrlzysLGbQEud_62IXt9yDYWqjb1xQhyjCmhW8mxU09nfF6vSp9Aahyru-Sul4KSfDTz_qSJsQvN3L1VxUaytHXV1fftbpYsNXGosNlsrAsH-YJw"/>
+        <div class="w-36 h-36 md:w-48 md:h-48 rounded-2xl flex items-center justify-center rotate-3 flex-shrink-0" style="background:rgba(130,249,190,0.25);box-shadow:0 20px 40px rgba(25,28,30,0.08)">
+          <span class="material-symbols-outlined fill-icon" style="font-size:5rem;color:#006c47">inventory_2</span>
         </div>
-        <div class="absolute -top-12 -right-12 w-64 h-64 bg-secondary-container/40 blur-3xl rounded-full"></div>
+        <div class="absolute -top-16 -right-16 w-64 h-64 rounded-full blur-3xl pointer-events-none" style="background:rgba(130,249,190,0.3)"></div>
       </section>
 
-      <!-- Inventory Health Grid -->
-      <section class="mb-16">
-        <div class="flex justify-between items-end mb-8">
+      <!-- Inventory Health -->
+      <section class="mb-12">
+        <div class="flex justify-between items-end mb-6">
           <div>
-            <h2 class="text-2xl font-bold tracking-tight text-slate-900">Inventory Health</h2>
-            <p class="text-slate-500 text-sm">Live status of your household essentials</p>
+            <h2 class="text-xl font-bold text-on-surface tracking-tight">Inventory Health</h2>
+            <p class="text-on-surface-variant text-sm mt-0.5">Live status of your household essentials</p>
           </div>
-          <div class="flex items-center gap-2 text-xs font-bold text-slate-400 tracking-widest uppercase">
-            <span>10 of 10 items tracked</span>
-          </div>
+          <span class="text-xs font-bold text-on-surface-variant tracking-widest uppercase" id="inventoryCount">7 of 10 tracked</span>
         </div>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-
-          <!-- Optimal -->
-          <div class="bg-surface-container-lowest p-6 rounded-2xl shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow">
-            <div class="flex justify-between items-start mb-4">
-              <span class="material-symbols-outlined text-slate-400 bg-slate-100 p-2 rounded-lg">coffee</span>
-              <span class="bg-secondary-container text-on-secondary-container px-2 py-1 rounded-full text-[10px] font-bold">OPTIMAL</span>
-            </div>
-            <div>
-              <h3 class="font-bold text-slate-900 mb-1">Espresso Pods</h3>
-              <div class="flex items-center gap-2 mb-3">
-                <div class="h-1.5 flex-1 bg-slate-100 rounded-full overflow-hidden"><div class="h-full bg-secondary w-4/5"></div></div>
-                <span class="text-xs font-medium text-slate-500">22 Days</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Low stock / Reordering -->
-          <div class="bg-surface-container-lowest p-6 rounded-2xl shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow">
-            <div class="flex justify-between items-start mb-4">
-              <span class="material-symbols-outlined text-tertiary-container bg-tertiary-fixed p-2 rounded-lg">cleaning_services</span>
-              <span class="bg-tertiary-container text-on-tertiary-container px-2 py-1 rounded-full text-[10px] font-bold">REORDERING</span>
-            </div>
-            <div>
-              <h3 class="font-bold text-slate-900 mb-1">Laundry Detergent</h3>
-              <div class="flex items-center gap-2 mb-3">
-                <div class="h-1.5 flex-1 bg-slate-100 rounded-full overflow-hidden"><div class="h-full bg-tertiary-fixed-dim w-1/5"></div></div>
-                <span class="text-xs font-medium text-tertiary">3 Days</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Just Delivered -->
-          <div class="bg-secondary/5 p-6 rounded-2xl border border-secondary/10 flex flex-col justify-between hover:shadow-md transition-shadow">
-            <div class="flex justify-between items-start mb-4">
-              <span class="material-symbols-outlined text-secondary bg-secondary-container p-2 rounded-lg">layers</span>
-              <span class="bg-secondary text-white px-2 py-1 rounded-full text-[10px] font-bold">RESTOCKED</span>
-            </div>
-            <div>
-              <h3 class="font-bold text-slate-900 mb-1">Bounty Towels</h3>
-              <div class="flex items-center gap-2 mb-3">
-                <div class="h-1.5 flex-1 bg-slate-100 rounded-full overflow-hidden"><div class="h-full bg-secondary w-full"></div></div>
-                <span class="text-xs font-medium text-slate-500">45 Days</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Plus Upgrade Nudge -->
-          <div class="bg-slate-900 p-6 rounded-2xl flex flex-col justify-center text-center relative overflow-hidden group cursor-pointer" onclick="showScreen('upgrade')">
-            <div class="relative z-10">
-              <span class="material-symbols-outlined text-primary-fixed mb-2">auto_awesome</span>
-              <h3 class="text-white font-bold mb-2">Limit Reached</h3>
-              <p class="text-slate-400 text-xs mb-4">You've hit the 10-item cap. Tracking more requires Plus.</p>
-              <button class="bg-white text-slate-900 px-4 py-2 rounded-lg text-xs font-bold hover:bg-slate-100 transition-colors">Upgrade Now</button>
-            </div>
-            <div class="absolute inset-0 bg-gradient-to-br from-blue-600/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
-          </div>
-
-          <!-- Remaining items -->
-          <div class="bg-surface-container-lowest p-6 rounded-2xl shadow-sm flex flex-col justify-between">
-            <div class="flex justify-between items-start mb-4">
-              <span class="material-symbols-outlined text-slate-400 bg-slate-100 p-2 rounded-lg">water_drop</span>
-            </div>
-            <div>
-              <h3 class="font-bold text-slate-900 mb-1">Sparkling Water</h3>
-              <div class="flex items-center gap-2 mb-3">
-                <div class="h-1.5 flex-1 bg-slate-100 rounded-full overflow-hidden"><div class="h-full bg-secondary w-3/4"></div></div>
-                <span class="text-xs font-medium text-slate-500">14d</span>
-              </div>
-            </div>
-          </div>
-          <div class="bg-surface-container-lowest p-6 rounded-2xl shadow-sm flex flex-col justify-between">
-            <div class="flex justify-between items-start mb-4">
-              <span class="material-symbols-outlined text-slate-400 bg-slate-100 p-2 rounded-lg">soap</span>
-            </div>
-            <div>
-              <h3 class="font-bold text-slate-900 mb-1">Hand Soap</h3>
-              <div class="flex items-center gap-2 mb-3">
-                <div class="h-1.5 flex-1 bg-slate-100 rounded-full overflow-hidden"><div class="h-full bg-secondary w-2/3"></div></div>
-                <span class="text-xs font-medium text-slate-500">18d</span>
-              </div>
-            </div>
-          </div>
-          <div class="bg-surface-container-lowest p-6 rounded-2xl shadow-sm flex flex-col justify-between">
-            <div class="flex justify-between items-start mb-4">
-              <span class="material-symbols-outlined text-slate-400 bg-slate-100 p-2 rounded-lg">pet_supplies</span>
-            </div>
-            <div>
-              <h3 class="font-bold text-slate-900 mb-1">Dog Kibble</h3>
-              <div class="flex items-center gap-2 mb-3">
-                <div class="h-1.5 flex-1 bg-slate-100 rounded-full overflow-hidden"><div class="h-full bg-secondary w-1/2"></div></div>
-                <span class="text-xs font-medium text-slate-500">9d</span>
-              </div>
-            </div>
-          </div>
-          <div class="bg-surface-container-lowest p-6 rounded-2xl shadow-sm flex flex-col justify-between">
-            <div class="flex justify-between items-start mb-4">
-              <span class="material-symbols-outlined text-slate-400 bg-slate-100 p-2 rounded-lg">kitchen</span>
-            </div>
-            <div>
-              <h3 class="font-bold text-slate-900 mb-1">Milk (Whole)</h3>
-              <div class="flex items-center gap-2 mb-3">
-                <div class="h-1.5 flex-1 bg-slate-100 rounded-full overflow-hidden"><div class="h-full bg-tertiary-fixed-dim w-1/4"></div></div>
-                <span class="text-xs font-medium text-tertiary">4d</span>
-              </div>
-            </div>
-          </div>
-
-        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4" id="inventoryGrid"></div>
       </section>
 
-      <!-- Bottom Sections -->
-      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
+      <!-- Referral + Upgrade Nudge -->
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
 
         <!-- Referral Card -->
-        <section class="lg:col-span-2 bg-white rounded-2xl p-10 shadow-sm flex flex-col md:flex-row gap-10 items-center">
-          <div class="flex-1">
-            <h2 class="text-3xl font-black text-slate-900 tracking-tighter mb-4 leading-none">Share the Love, Get Rewards.</h2>
-            <p class="text-slate-500 mb-6 leading-relaxed">Refer a neighbor to ReplenishAI. When they join Plus, you both receive $5 credit toward your next curation.</p>
-            <div class="flex items-center gap-3 bg-slate-50 p-2 rounded-xl border border-slate-100">
-              <code class="flex-1 px-4 text-sm font-medium text-slate-700">replenish.ai/ref/j-curator-92</code>
-              <button onclick="copyReferral(this)" class="bg-slate-900 text-white px-4 py-2 rounded-lg text-xs font-bold active:scale-95 transition-all">Copy</button>
-            </div>
-            <div class="flex gap-4 mt-6">
-              <button class="w-10 h-10 rounded-full bg-blue-50 flex items-center justify-center text-blue-600 hover:bg-blue-100 transition-colors">
-                <span class="material-symbols-outlined text-lg">share</span>
-              </button>
-              <button class="w-10 h-10 rounded-full bg-green-50 flex items-center justify-center text-green-600 hover:bg-green-100 transition-colors">
-                <span class="material-symbols-outlined text-lg">sms</span>
-              </button>
-              <button class="w-10 h-10 rounded-full bg-indigo-50 flex items-center justify-center text-indigo-600 hover:bg-indigo-100 transition-colors">
-                <span class="material-symbols-outlined text-lg">alternate_email</span>
-              </button>
-            </div>
-            <div class="mt-8 p-4 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-2xl border border-blue-100 flex flex-col sm:flex-row items-center justify-between gap-4">
-              <div class="flex items-center gap-3">
-                <div class="bg-white p-2 rounded-full shadow-sm">
-                  <span class="material-symbols-outlined text-blue-600">celebration</span>
-                </div>
-                <div>
-                  <p class="text-sm font-bold text-slate-900">Share the Win!</p>
-                  <p class="text-xs text-slate-600">Post your pantry on social &amp; get an instant <span class="text-blue-600 font-bold">$2 discount</span> on next month.</p>
-                </div>
+        <section class="lg:col-span-2 bg-surface-container-lowest rounded-2xl p-8 shadow-sm">
+          <h2 class="text-2xl font-black text-on-surface tracking-tighter mb-2 leading-tight">Share the Love, Get Rewards.</h2>
+          <p class="text-on-surface-variant text-sm mb-5 leading-relaxed">Refer a friend — when they join Plus, you both get <strong class="text-on-surface">$5 credit</strong> toward your next order.</p>
+          <!-- Ref link row -->
+          <div class="flex items-center gap-2 rounded-xl p-2 mb-5" style="background:#edeef0">
+            <code class="flex-1 px-3 text-sm font-medium text-on-surface">replenish.ai/ref/zion-92</code>
+            <button class="px-4 py-2 rounded-lg text-xs font-bold text-white active:scale-95 transition-all" style="background:#191c1e" onclick="copyRef()">Copy</button>
+          </div>
+          <!-- Share buttons -->
+          <div class="flex gap-3 mb-6">
+            <button class="w-10 h-10 rounded-full bg-blue-50 flex items-center justify-center text-blue-600 hover:bg-blue-100 transition-colors" onclick="showToast('Shared via link!')">
+              <span class="material-symbols-outlined text-lg">share</span>
+            </button>
+            <button class="w-10 h-10 rounded-full bg-green-50 flex items-center justify-center text-green-600 hover:bg-green-100 transition-colors" onclick="showToast('SMS draft opened!')">
+              <span class="material-symbols-outlined text-lg">sms</span>
+            </button>
+            <button class="w-10 h-10 rounded-full bg-indigo-50 flex items-center justify-center text-indigo-600 hover:bg-indigo-100 transition-colors" onclick="showToast('Email draft opened!')">
+              <span class="material-symbols-outlined text-lg">alternate_email</span>
+            </button>
+          </div>
+          <!-- Social share nudge -->
+          <div class="rounded-2xl p-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4" style="background:linear-gradient(135deg,rgba(219,234,254,0.7),rgba(224,231,255,0.7));border:1px solid rgba(147,197,253,0.35)">
+            <div class="flex items-center gap-3">
+              <div class="w-9 h-9 rounded-full bg-white shadow-sm flex items-center justify-center">
+                <span class="material-symbols-outlined fill-icon text-blue-600">celebration</span>
               </div>
-              <button class="whitespace-nowrap bg-blue-600 hover:bg-blue-700 text-white px-6 py-2.5 rounded-xl text-sm font-bold shadow-md transition-all active:scale-95 flex items-center gap-2">
-                <span class="material-symbols-outlined text-sm">share</span>
-                Post to Social
-              </button>
+              <div>
+                <p class="text-sm font-bold text-on-surface">Share the Win!</p>
+                <p class="text-xs text-on-surface-variant">Post your stockout story — get <strong class="text-blue-600">$2 off</strong> next month.</p>
+              </div>
             </div>
+            <button class="btn-primary py-2.5 px-5 rounded-xl text-xs font-bold flex items-center gap-1.5 whitespace-nowrap" onclick="showToast('Posted! $2 credit applied.')">
+              <span class="material-symbols-outlined text-sm">share</span>
+              Post to Social
+            </button>
           </div>
         </section>
 
         <!-- Achievement / Upgrade Nudge -->
-        <section class="bg-primary text-on-primary rounded-2xl p-8 shadow-xl flex flex-col justify-between min-h-[350px]">
+        <section class="rounded-2xl p-8 flex flex-col justify-between min-h-60" style="background:#191c1e">
           <div>
-            <div class="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center mb-6">
-              <span class="material-symbols-outlined text-2xl text-white" style="font-variation-settings:'FILL' 1;">shield</span>
+            <div class="w-12 h-12 rounded-full flex items-center justify-center mb-5" style="background:rgba(255,255,255,0.1)">
+              <span class="material-symbols-outlined fill-icon text-white text-2xl">shield</span>
             </div>
-            <h3 class="text-2xl font-bold leading-tight mb-4">3 Stockouts Prevented This Month</h3>
-            <p class="text-primary-fixed text-sm leading-relaxed mb-8">Your household is running at 98% efficiency. Upgrading to Plus would unlock deep-pantry automation for all 50 items in your catalog.</p>
+            <h3 class="text-xl font-bold leading-tight mb-2 text-white" id="achievementHeading">3 Stockouts Prevented</h3>
+            <p class="text-sm leading-relaxed mb-6" style="color:rgba(240,241,243,0.65)">Your household runs at 98% efficiency. Upgrade to Plus for unlimited item tracking and advanced ML predictions.</p>
           </div>
-          <button onclick="showScreen('upgrade')" class="w-full bg-white text-primary py-4 rounded-xl font-bold hover:shadow-lg transition-all active:scale-[0.98]">
+          <button class="w-full py-3.5 rounded-xl font-bold text-sm text-on-surface bg-white hover:bg-surface-container transition-all active:scale-[0.98]" onclick="goToScreen('upgrade')">
             Upgrade to Plus
           </button>
         </section>
@@ -1052,426 +536,587 @@
       </div>
     </main>
   </div>
-
-  <!-- Mobile Bottom Nav -->
-  <nav class="md:hidden fixed bottom-0 left-0 right-0 bg-slate-50/80 backdrop-blur-xl flex justify-around items-center px-4 py-3 z-50 border-t border-slate-200/50">
-    <button class="flex flex-col items-center gap-1 text-blue-700 transition-all active:scale-90">
-      <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1;">dashboard</span>
-      <span class="text-[10px] font-bold uppercase tracking-wider">Home</span>
-    </button>
-    <button class="flex flex-col items-center gap-1 text-slate-500 transition-all active:scale-90">
-      <span class="material-symbols-outlined">inventory_2</span>
-      <span class="text-[10px] font-bold uppercase tracking-wider">Items</span>
-    </button>
-    <button onclick="showScreen('alert')" class="flex flex-col items-center gap-1 text-slate-500 transition-all active:scale-90">
-      <span class="material-symbols-outlined">notifications</span>
-      <span class="text-[10px] font-bold uppercase tracking-wider">Alerts</span>
-    </button>
-    <button onclick="showScreen('upgrade')" class="flex flex-col items-center gap-1 text-slate-500 transition-all active:scale-90">
-      <span class="material-symbols-outlined">auto_awesome</span>
-      <span class="text-[10px] font-bold uppercase tracking-wider">Plus</span>
-    </button>
-  </nav>
-
-  <footer class="bg-slate-50 border-t border-slate-200 py-12 md:ml-64">
-    <div class="max-w-7xl mx-auto px-8 flex flex-col md:flex-row justify-between items-center gap-4">
-      <div class="text-slate-500 text-xs tracking-wide uppercase">© 2024 ReplenishAI. Intelligent Household Management.</div>
-      <div class="flex gap-8">
-        <a class="text-slate-500 text-xs tracking-wide uppercase hover:text-blue-600 transition-colors" href="#">Privacy</a>
-        <a class="text-slate-500 text-xs tracking-wide uppercase hover:text-blue-600 transition-colors" href="#">Terms</a>
-        <a class="text-slate-500 text-xs tracking-wide uppercase hover:text-blue-600 transition-colors" href="#">Support</a>
-      </div>
-    </div>
-  </footer>
-
-</div><!-- /screen-delight -->
+</section>
 
 
-<!-- ========== SCREEN 4: UPGRADE TO PLUS ========== -->
-<div id="screen-upgrade" class="screen" hidden>
+<!-- ═══════════════════════════════════════════════════════════════
+     SCREEN 4 — UPGRADE TO PLUS
+═══════════════════════════════════════════════════════════════ -->
+<section class="screen" id="screen-upgrade">
+  <div class="min-h-screen pb-32 md:pb-16">
 
-  <!-- TopNavBar -->
-  <header class="bg-slate-50/80 backdrop-blur-xl shadow-sm sticky top-0 z-50">
-    <div class="flex justify-between items-center w-full px-6 py-3">
-      <div class="flex items-center gap-8">
-        <span class="text-xl font-black tracking-tighter text-on-surface">Replenish<span class="text-primary">AI</span></span>
-        <nav class="hidden md:flex gap-6 text-sm">
-          <button onclick="showScreen('delight')" class="text-slate-500 hover:text-slate-900 transition-all">Dashboard</button>
-          <button class="text-slate-500 hover:text-slate-900 transition-all">Inventory</button>
-          <button onclick="showScreen('alert')" class="text-slate-500 hover:text-slate-900 transition-all">Orders</button>
-          <button class="text-blue-700 font-semibold border-b-2 border-blue-700">Upgrade to Plus</button>
-        </nav>
-      </div>
-      <div class="flex items-center gap-4">
-        <button class="p-2 text-slate-500 hover:bg-slate-100/50 rounded-full transition-all">
-          <span class="material-symbols-outlined">account_circle</span>
-        </button>
-        <button class="p-2 text-slate-500 hover:bg-slate-100/50 rounded-full transition-all">
-          <span class="material-symbols-outlined">settings</span>
-        </button>
-      </div>
-    </div>
-    <div class="bg-slate-200/50 h-[1px]"></div>
-  </header>
-
-  <main class="min-h-screen py-24 bg-background">
-
-    <!-- Hero Section -->
-    <section class="max-w-6xl mx-auto px-6 mb-20">
-      <div class="flex flex-col md:flex-row items-center gap-16">
-        <div class="w-full md:w-3/5">
-          <span class="text-xs font-bold tracking-[0.1em] text-primary uppercase mb-4 block">Elevate your home intelligence</span>
-          <h1 class="text-[3.5rem] leading-[1.1] font-black tracking-tight text-on-surface mb-6">Never run out of anything, ever again.</h1>
-          <p class="text-lg text-on-surface-variant leading-relaxed mb-8 max-w-xl">
-            ReplenishAI Plus transforms your pantry from a list of items into a self-healing ecosystem. Proactive curation, intelligent sourcing, and total peace of mind.
-          </p>
-          <div class="flex items-center gap-4 p-6 bg-surface-container rounded-xl">
-            <div class="h-12 w-12 rounded-full overflow-hidden flex-shrink-0">
-              <img alt="User testimonial" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAtBmMw10CP_gKyfjJCT_SZr-8G9Qh7ZKPcYcqgDxk4Ds833V5zMuXbmxFjYGHXMM8lvfeHU8JMdbpqTLbcQjTJ0CAp2LxhzlKKHlWBLUIH3usN5dVj4ctV64w-93dwKXEHjtdovuPTw9Ko6NPQNXLh0-8AK_OzROj1hPBewx2x68g9eHe6H2Kz9oJCEJaamZ6KYxhEpGM2p9IvPFvizDOOPEWKW0g8uU_MKu90jAehOXIQpIRMaJDXm3u9yvjeIKEMvPHH7k1xSvg"/>
+    <!-- Hero -->
+    <div class="max-w-5xl mx-auto px-5 pt-14 pb-16">
+      <div class="flex flex-col md:flex-row items-center gap-14">
+        <!-- Copy -->
+        <div class="w-full md:w-3/5 anim-up">
+          <span class="text-xs font-bold tracking-[0.2em] text-primary uppercase mb-4 block">Elevate Your Home Intelligence</span>
+          <h1 class="font-black tracking-tight text-on-surface leading-none mb-5" style="font-size:clamp(2.5rem,5vw,3.75rem)">Never run out<br/>of anything,<br/><em class="not-italic text-primary">ever again.</em></h1>
+          <p class="text-on-surface-variant leading-relaxed mb-8 max-w-lg">ReplenishAI Plus transforms your pantry into a self-healing ecosystem. Proactive curation, intelligent sourcing, total peace of mind.</p>
+          <!-- Testimonial -->
+          <div class="flex items-center gap-4 p-5 rounded-xl" style="background:#edeef0">
+            <div class="w-11 h-11 rounded-full flex items-center justify-center flex-shrink-0" style="background:#e1e2e4">
+              <span class="material-symbols-outlined fill-icon text-on-surface-variant">person</span>
             </div>
-            <p class="italic text-on-surface font-medium">
+            <p class="italic text-on-surface font-medium text-sm leading-relaxed">
               "I haven't thought about toilet paper in 6 months."
-              <span class="block text-sm font-normal text-on-surface-variant not-italic">— Sarah J., Busy Parent &amp; Architect</span>
+              <span class="block text-xs font-normal text-on-surface-variant not-italic mt-0.5">— Sarah J., Busy Parent &amp; Architect</span>
             </p>
           </div>
         </div>
-        <div class="w-full md:w-2/5 aspect-[4/5] relative rounded-xl overflow-hidden shadow-2xl">
-          <img alt="Organized modern pantry" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCzykMjA52fxKdhmoG_QYsrj3HjMNUO159TP_O9rEAK9n1BoOqmNSLfEXjfURWOMREUUuj3710yMXTRP-XZhjh0TS3e2uTObdU8gs_Coxj-yJ4X-dE69Tas0m4POzhUNXb39fr9mxmHiXhcIbDN-OH_d19WF7T8vbjfogEwbwLgMQwxRqOfEbLc6YIE0f5vZszRER5sVdcW0mivGhQa0IWZnwP15faSaSo3MyvnwbV8OwNO1xMnhYsxkpwS53Kjw7vc1JlHQMyLctI"/>
-          <div class="absolute inset-0 bg-gradient-to-t from-primary/40 to-transparent"></div>
+        <!-- Visual -->
+        <div class="w-full md:w-2/5 rounded-2xl overflow-hidden shadow-2xl flex items-center justify-center anim-up-2" style="aspect-ratio:4/5;background:linear-gradient(135deg,#003d9b,#0052cc)">
+          <div class="text-center text-white p-8">
+            <span class="material-symbols-outlined fill-icon" style="font-size:5rem;opacity:0.9">auto_awesome</span>
+            <p class="text-2xl font-black mt-4 tracking-tight leading-snug">AI-Powered<br/>Pantry<br/>Management</p>
+          </div>
         </div>
       </div>
-    </section>
+    </div>
 
-    <!-- Tier Comparison -->
-    <section class="max-w-5xl mx-auto px-6">
-      <div class="grid md:grid-cols-2 gap-8 items-stretch">
-        <!-- Free Tier -->
-        <div class="bg-surface-container-low rounded-xl p-10 flex flex-col transition-all duration-300 hover:bg-surface-container">
-          <div class="mb-8">
-            <h3 class="text-2xl font-bold text-on-surface mb-2">Free</h3>
-            <div class="text-4xl font-black text-on-surface mb-4">$0 <span class="text-lg font-normal text-on-surface-variant">/mo</span></div>
-            <p class="text-on-surface-variant text-sm">Essential tracking for your most critical household items.</p>
+    <!-- Pricing Tiers -->
+    <div class="max-w-4xl mx-auto px-5 mb-20">
+      <h2 class="text-2xl font-black text-on-surface mb-8 text-center">Choose Your Plan</h2>
+      <div class="grid md:grid-cols-2 gap-6">
+
+        <!-- Free -->
+        <div class="rounded-2xl p-8 flex flex-col transition-all hover:bg-surface-container" style="background:#f3f4f6">
+          <div class="mb-6">
+            <h3 class="text-xl font-bold text-on-surface mb-2">Free</h3>
+            <div class="font-black text-on-surface mb-3" style="font-size:2.5rem">$0 <span style="font-size:1rem;font-weight:400;color:#434654">/mo</span></div>
+            <p class="text-on-surface-variant text-sm">Essential tracking for your most critical items.</p>
           </div>
-          <ul class="space-y-6 mb-12 flex-grow">
+          <ul class="space-y-4 flex-grow mb-8">
             <li class="flex items-start gap-3">
-              <span class="material-symbols-outlined text-outline text-sm">check_circle</span>
-              <span class="text-sm font-medium">10 items capacity</span>
+              <span class="material-symbols-outlined text-outline mt-0.5" style="font-size:18px">check_circle</span>
+              <span class="text-sm font-medium text-on-surface">Up to 10 items</span>
             </li>
-            <li class="flex items-start gap-3 text-on-surface-variant">
-              <span class="material-symbols-outlined text-outline text-sm">check_circle</span>
-              <span class="text-sm">Standard AI predictions</span>
+            <li class="flex items-start gap-3">
+              <span class="material-symbols-outlined text-outline mt-0.5" style="font-size:18px">check_circle</span>
+              <span class="text-sm text-on-surface-variant">Standard AI predictions</span>
             </li>
-            <li class="flex items-start gap-3 text-on-surface-variant">
-              <span class="material-symbols-outlined text-outline text-sm">check_circle</span>
-              <span class="text-sm">1 primary supplier sync</span>
+            <li class="flex items-start gap-3">
+              <span class="material-symbols-outlined text-outline mt-0.5" style="font-size:18px">check_circle</span>
+              <span class="text-sm text-on-surface-variant">1 supplier sync</span>
             </li>
           </ul>
-          <button class="w-full py-4 rounded-lg bg-surface-container-highest text-on-surface font-bold hover:bg-surface-dim transition-all duration-300">
+          <button class="w-full py-3.5 rounded-xl font-bold text-sm text-on-surface transition-all" style="background:#e1e2e4">
             Current Plan
           </button>
         </div>
 
-        <!-- Plus Tier -->
-        <div class="relative bg-surface-container-lowest rounded-xl p-10 flex flex-col shadow-[0px_20px_40px_rgba(25,28,30,0.06)] border border-primary/5">
-          <div class="absolute -top-4 right-8 bg-gradient-to-br from-primary to-primary-container text-on-primary px-4 py-1 rounded-full text-xs font-bold tracking-widest uppercase">
+        <!-- Plus -->
+        <div class="relative rounded-2xl p-8 flex flex-col bg-surface-container-lowest" style="box-shadow:0px 20px 40px rgba(25,28,30,0.10);border:1px solid rgba(0,61,155,0.09)">
+          <div class="absolute -top-4 right-6 btn-primary px-4 py-1 rounded-full text-xs font-bold tracking-widest uppercase">
             Recommended
           </div>
-          <div class="mb-8">
-            <h3 class="text-2xl font-bold text-primary mb-2">ReplenishAI Plus</h3>
-            <div class="text-4xl font-black text-on-surface mb-4">$7.99 <span class="text-lg font-normal text-on-surface-variant">/mo</span></div>
+          <div class="mb-6">
+            <h3 class="text-xl font-bold text-primary mb-2">ReplenishAI Plus</h3>
+            <div class="font-black text-on-surface mb-3" style="font-size:2.5rem">$7.99 <span style="font-size:1rem;font-weight:400;color:#434654">/mo</span></div>
             <p class="text-on-surface-variant text-sm">The ultimate proactive curator for a seamless lifestyle.</p>
           </div>
-          <ul class="space-y-6 mb-12 flex-grow">
+          <ul class="space-y-4 flex-grow mb-8">
             <li class="flex items-start gap-3">
-              <span class="material-symbols-outlined text-primary text-sm" style="font-variation-settings:'FILL' 1;">check_circle</span>
-              <span class="text-sm font-bold">Unlimited items capacity</span>
+              <span class="material-symbols-outlined fill-icon text-primary mt-0.5" style="font-size:18px">check_circle</span>
+              <span class="text-sm font-bold text-on-surface">Unlimited items</span>
             </li>
             <li class="flex items-start gap-3">
-              <span class="material-symbols-outlined text-primary text-sm" style="font-variation-settings:'FILL' 1;">check_circle</span>
-              <span class="text-sm font-bold">Advanced ML consumption patterns</span>
+              <span class="material-symbols-outlined fill-icon text-primary mt-0.5" style="font-size:18px">check_circle</span>
+              <span class="text-sm font-bold text-on-surface">Advanced ML consumption patterns</span>
             </li>
             <li class="flex items-start gap-3">
-              <span class="material-symbols-outlined text-primary text-sm" style="font-variation-settings:'FILL' 1;">check_circle</span>
-              <span class="text-sm font-bold">Calendar &amp; Event sync</span>
+              <span class="material-symbols-outlined fill-icon text-primary mt-0.5" style="font-size:18px">check_circle</span>
+              <span class="text-sm font-bold text-on-surface">Calendar &amp; event sync</span>
             </li>
             <li class="flex items-start gap-3">
-              <span class="material-symbols-outlined text-primary text-sm" style="font-variation-settings:'FILL' 1;">check_circle</span>
-              <span class="text-sm font-bold">Price deals &amp; Coupon tracking</span>
+              <span class="material-symbols-outlined fill-icon text-primary mt-0.5" style="font-size:18px">check_circle</span>
+              <span class="text-sm font-bold text-on-surface">Price deals &amp; coupon tracking</span>
             </li>
             <li class="flex items-start gap-3">
-              <span class="material-symbols-outlined text-primary text-sm" style="font-variation-settings:'FILL' 1;">check_circle</span>
-              <span class="text-sm font-bold">Multi-supplier routing optimization</span>
+              <span class="material-symbols-outlined fill-icon text-primary mt-0.5" style="font-size:18px">check_circle</span>
+              <span class="text-sm font-bold text-on-surface">Multi-supplier routing optimization</span>
             </li>
           </ul>
-          <button onclick="showUpgradeModal()" class="w-full py-4 rounded-lg bg-gradient-to-br from-primary to-primary-container text-on-primary font-bold shadow-lg hover:brightness-110 active:scale-95 transition-all duration-300">
-            Upgrade Now
+          <button class="btn-primary w-full py-4 rounded-xl font-bold text-sm" onclick="openModal('upgradeModal')">
+            Upgrade Now — $7.99/mo
           </button>
         </div>
       </div>
-    </section>
+    </div>
 
     <!-- Feature Bento Grid -->
-    <section class="max-w-6xl mx-auto px-6 mt-32">
-      <h2 class="text-2xl font-black mb-12">The Plus Advantage</h2>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div class="md:col-span-2 bg-secondary-container/20 rounded-xl p-8 flex flex-col justify-between overflow-hidden relative group">
-          <div class="max-w-md relative z-10">
-            <span class="material-symbols-outlined text-on-secondary-container mb-4 text-3xl">auto_awesome</span>
-            <h4 class="text-xl font-bold mb-2">Multi-Supplier Optimization</h4>
-            <p class="text-sm text-on-surface-variant">Our AI compares Amazon, Walmart, and local grocers in real-time to find the best price and fastest delivery window automatically.</p>
-          </div>
-          <div class="absolute -right-20 -bottom-20 opacity-10 group-hover:opacity-20 transition-opacity">
-            <span class="material-symbols-outlined text-[15rem]">shopping_cart</span>
-          </div>
-        </div>
-        <div class="bg-tertiary-fixed rounded-xl p-8 flex flex-col justify-between">
-          <div>
-            <span class="material-symbols-outlined text-on-tertiary-fixed-variant mb-4 text-3xl">calendar_month</span>
-            <h4 class="text-xl font-bold mb-2">Calendar Sync</h4>
-            <p class="text-sm text-on-tertiary-fixed-variant">Planning a dinner party? ReplenishAI sees your guest list and orders extra ingredients 48 hours in advance.</p>
+    <div class="max-w-5xl mx-auto px-5">
+      <h2 class="text-2xl font-black text-on-surface mb-7">The Plus Advantage</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+        <!-- Multi-supplier (wide) -->
+        <div class="md:col-span-2 rounded-2xl p-8 relative overflow-hidden group" style="background:rgba(130,249,190,0.15)">
+          <span class="material-symbols-outlined text-on-secondary-container mb-3 block" style="font-size:2rem">auto_awesome</span>
+          <h4 class="text-xl font-bold mb-2 text-on-surface">Multi-Supplier Optimization</h4>
+          <p class="text-sm text-on-surface-variant max-w-sm">Our AI compares Amazon, Walmart, and local grocers in real-time to find the best price and fastest delivery window automatically.</p>
+          <div class="absolute -right-14 -bottom-14 opacity-10 group-hover:opacity-20 transition-opacity duration-300">
+            <span class="material-symbols-outlined" style="font-size:13rem">shopping_cart</span>
           </div>
         </div>
-        <div class="bg-surface-container-high rounded-xl p-8">
-          <span class="material-symbols-outlined text-primary mb-4 text-3xl">analytics</span>
-          <h4 class="text-xl font-bold mb-2">Advanced ML Predictions</h4>
-          <p class="text-sm text-on-surface-variant">We learn your seasonal habits. Milk usage spikes in winter? We adjust your replenishment cycle before you even notice.</p>
+        <!-- Calendar -->
+        <div class="rounded-2xl p-8 flex flex-col" style="background:#ffddb3">
+          <span class="material-symbols-outlined mb-3" style="font-size:2rem;color:#624000">calendar_month</span>
+          <h4 class="text-xl font-bold mb-2 text-on-surface">Calendar Sync</h4>
+          <p class="text-sm" style="color:#624000">Planning a dinner party? We order extras 48 hours in advance based on your guest list.</p>
         </div>
-        <div class="md:col-span-2 bg-primary-container text-on-primary-container rounded-xl p-8 flex items-center gap-8">
+        <!-- ML Predictions -->
+        <div class="rounded-2xl p-8" style="background:#e7e8ea">
+          <span class="material-symbols-outlined text-primary mb-3 block" style="font-size:2rem">analytics</span>
+          <h4 class="text-xl font-bold mb-2 text-on-surface">Advanced ML Predictions</h4>
+          <p class="text-sm text-on-surface-variant">We learn seasonal habits — milk usage spikes in winter? We adjust your cycle before you notice.</p>
+        </div>
+        <!-- Unlimited (wide) -->
+        <div class="md:col-span-2 rounded-2xl p-8 flex items-center gap-8" style="background:#003d9b">
           <div class="flex-grow">
-            <h4 class="text-xl font-bold mb-2">Unlimited Items</h4>
-            <p class="text-sm opacity-80">From lightbulbs to laundry detergent, track your entire household inventory without restrictions.</p>
+            <h4 class="text-xl font-bold mb-2 text-white">Unlimited Items</h4>
+            <p class="text-sm" style="color:rgba(196,210,255,0.9)">From lightbulbs to laundry detergent — track your entire household with no restrictions.</p>
           </div>
-          <div class="h-24 w-24 bg-white/10 rounded-full flex items-center justify-center flex-shrink-0">
-            <span class="material-symbols-outlined text-4xl">all_inclusive</span>
+          <div class="w-20 h-20 rounded-full flex items-center justify-center flex-shrink-0" style="background:rgba(255,255,255,0.1)">
+            <span class="material-symbols-outlined text-white" style="font-size:2.5rem">all_inclusive</span>
           </div>
         </div>
       </div>
-    </section>
-
-  </main>
-
-  <footer class="bg-slate-50 border-t border-slate-200 py-12">
-    <div class="max-w-7xl mx-auto px-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs tracking-wide uppercase">
-      <div class="text-slate-500">© 2024 ReplenishAI. Intelligent Household Management.</div>
-      <div class="flex gap-8">
-        <a class="text-slate-500 hover:text-blue-600 transition-colors" href="#">Privacy</a>
-        <a class="text-slate-500 hover:text-blue-600 transition-colors" href="#">Terms</a>
-        <a class="text-slate-500 hover:text-blue-600 transition-colors" href="#">Support</a>
-      </div>
     </div>
-  </footer>
+  </div>
+</section>
 
-</div><!-- /screen-upgrade -->
+
+<!-- ═══════════════════════════════════════════════════════════════
+     MOBILE BOTTOM NAV
+═══════════════════════════════════════════════════════════════ -->
+<nav class="md:hidden fixed bottom-0 left-0 right-0 glass-nav flex justify-around items-center px-2 py-2 z-50" style="border-top:1px solid rgba(195,198,214,0.25)">
+  <div class="bnav-item active" id="bnav-onboarding" onclick="goToScreen('onboarding')">
+    <span class="material-symbols-outlined fill-icon">home</span>
+    <span class="blabel">Setup</span>
+  </div>
+  <div class="bnav-item" id="bnav-alert" onclick="goToScreen('alert')">
+    <span class="material-symbols-outlined">notifications</span>
+    <span class="blabel">Alerts</span>
+  </div>
+  <div class="bnav-item" id="bnav-dashboard" onclick="goToScreen('dashboard')">
+    <span class="material-symbols-outlined">dashboard</span>
+    <span class="blabel">Home</span>
+  </div>
+  <div class="bnav-item" id="bnav-upgrade" onclick="goToScreen('upgrade')">
+    <span class="material-symbols-outlined">auto_awesome</span>
+    <span class="blabel">Plus</span>
+  </div>
+</nav>
 
 
-<!-- ========== UPGRADE CONFIRMATION MODAL ========== -->
-<div id="modal-upgrade" class="fixed inset-0 z-[100] flex items-center justify-center p-4" style="display:none" onclick="closeUpgradeModal()">
-  <div class="absolute inset-0 bg-black/50 backdrop-blur-sm pointer-events-none"></div>
-  <div class="relative bg-white rounded-3xl p-10 max-w-md w-full shadow-2xl z-10 text-center" onclick="event.stopPropagation()">
-    <div class="w-20 h-20 bg-gradient-to-br from-primary to-primary-container rounded-full flex items-center justify-center mx-auto mb-8">
-      <span class="material-symbols-outlined text-white text-4xl" style="font-variation-settings:'FILL' 1;">verified</span>
+<!-- ═══════════════════════════════════════════════════════════════
+     MODALS
+═══════════════════════════════════════════════════════════════ -->
+
+<!-- Brand Swap Modal -->
+<div class="modal-overlay" id="swapModal">
+  <div class="card w-full max-w-sm p-6 anim-up">
+    <div class="flex justify-between items-center mb-5">
+      <h3 class="text-lg font-bold text-on-surface">Swap Brand</h3>
+      <button onclick="closeModal('swapModal')" class="text-on-surface-variant hover:text-on-surface transition-colors">
+        <span class="material-symbols-outlined">close</span>
+      </button>
     </div>
-    <span class="text-xs font-bold tracking-[0.2em] text-primary uppercase mb-4 block">Welcome to Plus</span>
-    <h2 class="text-3xl font-black text-on-surface tracking-tight mb-4">You're all set.</h2>
-    <p class="text-on-surface-variant leading-relaxed mb-8">ReplenishAI Plus is now active. Unlimited items, advanced predictions, and calendar sync are live on your account.</p>
-    <div class="bg-surface-container-low rounded-2xl p-6 mb-8 text-left space-y-3">
-      <div class="flex items-center gap-3">
-        <span class="material-symbols-outlined text-primary text-sm" style="font-variation-settings:'FILL' 1;">check_circle</span>
-        <span class="text-sm font-semibold text-on-surface">Unlimited items unlocked</span>
-      </div>
-      <div class="flex items-center gap-3">
-        <span class="material-symbols-outlined text-primary text-sm" style="font-variation-settings:'FILL' 1;">check_circle</span>
-        <span class="text-sm font-semibold text-on-surface">Advanced ML predictions enabled</span>
-      </div>
-      <div class="flex items-center gap-3">
-        <span class="material-symbols-outlined text-primary text-sm" style="font-variation-settings:'FILL' 1;">check_circle</span>
-        <span class="text-sm font-semibold text-on-surface">Calendar sync ready to connect</span>
-      </div>
-      <div class="flex items-center gap-3">
-        <span class="material-symbols-outlined text-primary text-sm" style="font-variation-settings:'FILL' 1;">check_circle</span>
-        <span class="text-sm font-semibold text-on-surface">$7.99/mo billed monthly</span>
-      </div>
-    </div>
-    <button onclick="closeUpgradeModal(); showScreen('delight')" class="w-full py-4 bg-gradient-to-br from-primary to-primary-container text-white font-bold rounded-xl shadow-lg hover:brightness-110 active:scale-95 transition-all">
-      Go to Dashboard
-    </button>
-    <p class="mt-4 text-xs text-on-surface-variant">Cancel anytime • No questions asked</p>
+    <p class="text-sm text-on-surface-variant mb-5">Choose a replacement brand for Paper Towels:</p>
+    <div class="space-y-3" id="brandOptions"></div>
+    <button class="btn-ghost w-full py-3 rounded-xl font-semibold text-sm mt-4" onclick="closeModal('swapModal')">Cancel</button>
   </div>
 </div>
 
+<!-- Upgrade Confirm Modal -->
+<div class="modal-overlay" id="upgradeModal">
+  <div class="card w-full max-w-sm p-8 anim-up text-center">
+    <div class="w-16 h-16 btn-primary rounded-full flex items-center justify-center mx-auto mb-5">
+      <span class="material-symbols-outlined fill-icon text-2xl">auto_awesome</span>
+    </div>
+    <h3 class="text-2xl font-black text-on-surface mb-2">Welcome to Plus!</h3>
+    <p class="text-on-surface-variant text-sm mb-1">You're now on <strong class="text-primary">ReplenishAI Plus</strong>.</p>
+    <p class="text-on-surface-variant text-sm mb-6">Unlimited items, advanced AI, and calendar sync are now active.</p>
+    <div class="rounded-xl p-4 mb-6 text-left space-y-2" style="background:#edeef0">
+      <div class="flex justify-between text-sm">
+        <span class="text-on-surface-variant">Plan</span>
+        <span class="font-bold text-on-surface">ReplenishAI Plus</span>
+      </div>
+      <div class="flex justify-between text-sm">
+        <span class="text-on-surface-variant">Billing</span>
+        <span class="font-bold text-on-surface">$7.99 / month</span>
+      </div>
+      <div class="flex justify-between text-sm">
+        <span class="text-on-surface-variant">Next charge</span>
+        <span class="font-bold text-on-surface">May 8, 2026</span>
+      </div>
+    </div>
+    <button class="btn-primary w-full py-4 rounded-xl font-bold" onclick="confirmUpgrade()">
+      Start Using Plus
+    </button>
+    <button class="btn-ghost w-full py-3 rounded-xl font-semibold text-sm mt-3" onclick="closeModal('upgradeModal')">
+      Maybe Later
+    </button>
+  </div>
+</div>
 
+<!-- Settings Modal -->
+<div class="modal-overlay" id="settingsModal">
+  <div class="card w-full max-w-sm p-6 anim-up">
+    <div class="flex justify-between items-center mb-5">
+      <h3 class="text-lg font-bold text-on-surface">Settings</h3>
+      <button onclick="closeModal('settingsModal')" class="text-on-surface-variant hover:text-on-surface transition-colors">
+        <span class="material-symbols-outlined">close</span>
+      </button>
+    </div>
+    <div class="space-y-0">
+      <div class="flex justify-between items-center py-4" style="border-bottom:1px solid rgba(225,226,228,0.5)">
+        <div>
+          <p class="text-sm font-semibold text-on-surface">Smart Notifications</p>
+          <p class="text-xs text-on-surface-variant">AI-timed alerts at shopping windows</p>
+        </div>
+        <div class="w-11 h-6 rounded-full relative cursor-pointer btn-primary" id="notifToggle" onclick="toggleSetting(this)">
+          <div class="w-4 h-4 bg-white rounded-full absolute right-1 top-1 transition-all" id="notifThumb"></div>
+        </div>
+      </div>
+      <div class="flex justify-between items-center py-4 cursor-pointer hover:bg-surface-container-low rounded-lg px-1 transition-colors" style="border-bottom:1px solid rgba(225,226,228,0.5)" onclick="showToast('Supplier preference saved: Amazon')">
+        <div>
+          <p class="text-sm font-semibold text-on-surface">Preferred Supplier</p>
+          <p class="text-xs text-on-surface-variant">Amazon</p>
+        </div>
+        <span class="material-symbols-outlined text-on-surface-variant">chevron_right</span>
+      </div>
+      <div class="flex justify-between items-center py-4 cursor-pointer hover:bg-surface-container-low rounded-lg px-1 transition-colors" onclick="showToast('Budget preference saved: Best Value')">
+        <div>
+          <p class="text-sm font-semibold text-on-surface">Budget Sensitivity</p>
+          <p class="text-xs text-on-surface-variant">Best Value</p>
+        </div>
+        <span class="material-symbols-outlined text-on-surface-variant">chevron_right</span>
+      </div>
+    </div>
+    <button class="btn-primary w-full py-3.5 rounded-xl font-bold text-sm mt-5" onclick="closeModal('settingsModal');showToast('Settings saved.')">
+      Save Settings
+    </button>
+  </div>
+</div>
+
+<!-- Toast -->
+<div class="toast" id="toast"></div>
+
+
+<!-- ═══════════════════════════════════════════════════════════════
+     JAVASCRIPT — STATE & INTERACTIONS
+═══════════════════════════════════════════════════════════════ -->
 <script>
-  // ---- Screen state ----
-  let approvedCount = 0;
-  let swapPanelOpen = false;
+// ── App State ────────────────────────────────────────────────────────────────
+const state = {
+  currentScreen: 'onboarding',
+  approvedAlerts: 0,
+  isPlusUser: false,
+  alertBrand: 'Bounty',
+  alertPrice: '$14.99',
+  alertSupplier: 'Amazon',
 
-  function showScreen(name) {
-    document.querySelectorAll('[id^="screen-"]').forEach(s => { s.hidden = true; });
-    const el = document.getElementById('screen-' + name);
-    if (el) {
-      el.hidden = false;
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-      // Reset alert state if navigating back to alert
-      if (name === 'alert') resetAlertState();
-    }
-  }
+  items: [
+    { id:1,  name:'Dish Soap',           icon:'water_drop',       selected:true,  qty:1 },
+    { id:2,  name:'Paper Towels',         icon:'layers',           selected:true,  qty:1 },
+    { id:3,  name:'Laundry Detergent',    icon:'cleaning_services',selected:true,  qty:1 },
+    { id:4,  name:'Shampoo',             icon:'soap',             selected:false, qty:1 },
+    { id:5,  name:'Toilet Paper',         icon:'inventory_2',      selected:false, qty:1 },
+    { id:6,  name:'Espresso Pods',        icon:'coffee',           selected:false, qty:1 },
+    { id:7,  name:'Hand Soap',           icon:'sanitizer',        selected:false, qty:1 },
+    { id:8,  name:'Dishwasher Pods',      icon:'dishwasher_gen',   selected:false, qty:1 },
+    { id:9,  name:'Sparkling Water',      icon:'water_drop',       selected:false, qty:1 },
+    { id:10, name:'Conditioner',          icon:'colorize',         selected:false, qty:1 },
+  ],
 
-  // ---- Onboarding: item toggling ----
-  let selectedItems = new Set(['Dish Soap', 'Detergent', 'Paper Towels']);
-  const MAX_ITEMS = 10;
+  inventory: [
+    { name:'Espresso Pods',      icon:'coffee',            pct:80,  days:22, status:'OPTIMAL',    color:'good' },
+    { name:'Laundry Detergent',  icon:'cleaning_services', pct:15,  days:3,  status:'REORDERING', color:'warn' },
+    { name:'Bounty Towels',      icon:'layers',            pct:100, days:45, status:'RESTOCKED',  color:'ok'   },
+    { name:'Sparkling Water',    icon:'water_drop',        pct:75,  days:14, status:'GOOD',       color:'good' },
+    { name:'Hand Soap',          icon:'sanitizer',         pct:65,  days:18, status:'GOOD',       color:'good' },
+    { name:'Dog Kibble',         icon:'pet_supplies',      pct:50,  days:9,  status:'GOOD',       color:'good' },
+    { name:'Milk (Whole)',        icon:'kitchen',           pct:22,  days:4,  status:'LOW',        color:'warn' },
+  ],
 
-  function toggleItem(card) {
-    const item = card.dataset.item;
-    if (card.classList.contains('selected')) {
-      card.classList.remove('selected');
-      selectedItems.delete(item);
-    } else {
-      if (selectedItems.size >= MAX_ITEMS) {
-        showCapWarning();
-        return;
-      }
-      card.classList.add('selected');
-      selectedItems.add(item);
-    }
-    updateCounter();
-  }
+  brands: [
+    { name:'Bounty',   price:'$14.99', note:'Best seller' },
+    { name:'Viva',     price:'$12.49', note:'Softer texture' },
+    { name:'Scott',    price:'$10.99', note:'Budget pick' },
+    { name:'Kirkland', price:'$18.99', note:'12-roll bulk pack' },
+  ]
+};
 
-  function updateCounter() {
-    const n = selectedItems.size;
-    const el = document.getElementById('item-counter');
-    if (el) el.innerHTML = String(n).padStart(2,'0') + '<span class="text-surface-variant text-2xl">/10</span>';
-    if (n >= MAX_ITEMS) showCapWarning();
-  }
+// ── Navigation ───────────────────────────────────────────────────────────────
+function goToScreen(screen) {
+  // Hide all screens
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  const el = document.getElementById('screen-' + screen);
+  if (el) el.classList.add('active');
 
-  function showCapWarning() {
-    // Flash the counter red briefly
-    const el = document.getElementById('item-counter');
-    if (!el) return;
-    el.classList.add('text-error');
-    setTimeout(() => el.classList.remove('text-error'), 800);
-  }
-
-  // ---- Quantity controls ----
-  document.addEventListener('click', function(e) {
-    const btn = e.target.closest('.qty-minus, .qty-plus');
-    if (!btn) return;
-    const display = btn.closest('[class*="glass-card"]')?.querySelector('.qty-display');
-    if (!display) return;
-    let v = parseInt(display.textContent) || 1;
-    if (btn.classList.contains('qty-plus')) v = Math.min(v + 1, 9);
-    if (btn.classList.contains('qty-minus')) v = Math.max(v - 1, 1);
-    display.textContent = v;
+  // Desktop nav active state
+  document.querySelectorAll('.nav-item').forEach(n => {
+    n.classList.toggle('active', n.dataset.screen === screen);
   });
 
-  // ---- Custom item input ----
-  function addCustomItem(e) {
-    if (e.key !== 'Enter') return;
-    const input = document.getElementById('custom-item-input');
-    const name = input.value.trim();
-    if (!name) return;
-    if (selectedItems.size >= MAX_ITEMS) { showCapWarning(); return; }
-    // Create new item card and prepend to grid
-    const grid = document.getElementById('items-grid');
-    const card = createCustomCard(name);
-    grid.insertBefore(card, grid.children[3]); // insert before "add custom" card
-    selectedItems.add(name);
-    updateCounter();
-    input.value = '';
-  }
+  // Bottom nav active state
+  ['onboarding','alert','dashboard','upgrade'].forEach(s => {
+    const btn = document.getElementById('bnav-' + s);
+    if (!btn) return;
+    const icon = btn.querySelector('.material-symbols-outlined');
+    if (s === screen) {
+      btn.classList.add('active');
+      icon.classList.add('fill-icon');
+    } else {
+      btn.classList.remove('active');
+      icon.classList.remove('fill-icon');
+    }
+  });
 
-  function createCustomCard(name) {
-    const div = document.createElement('div');
-    div.className = 'item-card selected group relative aspect-[4/5] overflow-hidden rounded-2xl shadow-xl transition-all duration-500 hover:shadow-2xl cursor-pointer bg-surface-container';
-    div.dataset.item = name;
-    div.onclick = function() { toggleItem(this); };
-    div.innerHTML = `
-      <div class="absolute inset-0 bg-gradient-to-br from-primary/20 to-primary-container/10"></div>
-      <div class="absolute inset-0 flex items-center justify-center">
-        <span class="material-symbols-outlined text-primary text-6xl opacity-30">category</span>
+  state.currentScreen = screen;
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+  if (screen === 'dashboard') renderInventory();
+}
+
+// Bind desktop nav clicks
+document.querySelectorAll('.nav-item').forEach(el => {
+  el.addEventListener('click', () => goToScreen(el.dataset.screen));
+});
+
+// ── Item Grid ────────────────────────────────────────────────────────────────
+function selectedCount() { return state.items.filter(i => i.selected).length; }
+const FREE_LIMIT = 10;
+
+function renderItemGrid() {
+  const grid = document.getElementById('itemGrid');
+  grid.innerHTML = state.items.map(item => {
+    const sel = item.selected;
+    const locked = !sel && selectedCount() >= FREE_LIMIT && !state.isPlusUser;
+    const bgColor = sel ? '#dae2ff' : locked ? '#e7e8ea' : '#edeef0';
+
+    const checkmark = sel ? `
+      <div style="position:absolute;top:10px;right:10px;width:28px;height:28px;background:linear-gradient(135deg,#003d9b,#0052cc);border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 12px rgba(0,61,155,0.35)">
+        <span class="material-symbols-outlined fill-icon text-white" style="font-size:16px">check</span>
+      </div>` : locked ? `
+      <div style="position:absolute;top:10px;right:10px;width:28px;height:28px;background:#d9dadc;border-radius:50%;display:flex;align-items:center;justify-content:center">
+        <span class="material-symbols-outlined text-on-surface-variant" style="font-size:14px">lock</span>
+      </div>` : '';
+
+    const footer = sel ? `
+      <div style="position:absolute;bottom:0;left:0;right:0;padding:8px 10px;border-radius:0 0 14px 14px" class="glass-card">
+        <div style="font-size:8px;font-weight:700;letter-spacing:0.07em;text-transform:uppercase;color:#434654;margin-bottom:4px">${item.name}</div>
+        <div style="display:flex;align-items:center;gap:8px">
+          <button onclick="event.stopPropagation();changeQty(${item.id},-1)" style="width:22px;height:22px;border-radius:50%;background:#fff;border:1px solid #c3c6d6;display:flex;align-items:center;justify-content:center;cursor:pointer">
+            <span class="material-symbols-outlined" style="font-size:12px">remove</span>
+          </button>
+          <span style="font-size:13px;font-weight:900;color:#191c1e;min-width:12px;text-align:center">${item.qty}</span>
+          <button onclick="event.stopPropagation();changeQty(${item.id},1)" style="width:22px;height:22px;border-radius:50%;background:linear-gradient(135deg,#003d9b,#0052cc);display:flex;align-items:center;justify-content:center;cursor:pointer">
+            <span class="material-symbols-outlined text-white" style="font-size:12px">add</span>
+          </button>
+        </div>
+      </div>` : `
+      <div style="position:absolute;bottom:0;left:0;right:0;padding:8px 10px;text-align:center;background:rgba(0,0,0,${locked?'0.55':'0.45'});border-radius:0 0 14px 14px">
+        <span style="font-size:9px;font-weight:700;letter-spacing:0.07em;text-transform:uppercase;color:rgba(255,255,255,${locked?'0.6':'0.9'})">${item.name}</span>
+      </div>`;
+
+    return `
+      <div class="item-card ${sel?'selected':''} ${locked?'locked':''}"
+           style="background:${bgColor};${locked?'opacity:0.55;cursor:not-allowed':''}"
+           onclick="${locked ? 'showUpgradeNudge()' : `toggleItem(${item.id})`}">
+        <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center">
+          <span class="material-symbols-outlined ${sel?'fill-icon':''}" style="font-size:3.5rem;color:${sel?'#003d9b':'#737685'}">${item.icon}</span>
+        </div>
+        <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,${sel?'0.45':'0.35'}),transparent 55%)"></div>
+        ${checkmark}
+        ${footer}
+      </div>`;
+  }).join('');
+
+  updateCounterUI();
+}
+
+function toggleItem(id) {
+  const item = state.items.find(i => i.id === id);
+  if (!item) return;
+  if (!item.selected && selectedCount() >= FREE_LIMIT && !state.isPlusUser) {
+    showUpgradeNudge(); return;
+  }
+  item.selected = !item.selected;
+  if (!item.selected) item.qty = 1;
+  renderItemGrid();
+}
+
+function changeQty(id, delta) {
+  const item = state.items.find(i => i.id === id);
+  if (item) { item.qty = Math.max(1, Math.min(12, item.qty + delta)); renderItemGrid(); }
+}
+
+function updateCounterUI() {
+  const n = selectedCount();
+  const cap = state.isPlusUser ? '∞' : '10';
+  document.getElementById('counterLabel').textContent = `${n} / ${cap} items`;
+  document.getElementById('bigCounter').innerHTML = `${String(n).padStart(2,'0')}<span style="color:#d9dadc;font-size:1.5rem">/${cap}</span>`;
+}
+
+function showUpgradeNudge() {
+  showToast('10-item limit reached — upgrade to Plus for unlimited tracking');
+}
+
+// ── Alert Actions ────────────────────────────────────────────────────────────
+function approveOrder() {
+  state.approvedAlerts++;
+  const name = document.getElementById('alertBrand').textContent;
+  document.getElementById('delightHeading').textContent = `${name} Paper Towels delivered!`;
+  document.getElementById('achievementHeading').textContent = `${state.approvedAlerts} Stockout${state.approvedAlerts !== 1 ? 's' : ''} Prevented`;
+  const badge = document.getElementById('alertBadge');
+  if (badge) badge.style.display = 'none';
+  goToScreen('dashboard');
+  showToast(`Order approved! Routed to ${state.alertSupplier}`);
+  if (state.approvedAlerts >= 3 && !state.isPlusUser) {
+    setTimeout(() => showToast('3 stockouts prevented — ready to unlock Plus?'), 2800);
+  }
+}
+
+function dismissAlert() {
+  goToScreen('dashboard');
+  showToast('Alert dismissed. We\'ll remind you in 2 days.');
+}
+
+// ── Brand Swap Modal ─────────────────────────────────────────────────────────
+function renderBrandOptions() {
+  const current = document.getElementById('alertBrand').textContent;
+  document.getElementById('brandOptions').innerHTML = state.brands.map(b => `
+    <button onclick="selectBrand('${b.name}','${b.price}')"
+            style="width:100%;display:flex;align-items:center;justify-content:space-between;padding:14px 16px;border-radius:12px;transition:all 200ms;border:none;cursor:pointer;${b.name===current ? 'background:rgba(0,61,155,0.07)' : 'background:#f3f4f6'}">
+      <div style="text-align:left">
+        <p style="font-size:14px;font-weight:700;color:#191c1e;margin:0">${b.name}</p>
+        <p style="font-size:11px;color:#434654;margin:2px 0 0">${b.note}</p>
       </div>
-      <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
-      <div class="item-overlay absolute top-4 right-4 h-8 w-8 bg-primary rounded-full flex items-center justify-center shadow-lg border border-white/20">
-        <span class="material-symbols-outlined text-white text-lg" style="font-variation-settings:'FILL' 1;">check</span>
+      <div style="display:flex;align-items:center;gap:8px">
+        <span style="font-size:14px;font-weight:900;color:#003d9b">${b.price}</span>
+        ${b.name === current ? '<span class="material-symbols-outlined fill-icon text-primary" style="font-size:18px">check_circle</span>' : ''}
       </div>
-      <div class="item-overlay absolute bottom-20 left-6 right-6 glass-card rounded-xl p-3 flex items-center justify-between border-white/40 shadow-lg" onclick="event.stopPropagation()">
-        <div class="flex flex-col">
-          <span class="text-[9px] font-bold text-on-surface-variant uppercase tracking-wider">How many?</span>
-          <div class="flex items-center gap-3 mt-1">
-            <button class="qty-minus w-6 h-6 flex items-center justify-center rounded-full bg-white border border-outline-variant hover:bg-primary/5"><span class="material-symbols-outlined text-xs text-on-surface">remove</span></button>
-            <span class="qty-display text-sm font-black text-on-surface w-4 text-center">1</span>
-            <button class="qty-plus w-6 h-6 flex items-center justify-center rounded-full bg-primary text-white hover:shadow-lg"><span class="material-symbols-outlined text-xs">add</span></button>
+    </button>`).join('');
+}
+
+function selectBrand(name, price) {
+  document.getElementById('alertBrand').textContent = name;
+  document.getElementById('alertPrice').textContent = price;
+  state.alertBrand = name;
+  state.alertPrice = price;
+  closeModal('swapModal');
+  showToast(`Switched to ${name} — ${price}`);
+}
+
+// ── Inventory Grid ───────────────────────────────────────────────────────────
+function renderInventory() {
+  const grid = document.getElementById('inventoryGrid');
+  const items = state.isPlusUser ? state.inventory : state.inventory.slice(0, 7);
+  const cap = state.isPlusUser ? '∞' : '10';
+  document.getElementById('inventoryCount').textContent = `${items.length} of ${cap} tracked`;
+
+  grid.innerHTML = items.map(item => {
+    let chipBg, chipColor, barColor, dayColor;
+    if (item.color === 'ok') {
+      chipBg='#006c47'; chipColor='#fff'; barColor='#006c47'; dayColor='#434654';
+    } else if (item.color === 'warn') {
+      chipBg='#ffddb3'; chipColor='#624000'; barColor='#ffb950'; dayColor='#5e3c00';
+    } else {
+      chipBg='#82f9be'; chipColor='#00734c'; barColor='#006c47'; dayColor='#006c47';
+    }
+
+    return `
+      <div style="background:#fff;padding:20px;border-radius:16px;display:flex;flex-direction:column;justify-content:space-between;box-shadow:0 4px 12px rgba(25,28,30,0.05);transition:box-shadow 200ms" onmouseenter="this.style.boxShadow='0 8px 24px rgba(25,28,30,0.1)'" onmouseleave="this.style.boxShadow='0 4px 12px rgba(25,28,30,0.05)'">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:16px">
+          <div style="width:40px;height:40px;border-radius:10px;background:${item.color==='warn'?'#ffddb3':'#f3f4f6'};display:flex;align-items:center;justify-content:center">
+            <span class="material-symbols-outlined ${item.color==='ok'?'fill-icon':''}" style="font-size:20px;color:${item.color==='ok'?'#006c47':'#737685'}">${item.icon}</span>
+          </div>
+          <span style="border-radius:9999px;font-size:9px;font-weight:700;letter-spacing:0.07em;text-transform:uppercase;padding:3px 9px;background:${chipBg};color:${chipColor}">${item.status}</span>
+        </div>
+        <div>
+          <h3 style="font-weight:700;color:#191c1e;font-size:13px;margin-bottom:8px">${item.name}</h3>
+          <div style="display:flex;align-items:center;gap:8px">
+            <div class="bar-track" style="flex:1">
+              <div class="bar-fill" style="width:${item.pct}%;background:${barColor}"></div>
+            </div>
+            <span style="font-size:12px;font-weight:600;color:${dayColor};min-width:28px">${item.days}d</span>
           </div>
         </div>
-        <div class="h-8 w-[1px] bg-outline-variant/30"></div>
-        <div class="text-right"><span class="text-[9px] font-bold text-primary uppercase block">Stock</span><span class="text-xs font-bold text-on-surface">Optimal</span></div>
-      </div>
-      <div class="absolute bottom-6 left-6 text-white">
-        <span class="text-[10px] font-bold tracking-[0.15em] uppercase text-primary-fixed block mb-1">Custom Item</span>
-        <h3 class="text-2xl font-extrabold tracking-tight">${name}</h3>
-      </div>
-    `;
-    return div;
-  }
+      </div>`;
+  }).join('');
 
-  // ---- Smart Alert: actions ----
-  function resetAlertState() {
-    swapPanelOpen = false;
-    document.getElementById('swap-brand-panel').classList.add('hidden');
-    document.getElementById('alert-actions').classList.remove('hidden');
-    document.getElementById('alert-dismissed').classList.add('hidden');
-    document.getElementById('alert-item-name').textContent = 'Paper Towels';
-    document.getElementById('alert-brand-tag').textContent = 'Bounty';
-    document.getElementById('alert-price').textContent = '$14.99';
-    document.getElementById('alert-supplier').textContent = 'Amazon';
+  // Plus upsell card
+  if (!state.isPlusUser) {
+    grid.innerHTML += `
+      <div style="background:#191c1e;padding:20px;border-radius:16px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;cursor:pointer;position:relative;overflow:hidden" onclick="goToScreen('upgrade')">
+        <span class="material-symbols-outlined fill-icon" style="font-size:2rem;color:#b2c5ff;margin-bottom:8px">auto_awesome</span>
+        <h3 style="font-weight:700;color:#fff;font-size:13px;margin-bottom:6px">Track More Items</h3>
+        <p style="font-size:11px;color:rgba(240,241,243,0.6);margin-bottom:12px">Upgrade to Plus for unlimited tracking.</p>
+        <button style="background:#fff;color:#191c1e;border:none;border-radius:8px;padding:7px 14px;font-size:11px;font-weight:700;cursor:pointer">Upgrade Now</button>
+      </div>`;
   }
+}
 
-  function approveOrder() {
-    approvedCount++;
-    showScreen('delight');
-  }
+// ── Upgrade Flow ─────────────────────────────────────────────────────────────
+function confirmUpgrade() {
+  state.isPlusUser = true;
+  closeModal('upgradeModal');
+  goToScreen('dashboard');
+  updateCounterUI();
+  renderItemGrid();
+  showToast('Welcome to ReplenishAI Plus! Unlimited items unlocked.');
+}
 
-  function toggleSwapBrand() {
-    swapPanelOpen = !swapPanelOpen;
-    document.getElementById('swap-brand-panel').classList.toggle('hidden', !swapPanelOpen);
-  }
+// ── Referral ─────────────────────────────────────────────────────────────────
+function copyRef() {
+  showToast('Referral link copied to clipboard!');
+}
 
-  function selectBrand(brand, price, supplier) {
-    document.getElementById('alert-brand-tag').textContent = brand;
-    document.getElementById('alert-price').textContent = price;
-    document.getElementById('alert-supplier').textContent = supplier;
-    document.getElementById('swap-brand-panel').classList.add('hidden');
-    swapPanelOpen = false;
-  }
+// ── Modals ────────────────────────────────────────────────────────────────────
+function openModal(id) {
+  document.getElementById(id).classList.add('open');
+  if (id === 'swapModal') renderBrandOptions();
+}
+function closeModal(id) {
+  document.getElementById(id).classList.remove('open');
+}
+document.querySelectorAll('.modal-overlay').forEach(overlay => {
+  overlay.addEventListener('click', e => {
+    if (e.target === overlay) overlay.classList.remove('open');
+  });
+});
 
-  function dismissAlert() {
-    document.getElementById('alert-actions').classList.add('hidden');
-    document.getElementById('swap-brand-panel').classList.add('hidden');
-    document.getElementById('alert-dismissed').classList.remove('hidden');
+// ── Settings toggle ───────────────────────────────────────────────────────────
+function toggleSetting(el) {
+  const on = el.classList.contains('btn-primary');
+  if (on) {
+    el.classList.remove('btn-primary');
+    el.style.background = '#e1e2e4';
+    el.querySelector('#notifThumb').style.right = '';
+    el.querySelector('#notifThumb').style.left = '4px';
+    showToast('Smart notifications turned off');
+  } else {
+    el.classList.add('btn-primary');
+    el.style.background = '';
+    el.querySelector('#notifThumb').style.left = '';
+    el.querySelector('#notifThumb').style.right = '4px';
+    showToast('Smart notifications turned on');
   }
+}
 
-  function undoDismiss() {
-    document.getElementById('alert-dismissed').classList.add('hidden');
-    document.getElementById('alert-actions').classList.remove('hidden');
-  }
+// ── Toast ─────────────────────────────────────────────────────────────────────
+let toastTimer;
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => t.classList.remove('show'), 3000);
+}
 
-  // ---- Upgrade modal ----
-  function showUpgradeModal() {
-    document.getElementById('modal-upgrade').style.display = 'flex';
-  }
-
-  function closeUpgradeModal() {
-    document.getElementById('modal-upgrade').style.display = 'none';
-  }
-
-  // ---- Referral copy ----
-  function copyReferral(btn) {
-    navigator.clipboard.writeText('replenish.ai/ref/j-curator-92').catch(() => {});
-    const orig = btn.textContent;
-    btn.textContent = 'Copied!';
-    btn.classList.add('bg-green-700');
-    setTimeout(() => { btn.textContent = orig; btn.classList.remove('bg-green-700'); }, 1500);
-  }
+// ── Init ──────────────────────────────────────────────────────────────────────
+renderItemGrid();
+renderInventory();
 </script>
-
 </body>
 </html>
