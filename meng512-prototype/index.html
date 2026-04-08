@@ -104,6 +104,10 @@
     /* Ambient card shadow (design system) */
     .card { background: #fff; box-shadow: 0px 20px 40px rgba(25,28,30,0.06); border-radius: 1rem; }
 
+    /* AI image loading shimmer */
+    .item-card img { background: linear-gradient(110deg, #e8eaf0 30%, #f3f4f6 50%, #e8eaf0 70%); background-size: 200% 100%; animation: shimmer 1.4s infinite; }
+    @keyframes shimmer { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
+
     /* Item card */
     .item-card {
       transition: all 300ms cubic-bezier(0.4,0,0.2,1);
@@ -817,26 +821,26 @@ const state = {
   alertSupplier: 'Amazon',
 
   items: [
-    { id:1,  name:'Dish Soap',         image:'https://upload.wikimedia.org/wikipedia/commons/thumb/7/71/Afwasmiddel.jpg/500px-Afwasmiddel.jpg',                                                                                                                       selected:true,  qty:1 },
-    { id:2,  name:'Paper Towels',      image:'https://upload.wikimedia.org/wikipedia/commons/thumb/5/54/Paper_towel.jpg/500px-Paper_towel.jpg',                                                                                                                        selected:true,  qty:1 },
-    { id:3,  name:'Laundry Detergent', image:'https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Pralni_pra%C5%A1ek.JPG/500px-Pralni_pra%C5%A1ek.JPG',                                                                                                        selected:true,  qty:1 },
-    { id:4,  name:'Shampoo',           image:'https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Hair_wash_with_shampoo.jpg/500px-Hair_wash_with_shampoo.jpg',                                                                                                 selected:false, qty:1 },
-    { id:5,  name:'Toilet Paper',      image:'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Toiletpapier_%28Gobran111%29.jpg/500px-Toiletpapier_%28Gobran111%29.jpg',                                                                                     selected:false, qty:1 },
-    { id:6,  name:'Espresso Pods',     image:'https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/Lidl_Bellarom_Nespresso_Classico_cup.jpg/500px-Lidl_Bellarom_Nespresso_Classico_cup.jpg',                                                                    selected:false, qty:1 },
-    { id:7,  name:'Hand Soap',         image:'https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/COVID-19_au_B%C3%A9nin_flacons_de_gel_hydroalcoolique_sur_une_table1.jpg/500px-COVID-19_au_B%C3%A9nin_flacons_de_gel_hydroalcoolique_sur_une_table1.jpg',     selected:false, qty:1 },
-    { id:8,  name:'Dishwasher Pods',   image:'https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Detergent_tablet.jpg/500px-Detergent_tablet.jpg',                                                                                                             selected:false, qty:1 },
-    { id:9,  name:'Sparkling Water',   image:'https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/Drinking_glass_00118.gif/250px-Drinking_glass_00118.gif',                                                                                                     selected:false, qty:1 },
-    { id:10, name:'Conditioner',       image:'https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Hair_wash_with_shampoo.jpg/500px-Hair_wash_with_shampoo.jpg',                                                                                                 selected:false, qty:1 },
+    { id:1,  name:'Dish Soap',         image:'https://image.pollinations.ai/prompt/dish%20soap%20bottle%20product%20photography%20soft%20teal%20background%20minimalist%20studio%20lighting%20clean%20aesthetic?width=400&height=500&nologo=true&seed=101', selected:true,  qty:1 },
+    { id:2,  name:'Paper Towels',      image:'https://image.pollinations.ai/prompt/paper%20towel%20roll%20product%20photography%20soft%20teal%20background%20minimalist%20studio%20lighting%20clean%20aesthetic?width=400&height=500&nologo=true&seed=102',  selected:true,  qty:1 },
+    { id:3,  name:'Laundry Detergent', image:'https://image.pollinations.ai/prompt/laundry%20detergent%20bottle%20product%20photography%20soft%20teal%20background%20minimalist%20studio%20lighting%20clean%20aesthetic?width=400&height=500&nologo=true&seed=103', selected:true,  qty:1 },
+    { id:4,  name:'Shampoo',           image:'https://image.pollinations.ai/prompt/shampoo%20bottle%20product%20photography%20soft%20teal%20background%20minimalist%20studio%20lighting%20clean%20aesthetic?width=400&height=500&nologo=true&seed=104',      selected:false, qty:1 },
+    { id:5,  name:'Toilet Paper',      image:'https://image.pollinations.ai/prompt/toilet%20paper%20rolls%20product%20photography%20soft%20teal%20background%20minimalist%20studio%20lighting%20clean%20aesthetic?width=400&height=500&nologo=true&seed=105', selected:false, qty:1 },
+    { id:6,  name:'Espresso Pods',     image:'https://image.pollinations.ai/prompt/nespresso%20coffee%20pods%20capsules%20product%20photography%20soft%20teal%20background%20minimalist%20studio%20lighting%20clean%20aesthetic?width=400&height=500&nologo=true&seed=106', selected:false, qty:1 },
+    { id:7,  name:'Hand Soap',         image:'https://image.pollinations.ai/prompt/hand%20soap%20pump%20dispenser%20bottle%20product%20photography%20soft%20teal%20background%20minimalist%20studio%20lighting%20clean%20aesthetic?width=400&height=500&nologo=true&seed=107', selected:false, qty:1 },
+    { id:8,  name:'Dishwasher Pods',   image:'https://image.pollinations.ai/prompt/dishwasher%20pods%20tablets%20product%20photography%20soft%20teal%20background%20minimalist%20studio%20lighting%20clean%20aesthetic?width=400&height=500&nologo=true&seed=108', selected:false, qty:1 },
+    { id:9,  name:'Sparkling Water',   image:'https://image.pollinations.ai/prompt/sparkling%20water%20can%20lacroix%20product%20photography%20soft%20teal%20background%20minimalist%20studio%20lighting%20clean%20aesthetic?width=400&height=500&nologo=true&seed=109', selected:false, qty:1 },
+    { id:10, name:'Conditioner',       image:'https://image.pollinations.ai/prompt/hair%20conditioner%20bottle%20product%20photography%20soft%20teal%20background%20minimalist%20studio%20lighting%20clean%20aesthetic?width=400&height=500&nologo=true&seed=110', selected:false, qty:1 },
   ],
 
   inventory: [
-    { name:'Espresso Pods',     image:'https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/Lidl_Bellarom_Nespresso_Classico_cup.jpg/80px-Lidl_Bellarom_Nespresso_Classico_cup.jpg',                                                                           pct:80,  days:22, status:'OPTIMAL',    color:'good' },
-    { name:'Laundry Detergent', image:'https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Pralni_pra%C5%A1ek.JPG/80px-Pralni_pra%C5%A1ek.JPG',                                                                                                              pct:15,  days:3,  status:'REORDERING', color:'warn' },
-    { name:'Bounty Towels',     image:'https://upload.wikimedia.org/wikipedia/commons/thumb/5/54/Paper_towel.jpg/80px-Paper_towel.jpg',                                                                                                                              pct:100, days:45, status:'RESTOCKED',  color:'ok'   },
-    { name:'Sparkling Water',   image:'https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/Drinking_glass_00118.gif/80px-Drinking_glass_00118.gif',                                                                                                            pct:75,  days:14, status:'GOOD',       color:'good' },
-    { name:'Hand Soap',         image:'https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/COVID-19_au_B%C3%A9nin_flacons_de_gel_hydroalcoolique_sur_une_table1.jpg/80px-COVID-19_au_B%C3%A9nin_flacons_de_gel_hydroalcoolique_sur_une_table1.jpg',           pct:65,  days:18, status:'GOOD',       color:'good' },
-    { name:'Dog Kibble',        image:'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Collage_of_Nine_Dogs.jpg/80px-Collage_of_Nine_Dogs.jpg',                                                                                                            pct:50,  days:9,  status:'GOOD',       color:'good' },
-    { name:'Milk (Whole)',      image:'https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Milk_glass.jpg/80px-Milk_glass.jpg',                                                                                                                                pct:22,  days:4,  status:'LOW',        color:'warn' },
+    { name:'Espresso Pods',     image:'https://image.pollinations.ai/prompt/nespresso%20coffee%20pods%20capsules%20product%20photography%20soft%20teal%20background%20minimalist%20studio%20lighting%20clean%20aesthetic?width=80&height=80&nologo=true&seed=106',   pct:80,  days:22, status:'OPTIMAL',    color:'good' },
+    { name:'Laundry Detergent', image:'https://image.pollinations.ai/prompt/laundry%20detergent%20bottle%20product%20photography%20soft%20teal%20background%20minimalist%20studio%20lighting%20clean%20aesthetic?width=80&height=80&nologo=true&seed=103',           pct:15,  days:3,  status:'REORDERING', color:'warn' },
+    { name:'Bounty Towels',     image:'https://image.pollinations.ai/prompt/paper%20towel%20roll%20product%20photography%20soft%20teal%20background%20minimalist%20studio%20lighting%20clean%20aesthetic?width=80&height=80&nologo=true&seed=102',                   pct:100, days:45, status:'RESTOCKED',  color:'ok'   },
+    { name:'Sparkling Water',   image:'https://image.pollinations.ai/prompt/sparkling%20water%20can%20lacroix%20product%20photography%20soft%20teal%20background%20minimalist%20studio%20lighting%20clean%20aesthetic?width=80&height=80&nologo=true&seed=109',      pct:75,  days:14, status:'GOOD',       color:'good' },
+    { name:'Hand Soap',         image:'https://image.pollinations.ai/prompt/hand%20soap%20pump%20dispenser%20bottle%20product%20photography%20soft%20teal%20background%20minimalist%20studio%20lighting%20clean%20aesthetic?width=80&height=80&nologo=true&seed=107', pct:65,  days:18, status:'GOOD',       color:'good' },
+    { name:'Dog Kibble',        image:'https://image.pollinations.ai/prompt/dog%20food%20kibble%20bowl%20product%20photography%20soft%20teal%20background%20minimalist%20studio%20lighting%20clean%20aesthetic?width=80&height=80&nologo=true&seed=111',              pct:50,  days:9,  status:'GOOD',       color:'good' },
+    { name:'Milk (Whole)',      image:'https://image.pollinations.ai/prompt/whole%20milk%20bottle%20product%20photography%20soft%20teal%20background%20minimalist%20studio%20lighting%20clean%20aesthetic?width=80&height=80&nologo=true&seed=112',                  pct:22,  days:4,  status:'LOW',        color:'warn' },
   ],
 
   brands: [
